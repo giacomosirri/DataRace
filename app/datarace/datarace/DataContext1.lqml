@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="datarace" EntityNamespace="DataraceContext" ContextNamespace="DataraceContext" Class="DataraceDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="ba248229-f513-4d10-a1b6-46a5517e27be" Provider="Devart.Data.MySql.Linq.Provider.MySqlDataProvider, Devart.Data.MySql.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="User Id=root;Password=e*ikl5&amp;0ccpQ;Host=localhost;Database=datarace;Persist Security Info=True" Provider="Devart.Data.MySql" />
+  <Table Name="datarace.affiliazioni" Member="Affiliazionis">
+    <Type Name="Affiliazioni" ed:Guid="3ef3b85e-ad76-432f-93b3-9060a852078a">
+      <Column Name="team" Member="Team" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a8f488a7-a5b4-4dd7-9336-ebcae98f4119" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="0f25b408-640f-4b2e-aa7f-dc5a8d44fd56" />
+      <Column Name="costruttore" Member="Costruttore" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="71865abf-34d0-4895-9258-dda537371d6a" />
+      <Association Name="Costruttori_Affiliazioni" ed:AssociationGuid="9a044d14-8b30-4021-b19f-f706545c2b08" Member="Costruttori" ed:Guid="3d8e515f-cd8f-4a7e-94da-1b53dbfd2b63" ThisKey="Costruttore" OtherKey="IdCostruttore" Type="Costruttori" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.campionati" Member="Campionatis">
+    <Type Name="Campionati" ed:Guid="d83e164f-ce01-4f7e-9ca1-c2193cf9fb85">
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a018702a-93e8-41ad-950f-19fc3214bcb4" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="bdec0376-b1f6-465f-bf86-71676aa14428" />
+      <Column Name="numeroProve" Member="NumeroProve" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="a5b1c31d-5034-40e9-90c8-e2e0bfccbf54" />
+      <Column Name="punteggio" Member="Punteggio" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="38b28e47-4267-4987-8a19-f87670d2612a" />
+      <Association Name="Stagioni_Campionati" ed:AssociationGuid="0ac1eb90-a3fb-41d8-8995-a5f59d2125ba" Member="Stagioni" ed:Guid="a2c3a172-f104-4ba1-a04e-40a295aced06" ThisKey="Anno" OtherKey="Anno" Type="Stagioni" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Classi_Campionati" ed:AssociationGuid="788e1d2d-53ca-4112-b6b6-d0b59f9c6a3a" Member="Classi" ed:Guid="f7dce713-5d6f-4641-b8fa-80409a8970c3" ThisKey="Classe" OtherKey="Nome" Type="Classi" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Punteggi_Campionati" ed:AssociationGuid="97b47ca9-b3fd-43e0-8cb2-fc330a6a74b2" Member="Punteggi" ed:Guid="2423445b-87de-4acc-a798-68cfecc0d7ae" ThisKey="Punteggio" OtherKey="IdPunteggio" Type="Punteggi" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Campionati_PartecipazioniCostruttore" ed:AssociationGuid="e579b5e9-c2b3-4dc5-8558-31b13ad35ed7" Member="PartecipazioniCostruttore" ed:Guid="e0caaa3e-47cf-4e1f-a37f-68b7c1d57746" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="PartecipazioniCostruttore" />
+      <Association Name="Campionati_PartecipazioniPilota" ed:AssociationGuid="c17de343-8abf-40fc-b38f-8faa2fd0218a" Member="PartecipazioniPilota" ed:Guid="4a580ba5-135a-476b-bba8-00f5f9053917" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="PartecipazioniPilota" />
+      <Association Name="Campionati_PartecipazioniTeam" ed:AssociationGuid="a0860865-b376-4e5f-81e1-d836ce3618fc" Member="PartecipazioniTeam" ed:Guid="12da56d7-8dd6-45b1-a868-360198bea865" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="PartecipazioniTeam" />
+    </Type>
+  </Table>
+  <Table Name="datarace.circuiti" Member="Circuitis">
+    <Type Name="Circuiti" ed:Guid="b9ba27aa-fea6-4389-b290-f9d301f4de93">
+      <Column Name="idCircuito" Member="IdCircuito" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="81c7d9fa-d153-4d08-b87e-9d57470ca798" />
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="06e7d44e-443f-4d9a-9a38-1c7c75e54def" />
+      <Column Name="localita" Member="Localita" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="871b7d4c-5d30-45c6-8edb-5d87783ceefa" />
+      <Column Name="lunghezzaInMetri" Member="LunghezzaInMetri" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="40f203ef-907b-4634-b2fe-b95a923922c1" />
+      <Column Name="numeroCurveSinistra" Member="NumeroCurveSinistra" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e88802f5-b70d-448c-bf72-abaf7fd3c1f1" />
+      <Column Name="numeroCurveDestra" Member="NumeroCurveDestra" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="9eb6e67a-1192-42ba-b1a9-bff054f4a429" />
+      <Column Name="lunghezzaRettilineoInMetri" Member="LunghezzaRettilineoInMetri" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4ee941a0-10a9-43fb-aa3f-7d2107eb6623" />
+      <Association Name="Circuiti_Prove" ed:AssociationGuid="271b32ec-87d3-49ee-82a0-faa4efb5cc8f" Member="Prove" ed:Guid="fd1d09b4-2588-467b-bc70-3f33e5ce9e21" ThisKey="IdCircuito" OtherKey="Circuito" Type="Prove" />
+    </Type>
+  </Table>
+  <Table Name="datarace.classi" Member="Classis">
+    <Type Name="Classi" ed:Guid="b805d21b-c86b-4114-af92-110dfa73ad6c">
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c21a66e2-72b7-4f1e-9f79-585874dbedd4" />
+      <Column Name="cilindrataMinima" Member="CilindrataMinima" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="52b80603-8f9d-4e4e-a15a-49d4a5fab420" />
+      <Column Name="cilindrataMassima" Member="CilindrataMassima" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="bacee45f-2898-4e51-b8ac-8eec425ad855" />
+      <Column Name="etaMinima" Member="EtaMinima" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f251777e-36b5-4b6e-8c16-b20ecf79b0ea" />
+      <Column Name="etaMassima" Member="EtaMassima" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="03356515-f972-4a62-b91b-abbf09f13eb6" />
+      <Association Name="Classi_Campionati" ed:AssociationGuid="788e1d2d-53ca-4112-b6b6-d0b59f9c6a3a" Member="Campionati" ed:Guid="02b25d65-9c5b-49ac-8173-83d945cbc47b" ThisKey="Nome" OtherKey="Classe" Type="Campionati" />
+      <Association Name="Classi_Gare" ed:AssociationGuid="7fb2f421-6b7d-4a6c-bdc2-b103db0cd28f" Member="Gare" ed:Guid="e16e9bae-457e-47fd-8ba3-438a2cae3132" ThisKey="Nome" OtherKey="Classe" Type="Gare" />
+      <Association Name="Classi_Iscrizioni" ed:AssociationGuid="cd210e27-ca4c-48a7-a056-129f419b1d07" Member="Iscrizioni" ed:Guid="8decd248-a35b-45c3-92ad-8fac368a9d39" ThisKey="Nome" OtherKey="Classe" Type="Iscrizioni" />
+    </Type>
+  </Table>
+  <Table Name="datarace.costruttori" Member="Costruttoris">
+    <Type Name="Costruttori" ed:Guid="0114305b-d92e-4200-a479-d8faa0d81d71">
+      <Column Name="idCostruttore" Member="IdCostruttore" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="851ffbe1-c284-46bb-81b2-0b7ed104efaa" />
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9d5a77fa-91e4-4c9d-bc19-27425767273e" />
+      <Column Name="annoDiEsordio" Member="AnnoDiEsordio" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="61139767-2bbd-4ba1-8768-ef0013b8ad18" />
+      <Column Name="paese" Member="Paese" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3ff42c49-51f4-454c-85d5-af0a3d2627e2" />
+      <Association Name="Costruttori_Affiliazioni" ed:AssociationGuid="9a044d14-8b30-4021-b19f-f706545c2b08" Member="Affiliazioni" ed:Guid="e7f0f0d4-8d9e-497b-aff3-49dd331b3350" ThisKey="IdCostruttore" OtherKey="Costruttore" Type="Affiliazioni" />
+      <Association Name="Costruttori_Modelli" ed:AssociationGuid="05353cd2-f9ac-4136-a017-d97ae00a9ddf" Member="Modelli" ed:Guid="6ed28028-1d8d-4552-a436-b8c29b8517c0" ThisKey="IdCostruttore" OtherKey="Costruttore" Type="Modelli" />
+      <Association Name="Costruttori_PartecipazioniCostruttore" ed:AssociationGuid="6234894f-e622-4594-b4d3-01a8f0539bee" Member="PartecipazioniCostruttore" ed:Guid="d4dadb00-d267-4e75-8aa4-78a99894d35d" ThisKey="IdCostruttore" OtherKey="Costruttore" Type="PartecipazioniCostruttore" />
+    </Type>
+  </Table>
+  <Table Name="datarace.gare" Member="Gares">
+    <Type Name="Gare" ed:Guid="9943e19d-45fb-470a-bd8b-a065847ea1a3">
+      <Column Name="idGara" Member="IdGara" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a35d9f0d-3487-4bd9-97e1-45c285e6e467" />
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="772e2065-6908-4a0d-935e-13e442ead825" />
+      <Column Name="posizioneCalendario" Member="PosizioneCalendario" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="559cf7b6-92b2-4bc7-9c26-b9775b2eb774" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="edc72f53-eba7-4f3c-aa89-83b220a5a00a" />
+      <Column Name="`data`" Member="Data" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="2038969d-49ff-4a5a-8936-32c1889ff373" />
+      <Column Name="oraInizio" Member="OraInizio" Type="System.TimeSpan" DbType="TIME NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="15effbb5-5697-4565-95a1-2fd2854eccdf" />
+      <Column Name="numeroGiri" Member="NumeroGiri" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="e87b6542-caf0-453f-96de-36e0f8129d65" />
+      <Column Name="condizioniTracciato" Member="CondizioniTracciato" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5c6e5de3-8e02-4485-802a-28c8a47b1628" />
+      <Association Name="Classi_Gare" ed:AssociationGuid="7fb2f421-6b7d-4a6c-bdc2-b103db0cd28f" Member="Classi" ed:Guid="5b86ff8a-7088-4044-923c-9f45f8446ebb" ThisKey="Classe" OtherKey="Nome" Type="Classi" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Prove_Gare" ed:AssociationGuid="e647ccb7-6328-487f-8aa8-67f925e9e686" Member="Prove" ed:Guid="77ea8f52-2a8e-48d0-ae87-036c14eca914" ThisKey="PosizioneCalendario,Anno" OtherKey="Anno,PosizioneCalendario" Type="Prove" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Gare_Risultati" ed:AssociationGuid="bd1d5677-cae7-4955-b652-23b9d7fe537d" Member="Risultati" ed:Guid="b99c604c-0907-4cd5-b5e9-d238fc5b79e8" ThisKey="IdGara" OtherKey="Gara" Type="Risultati" />
+    </Type>
+  </Table>
+  <Table Name="datarace.gran_premi" Member="GranPremis">
+    <Type Name="GranPremi" ed:Guid="8c03f963-5a76-4305-b3df-1b3b410b6062">
+      <Column Name="idGranPremio" Member="IdGranPremio" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5ffc3c43-d0c1-4208-9a95-af11388015d4" />
+      <Column Name="denominazione" Member="Denominazione" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="c62a40c2-bf14-4d99-bc05-4cf3291543cd" />
+      <Column Name="annoPrimaEdizione" Member="AnnoPrimaEdizione" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="dbb9212f-af59-4f12-b3da-a07b0b333d75" />
+      <Association Name="GranPremi_Prove" ed:AssociationGuid="63d55ce7-7b12-4ae2-9047-f7145bf95f77" Member="Prove" ed:Guid="c9c84311-d44a-45f7-8fcc-18e35dd22d29" ThisKey="IdGranPremio" OtherKey="GranPremio" Type="Prove" />
+    </Type>
+  </Table>
+  <Table Name="datarace.iscrizioni" Member="Iscrizionis">
+    <Type Name="Iscrizioni" ed:Guid="6a27aaff-ea9d-4cc8-9282-b51625ea4026">
+      <Column Name="pilota" Member="Pilota" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5c92671a-dca7-4590-80ac-96773a5d9855" />
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="aff67e08-f26b-4840-b2f4-40fe319440b0" />
+      <Column Name="team" Member="Team" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="944f78ab-cff6-4fb4-b618-db64a96f666b" />
+      <Column Name="posizioneCalendario" Member="PosizioneCalendario" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="8a70a8b1-161b-4a8e-8bfb-7b7378ee5d73" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="2ce4a6e5-aaad-4de6-b817-729d2ff06892" />
+      <Column Name="numeroDiGara" Member="NumeroDiGara" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="6aa3884c-f2fe-4827-b5ff-157224acd634" />
+      <Column Name="tipoIscrizione" Member="TipoIscrizione" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f9b6cbdb-36bb-4211-b76c-f341d846a2a8" />
+      <Column Name="risultato" Member="Risultato" Type="System.String" DbType="CHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="79ef387f-d5cf-4956-874f-cbd2e01c8a85" />
+      <Column Name="costruttore" Member="Costruttore" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fe6526f5-88e9-4c5f-94d7-b5cf01d99454" />
+      <Column Name="modello" Member="Modello" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6136d966-cd98-444a-8554-50f78676a678" />
+      <Association Name="Classi_Iscrizioni" ed:AssociationGuid="cd210e27-ca4c-48a7-a056-129f419b1d07" Member="Classi" ed:Guid="f5358dc3-e158-423b-93d6-dc6a69fba981" ThisKey="Classe" OtherKey="Nome" Type="Classi" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Risultati_Iscrizioni" ed:AssociationGuid="7eaae4ff-4ffe-40fb-bdf7-cd0c43b6bf0f" Member="Risultati" ed:Guid="573c1d59-569d-44a4-8bb3-effb2284f7c1" ThisKey="Risultato" OtherKey="IdRisultato" Type="Risultati" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Prove_Iscrizioni" ed:AssociationGuid="ac30dcb4-d958-42e5-b585-0a1d978605c8" Member="Prove" ed:Guid="9de0bba6-b4d4-4780-a442-b157ad913e7f" ThisKey="PosizioneCalendario,Anno" OtherKey="Anno,PosizioneCalendario" Type="Prove" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Piloti_Iscrizioni" ed:AssociationGuid="809f1408-f427-4ba4-bb5f-fccc99d58a20" Member="Piloti" ed:Guid="250291e6-e695-426b-b787-c49c434bad63" ThisKey="Pilota" OtherKey="IdPilota" Type="Piloti" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="StagioniTeam_Iscrizioni" ed:AssociationGuid="231019a5-1cd1-4120-8f23-e4c92ae7ba6b" Member="StagioniTeam" ed:Guid="5bfee499-4598-469d-bab2-30733ef122de" ThisKey="Team" OtherKey="NomeUfficiale" Type="StagioniTeam" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Modelli_Iscrizioni" ed:AssociationGuid="613e9ee6-79ef-418f-9610-2940e5c967cf" Member="Modelli" ed:Guid="8536ec5a-8cd6-4308-b6de-ea6f1d0fe324" ThisKey="Costruttore,Modello" OtherKey="Costruttore,NomeModello" Type="Modelli" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.modelli" Member="Modellis">
+    <Type Name="Modelli" ed:Guid="f52f336c-905e-4a7c-aba0-06ac91df309d">
+      <Column Name="costruttore" Member="Costruttore" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b609b5f0-d844-4ab8-b8fc-548d4ef8f8de" />
+      <Column Name="nomeModello" Member="NomeModello" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="60a9eeed-2490-44b7-ac38-3be338d8aa2e" />
+      <Association Name="Costruttori_Modelli" ed:AssociationGuid="05353cd2-f9ac-4136-a017-d97ae00a9ddf" Member="Costruttori" ed:Guid="795c7cc7-75a2-4382-b060-1343ea507320" ThisKey="Costruttore" OtherKey="IdCostruttore" Type="Costruttori" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Modelli_Iscrizioni" ed:AssociationGuid="613e9ee6-79ef-418f-9610-2940e5c967cf" Member="Iscrizioni" ed:Guid="52ebda97-7397-4165-86db-7cbb76ff673a" ThisKey="Costruttore,NomeModello" OtherKey="Costruttore,Modello" Type="Iscrizioni" />
+    </Type>
+  </Table>
+  <Table Name="datarace.partecipazioni_costruttore" Member="PartecipazioniCostruttores">
+    <Type Name="PartecipazioniCostruttore" ed:Guid="380c788d-03e3-4760-84f6-abbf727b19d1">
+      <Column Name="costruttore" Member="Costruttore" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="073d915f-10b3-4715-a520-b0e79be896bb" />
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3b87caea-d759-4021-ac79-783679c5c6a3" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="dad01cb8-f2b1-4e46-ab84-48d32a79c0f8" />
+      <Column Name="punti" Member="Punti" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f177c626-03fd-4da8-8c1a-d87a30278156" />
+      <Column Name="posizioneClassifica" Member="PosizioneClassifica" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="462eb705-89ed-4ea1-9839-8b54ee6cfa9d" />
+      <Association Name="Campionati_PartecipazioniCostruttore" ed:AssociationGuid="e579b5e9-c2b3-4dc5-8558-31b13ad35ed7" Member="Campionati" ed:Guid="8e3811ae-689f-49b7-815f-a1b777217fd7" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="Campionati" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Costruttori_PartecipazioniCostruttore" ed:AssociationGuid="6234894f-e622-4594-b4d3-01a8f0539bee" Member="Costruttori" ed:Guid="a9989f25-6665-48ad-9181-503f30aef105" ThisKey="Costruttore" OtherKey="IdCostruttore" Type="Costruttori" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.partecipazioni_pilota" Member="PartecipazioniPilotas">
+    <Type Name="PartecipazioniPilota" ed:Guid="23cbd6a8-b5b7-4724-91b8-c0b083b9c3f2">
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9fea2fb8-95ba-4678-b02f-cf80257a7357" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="36074333-43fd-4ac4-ab6b-69afb12bdba4" />
+      <Column Name="pilota" Member="Pilota" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="041054a1-0650-4810-9fc7-1c1cb7c8740a" />
+      <Column Name="eta" Member="Eta" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="de1d5535-1d38-4243-a4cc-92e9cbb1c38c" />
+      <Column Name="esperienza" Member="Esperienza" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="7082c869-3489-4cbd-85e6-47dbf4529031" />
+      <Column Name="puntiTotali" Member="PuntiTotali" Type="System.Double" DbType="DOUBLE(10,1) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" Scale="1" ed:ValidateRequired="true" ed:Guid="d2aff3cf-3d2c-4b25-91c9-adabd57e5220" />
+      <Column Name="puntiValidi" Member="PuntiValidi" Type="System.Double" DbType="DOUBLE(10,1) NULL" CanBeNull="true" UpdateCheck="Never" Precision="10" Scale="1" ed:ValidateRequired="false" ed:Guid="537d6024-b03f-4078-a302-4942b2678cc8" />
+      <Column Name="posizioneClassifica" Member="PosizioneClassifica" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f2736070-7a87-4525-8ef7-a67e8fadbf98" />
+      <Association Name="Campionati_PartecipazioniPilota" ed:AssociationGuid="c17de343-8abf-40fc-b38f-8faa2fd0218a" Member="Campionati" ed:Guid="2c86fba5-16dc-41b5-9707-eff9f5a65ba5" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="Campionati" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Piloti_PartecipazioniPilota" ed:AssociationGuid="f0e3eb12-7e06-45d6-b887-a5a9593cf2fe" Member="Piloti" ed:Guid="7ea366a2-ccfb-4448-98b3-6a12ff1182c1" ThisKey="Pilota" OtherKey="IdPilota" Type="Piloti" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.partecipazioni_team" Member="PartecipazioniTeams">
+    <Type Name="PartecipazioniTeam" ed:Guid="474c3d66-30d5-4470-b671-46c4d2f369bb">
+      <Column Name="classe" Member="Classe" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1a1c9e89-8c31-4080-8313-484496ca60a3" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="a54e2b46-988f-44f7-81be-da8d60102456" />
+      <Column Name="team" Member="Team" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="04ddfac6-d408-474d-a0b3-ce177436fa59" />
+      <Column Name="punti" Member="Punti" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="200fd635-625b-4d24-8f08-431af2f3af04" />
+      <Column Name="posizioneClassifica" Member="PosizioneClassifica" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4cf9aef4-1d12-4577-b496-a6ad0a20be51" />
+      <Association Name="Campionati_PartecipazioniTeam" ed:AssociationGuid="a0860865-b376-4e5f-81e1-d836ce3618fc" Member="Campionati" ed:Guid="79d81169-54da-4e4b-80e1-4030664d08d8" ThisKey="Classe,Anno" OtherKey="Classe,Anno" Type="Campionati" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="StagioniTeam_PartecipazioniTeam" ed:AssociationGuid="4499332a-1d08-4137-85ac-13a3e9858cdc" Member="StagioniTeam" ed:Guid="0c4058cc-a6fc-431d-aaa6-3bdf3e98842d" ThisKey="Team" OtherKey="NomeUfficiale" Type="StagioniTeam" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.piloti" Member="Pilotis">
+    <Type Name="Piloti" ed:Guid="f562ac9d-d407-4094-922b-5e87476bd068">
+      <Column Name="idPilota" Member="IdPilota" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4ec47e21-8381-4d9e-bbfb-7861afa03fb9" />
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4e1b528d-16cb-4a6a-8130-1e5efefef60d" />
+      <Column Name="cognome" Member="Cognome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="de343ce8-a4c8-4420-813b-da3d13fd3f94" />
+      <Column Name="luogoDiNascita" Member="LuogoDiNascita" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3fb6b6f4-5df0-467b-959e-514181e1360c" />
+      <Column Name="nazionalita" Member="Nazionalita" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6cc666e3-7533-47db-945b-0c73c19373cb" />
+      <Column Name="dataDiNascita" Member="DataDiNascita" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7ce5d629-d001-48c9-b2dc-abc0a8dd6aef" />
+      <Association Name="Piloti_Iscrizioni" ed:AssociationGuid="809f1408-f427-4ba4-bb5f-fccc99d58a20" Member="Iscrizioni" ed:Guid="d6741fc6-3dec-426b-9cc7-ff63ed717d9b" ThisKey="IdPilota" OtherKey="Pilota" Type="Iscrizioni" />
+      <Association Name="Piloti_PartecipazioniPilota" ed:AssociationGuid="f0e3eb12-7e06-45d6-b887-a5a9593cf2fe" Member="PartecipazioniPilota" ed:Guid="5f4bb361-e89c-4bd5-8a20-f4568cc15481" ThisKey="IdPilota" OtherKey="Pilota" Type="PartecipazioniPilota" />
+      <Association Name="Piloti_StatistichePiloti" ed:AssociationGuid="e515151d-76d3-4262-8215-82a65c1c31ee" Member="StatistichePiloti" ed:Guid="0be6d716-c396-4acf-9a1e-9af26d6fbee0" ThisKey="IdPilota" OtherKey="Pilota" Type="StatistichePiloti" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="datarace.prove" Member="Proves">
+    <Type Name="Prove" ed:Guid="bc35d4be-a231-4485-ae1f-08d492ec8a79">
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="8c1acb4d-5a48-4fec-988d-a7a67decbe68" />
+      <Column Name="posizioneCalendario" Member="PosizioneCalendario" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="d28e0de7-27c3-4f9b-98ca-f0c90a19d91b" />
+      <Column Name="granPremio" Member="GranPremio" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="3647ea8d-ef95-4350-8c6c-ad538528f2e5" />
+      <Column Name="nomeUfficiale" Member="NomeUfficiale" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="80a9ed98-c620-4b97-ace5-20414c606a9d" />
+      <Column Name="numeroEdizione" Member="NumeroEdizione" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="11ed0369-c295-428b-8595-f3fcb1c5ad65" />
+      <Column Name="dataInizio" Member="DataInizio" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4ee98635-00d4-41d3-9a34-2ba5e7b5511b" />
+      <Column Name="dataFine" Member="DataFine" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="1194e8fc-46e4-46d7-8791-6164da21dcd1" />
+      <Column Name="numeroSpettatori" Member="NumeroSpettatori" Type="System.Int32" DbType="INT NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="dad7fff4-adf7-4acc-b65a-f52a4ab15f28" />
+      <Column Name="circuito" Member="Circuito" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="3606e48f-84df-48bb-9bf1-0276c0c2fd86" />
+      <Association Name="Circuiti_Prove" ed:AssociationGuid="271b32ec-87d3-49ee-82a0-faa4efb5cc8f" Member="Circuiti" ed:Guid="be118f9d-eae9-47e9-8e11-f0746d640520" ThisKey="Circuito" OtherKey="IdCircuito" Type="Circuiti" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Prove_Gare" ed:AssociationGuid="e647ccb7-6328-487f-8aa8-67f925e9e686" Member="Gare" ed:Guid="8f20ce65-d975-4def-b9be-8ec4be6154c0" ThisKey="Anno,PosizioneCalendario" OtherKey="PosizioneCalendario,Anno" Type="Gare" />
+      <Association Name="GranPremi_Prove" ed:AssociationGuid="63d55ce7-7b12-4ae2-9047-f7145bf95f77" Member="GranPremi" ed:Guid="c27032c3-de1c-4218-8838-02f2d7ccc4f2" ThisKey="GranPremio" OtherKey="IdGranPremio" Type="GranPremi" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Prove_Iscrizioni" ed:AssociationGuid="ac30dcb4-d958-42e5-b585-0a1d978605c8" Member="Iscrizioni" ed:Guid="5021a680-edc9-414e-9f99-bb884046adc4" ThisKey="Anno,PosizioneCalendario" OtherKey="PosizioneCalendario,Anno" Type="Iscrizioni" />
+      <Association Name="Stagioni_Prove" ed:AssociationGuid="8ac944a2-18d2-4347-9427-cf522aa2fbfa" Member="Stagioni" ed:Guid="b2b7a4b0-5672-41a8-bca7-b760f9dcc3f0" ThisKey="Anno" OtherKey="Anno" Type="Stagioni" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.punteggi" Member="Punteggis">
+    <Type Name="Punteggi" ed:Guid="66519d80-efd0-4b73-82e0-5ddd46bb8a8f">
+      <Column Name="idPunteggio" Member="IdPunteggio" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="62668d0b-cc7d-4fe7-9acd-a3cc4548185a" />
+      <Column Name="risultato" Member="Risultato" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="7df4396d-283f-40f0-bfc5-73e0c8645bf1" />
+      <Column Name="puntiAssegnati" Member="PuntiAssegnati" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="146be29e-e01e-4d91-a51d-31cb1894c241" />
+      <Association Name="Punteggi_Campionati" ed:AssociationGuid="97b47ca9-b3fd-43e0-8cb2-fc330a6a74b2" Member="Campionati" ed:Guid="53c04663-693f-4935-ac85-2011bef8e252" ThisKey="IdPunteggio" OtherKey="Punteggio" Type="Campionati" />
+    </Type>
+  </Table>
+  <Table Name="datarace.risultati" Member="Risultatis">
+    <Type Name="Risultati" ed:Guid="7564711b-4a12-41b7-9c32-2eedf91c4ee7">
+      <Column Name="idRisultato" Member="IdRisultato" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f553a557-9870-4f42-929a-d1e9a32f3358" />
+      <Column Name="gara" Member="Gara" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a8a78321-abe1-4658-ad03-d0df0d45e82d" />
+      <Column Name="posizionePartenza" Member="PosizionePartenza" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e0a91cdc-1be2-41d5-a952-e45b84c378fd" />
+      <Column Name="posizioneArrivo" Member="PosizioneArrivo" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d2c4af8b-39d5-4e21-9ad7-f3361a936b2e" />
+      <Column Name="ritiro" Member="Ritiro" Type="System.Boolean" DbType="TINYINT(1) NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="15937878-2231-4d35-91e5-0f8a81d174a0" />
+      <Column Name="tempoTotale" Member="TempoTotale" Type="System.TimeSpan" DbType="TIME NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f83eea00-95aa-46b8-a6c1-4e4dfd077b23" />
+      <Column Name="giroVeloce" Member="GiroVeloce" Type="System.TimeSpan" DbType="TIME NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="3d6259b2-fbc8-4d7c-a22c-09ff2bd42fe5" />
+      <Column Name="giriInTesta" Member="GiriInTesta" Type="System.Int32" DbType="INT NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="79e4b4d1-425e-462c-a8fd-daa96ba7ab46" />
+      <Association Name="Gare_Risultati" ed:AssociationGuid="bd1d5677-cae7-4955-b652-23b9d7fe537d" Member="Gare" ed:Guid="998645e4-f1e2-4de3-9e7a-20f800e8d30b" ThisKey="Gara" OtherKey="IdGara" Type="Gare" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Risultati_Iscrizioni" ed:AssociationGuid="7eaae4ff-4ffe-40fb-bdf7-cd0c43b6bf0f" Member="Iscrizioni" ed:Guid="a5d1e9e2-92ea-446c-93d3-0b1580a2649d" ThisKey="IdRisultato" OtherKey="Risultato" Type="Iscrizioni" />
+    </Type>
+  </Table>
+  <Table Name="datarace.stagioni" Member="Stagionis">
+    <Type Name="Stagioni" ed:Guid="8f4c1147-41f1-4169-8032-16049650b359">
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="014adb8d-cb99-42cc-830a-4f723ece6b07" />
+      <Column Name="numeroProve" Member="NumeroProve" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="43f67dc8-dc96-4331-9809-90877a813f0d" />
+      <Association Name="Stagioni_Campionati" ed:AssociationGuid="0ac1eb90-a3fb-41d8-8995-a5f59d2125ba" Member="Campionati" ed:Guid="275cdea8-16a0-4655-a6f8-0253cc20df71" ThisKey="Anno" OtherKey="Anno" Type="Campionati" />
+      <Association Name="Stagioni_Prove" ed:AssociationGuid="8ac944a2-18d2-4347-9427-cf522aa2fbfa" Member="Prove" ed:Guid="3bdcbe6e-566f-45f9-b444-bd82d6084d73" ThisKey="Anno" OtherKey="Anno" Type="Prove" />
+      <Association Name="Stagioni_StagioniTeam" ed:AssociationGuid="68b1cb66-fc71-4484-9eb4-ed682e6ba108" Member="StagioniTeam" ed:Guid="32b6c534-b2c6-4a5a-a080-0c8e55c3f109" ThisKey="Anno" OtherKey="Anno" Type="StagioniTeam" />
+    </Type>
+  </Table>
+  <Table Name="datarace.stagioni_team" Member="StagioniTeams">
+    <Type Name="StagioniTeam" ed:Guid="1daf45a9-a874-4d1d-b91b-217db1b04a7c">
+      <Column Name="nomeUfficiale" Member="NomeUfficiale" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8d21c68d-844b-436d-8e46-272576c4618c" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="e721cb34-2012-4228-8358-b3f52e122456" />
+      <Column Name="team" Member="Team" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7b238c55-48f1-4fa7-9b82-f4a8f3b61437" />
+      <Column Name="teamManager" Member="TeamManager" Type="System.String" DbType="CHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="7c03e8f0-bfaf-47b9-83c8-6484d237e054" />
+      <Association Name="StagioniTeam_Iscrizioni" ed:AssociationGuid="231019a5-1cd1-4120-8f23-e4c92ae7ba6b" Member="Iscrizioni" ed:Guid="3a1e06c6-dec3-4ab8-9e64-9b23e10c3a24" ThisKey="NomeUfficiale" OtherKey="Team" Type="Iscrizioni" />
+      <Association Name="StagioniTeam_PartecipazioniTeam" ed:AssociationGuid="4499332a-1d08-4137-85ac-13a3e9858cdc" Member="PartecipazioniTeam" ed:Guid="f27b8856-cdff-4c73-b6db-dde3924ecaed" ThisKey="NomeUfficiale" OtherKey="Team" Type="PartecipazioniTeam" />
+      <Association Name="Stagioni_StagioniTeam" ed:AssociationGuid="68b1cb66-fc71-4484-9eb4-ed682e6ba108" Member="Stagioni" ed:Guid="1b4c5a65-3938-4971-83a1-56bd634f0f7e" ThisKey="Anno" OtherKey="Anno" Type="Stagioni" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Team_StagioniTeam" ed:AssociationGuid="dfe22a7d-357b-4e4c-aba6-119aa8c269cc" Member="Team1" ed:Guid="cdfa148d-1f12-4c5e-8254-cfed5eb71620" ThisKey="Team" OtherKey="IdTeam" Type="Team" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="datarace.statistiche_piloti" Member="StatistichePilotis">
+    <Type Name="StatistichePiloti" ed:Guid="7e35c0fe-5b7c-41c3-8aae-2dd8dd1b30bf">
+      <Column Name="pilota" Member="Pilota" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f84d1e59-2851-4f38-99d5-3f969636ffa7" />
+      <Column Name="gareDisputate" Member="GareDisputate" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="086e6b7c-f0ff-48c4-af80-30117c31335e" />
+      <Column Name="vittorie" Member="Vittorie" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d60a4381-af6b-4f02-bc92-967c98a56b5f" />
+      <Column Name="polePositions" Member="PolePositions" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="4f3ba7e8-0b95-4301-90dd-a9cae0304641" />
+      <Column Name="podi" Member="Podi" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c6d220b1-d462-4432-89f2-117e945b36f3" />
+      <Column Name="giriVeloci" Member="GiriVeloci" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="7461e64a-899b-4c24-b9c8-022a6200e59f" />
+      <Column Name="mondialiVinti" Member="MondialiVinti" Type="System.Int32" DbType="INT NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="cc73fb76-69c2-48b7-8e3c-8ed7fa6b2ff2" />
+      <Association Name="Piloti_StatistichePiloti" ed:AssociationGuid="e515151d-76d3-4262-8215-82a65c1c31ee" Member="Piloti" ed:Guid="c3290b3e-0eac-4824-93a8-db7bf704ae79" ThisKey="Pilota" OtherKey="IdPilota" Type="Piloti" DeleteRule="NO ACTION" IsForeignKey="true" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="datarace.team" Member="Teams">
+    <Type Name="Team" ed:Guid="a420b6a9-c384-4126-976f-0c1ac1b3c43a">
+      <Column Name="idTeam" Member="IdTeam" Type="System.String" DbType="CHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4ece843c-ec87-4396-ad7c-3c8660addac3" />
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1da1241b-33b1-41dd-906d-e1f8f5987686" />
+      <Column Name="paese" Member="Paese" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="593e1dcd-fe4b-4249-8919-2b976c39314e" />
+      <Column Name="tipo" Member="Tipo" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ba5e0553-91aa-42e9-986c-5695129c8003" />
+      <Association Name="Team_StagioniTeam" ed:AssociationGuid="dfe22a7d-357b-4e4c-aba6-119aa8c269cc" Member="StagioniTeam" ed:Guid="abfb4ddd-39df-49f5-aef3-00247a34e222" ThisKey="IdTeam" OtherKey="Team" Type="StagioniTeam" />
+    </Type>
+  </Table>
+  <Table Name="datarace.edizione_piu_recente" Member="EdizionePiuRecentes">
+    <Type Name="EdizionePiuRecente" ed:Guid="57fda9fd-81b9-42b8-ae30-e9d80ad99204">
+      <Documentation>
+        <Summary>VIEW</Summary>
+      </Documentation>
+      <Column Name="granPremio" Member="GranPremio" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="5fd627c2-1dcc-4c92-a7ce-2904283f86e0" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="74cc13a0-1538-4057-98e6-39abacae1c00" />
+      <Column Name="numeroEdizione" Member="NumeroEdizione" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c6bf5014-d5cc-4081-9cc1-44ae86954af0" />
+    </Type>
+  </Table>
+  <Table Name="datarace.risultati_circuito" Member="RisultatiCircuitos">
+    <Type Name="RisultatiCircuito" ed:Guid="5bda488e-fd02-45cf-abd5-885e1570175b">
+      <Documentation>
+        <Summary>VIEW</Summary>
+      </Documentation>
+      <Column Name="pilota" Member="Pilota" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e8456b57-b8ba-4161-bdd8-55a10c77c81a" />
+      <Column Name="posizioneCalendario" Member="PosizioneCalendario" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="ab58f425-727d-4cfb-8220-b58b5ce77ca2" />
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="cfcef5a5-bc03-4c26-9e77-9309928029c7" />
+      <Column Name="idRisultato" Member="IdRisultato" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a8227974-32f5-4d72-b08e-58c15a97291c" />
+      <Column Name="posizioneArrivo" Member="PosizioneArrivo" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="9e4b06d7-f484-4de1-ab50-b34805b6fed5" />
+      <Column Name="idPilota" Member="IdPilota" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="772df605-6f4a-46fc-8ab7-98d1dd075b19" />
+      <Column Name="nome" Member="Nome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cdac6242-82a7-4624-9525-2f690cb6d017" />
+      <Column Name="cognome" Member="Cognome" Type="System.String" DbType="CHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d9e193d2-1cc9-449c-9629-19c04fa2d568" />
+      <Column Name="granPremio" Member="GranPremio" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="72e0fddc-26fe-4b54-b3f9-5f04759d6394" />
+      <Column Name="circuito" Member="Circuito" Type="System.String" DbType="CHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" FixedLength="true" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="782af8b6-3536-4b24-92d3-4b55ca1613ec" />
+    </Type>
+  </Table>
+  <Table Name="datarace.stagione_corrente" Member="StagioneCorrentes">
+    <Type Name="StagioneCorrente" ed:Guid="6e703b6e-f939-40f8-9a89-bea210d227bb">
+      <Documentation>
+        <Summary>VIEW</Summary>
+      </Documentation>
+      <Column Name="anno" Member="Anno" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c52a6e55-f490-4047-a8e4-3058e63a7e59" />
+    </Type>
+  </Table>
+</Database>
