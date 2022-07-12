@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataraceContext;
+using Devart.Data.Linq;
 
 namespace datarace
 {
@@ -21,16 +22,12 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataraceDataSet.costruttori' table. You can move, or remove it, as needed.
-            this.costruttoriTableAdapter.Fill(this.dataraceDataSet.costruttori);
-            // TODO: This line of code loads data into the 'dataraceDataSet.team' table. You can move, or remove it, as needed.
+            // loads data into the tables
+            costruttoriTableAdapter.Fill(this.dataraceDataSet.costruttori);
             teamTableAdapter.Fill(this.dataraceDataSet.team);
-            // TODO: This line of code loads data into the 'dataraceDataSet.piloti' table. You can move, or remove it, as needed.
             pilotiTableAdapter.Fill(this.dataraceDataSet.piloti);
-            comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
-            comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
-            comboBoxNomeRicercaTeam.Items.AddRange(this.GetAllTeams().ToArray());
-            checkedListBoxClassiTeam.Items.AddRange(this.GetAllClasses().ToArray());
+            // sets values present in combo boxes and check lists
+            this.LoadOrRefreshViewItems();
             // disables the "Registra" button if the current season is over
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
@@ -40,6 +37,33 @@ namespace datarace
                     && i.PosizioneCalendario == events).Any()) {
                     buttonQueryTeam.Enabled = false;
                 }
+            }
+        }
+
+        private void LoadOrRefreshViewItems()
+        {
+            comboBoxNazionalita.Items.Clear();
+            comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxPaeseTeam.Items.Clear();
+            comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxPaeseCostruttore.Items.Clear();
+            comboBoxPaeseCostruttore.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxNomeRicercaTeam.Items.Clear();
+            comboBoxNomeRicercaTeam.Items.AddRange(this.GetAllTeams().ToArray());
+            checkedListBoxClassiTeam.Items.Clear();
+            checkedListBoxClassiTeam.Items.AddRange(this.GetAllClasses().ToArray());
+            comboBoxNomeRicercaCostruttore.Items.Clear();
+            comboBoxNomeRicercaCostruttore.Items.AddRange(this.GetAllConstructors().ToArray());
+            comboBoxNomeInserimentoCostruttore.Items.Clear();
+            comboBoxNomeInserimentoCostruttore.Items.AddRange(this.GetAllConstructors().ToArray());
+        }
+
+        private List<string> GetAllConstructors()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.Costruttori.Select(t => t.Nome);
+                return query.ToList();
             }
         }
 
@@ -59,6 +83,22 @@ namespace datarace
                 var query = ctx.Classi.Select(t => t.Nome);
                 return query.ToList();
             }
+        }
+
+        private List<string> GetCountryList()
+        {
+            List<string> cultureList = new List<string>();
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            foreach (CultureInfo culture in cultures)
+            {
+                RegionInfo region = new RegionInfo(culture.LCID);
+                if (!(cultureList.Contains(region.DisplayName)))
+                {
+                    cultureList.Add(region.DisplayName);
+                }
+            }
+            cultureList.Sort();
+            return cultureList;
         }
 
         private void ButtonAggungiPilota_Click(object sender, EventArgs e)
@@ -87,6 +127,8 @@ namespace datarace
                     textBoxCognomePilota.Text = string.Empty;
                     textBoxLuogoDiNascita.Text = string.Empty;
                     comboBoxNazionalita.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
                 }
             }
         }
@@ -100,91 +142,41 @@ namespace datarace
                 {
                     if (comboBoxSceltaQueryPiloti.SelectedItem.Equals("Statistiche di carriera di un pilota"))
                     {
-                        query = QueryV7(ctx);
+                        query = ctx.Piloti
+                                    .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text && 
+                                            p.Cognome == textBoxCognomeRicercaPiloti.Text)
+                                    .Select(p => new {
+                                        nome = p.Nome,
+                                        cognome = p.Cognome,
+                                        gareDisputate = p.StatistichePiloti.GareDisputate,
+                                        vittorie = p.StatistichePiloti.Vittorie,
+                                        polePositions = p.StatistichePiloti.PolePositions,
+                                        podi = p.StatistichePiloti.Podi,
+                                        giriVeloci = p.StatistichePiloti.GiriVeloci,
+                                        mondialiVinti = p.StatistichePiloti.MondialiVinti
+                                    });
                     }
                     else
                     {
-                        query = QueryV3(ctx);
+                        query = from p in ctx.Piloti
+                                join pp in ctx.PartecipazioniPilota on p.IdPilota equals pp.Pilota
+                                where p.Nome == textBoxNomeRicercaPiloti.Text && 
+                                        p.Cognome == textBoxCognomeRicercaPiloti.Text
+                                select new
+                                {
+                                    nome = p.Nome,
+                                    cognome = p.Cognome,
+                                    classe = pp.Classe,
+                                    anno = pp.Anno,
+                                    eta = pp.Eta,
+                                    esperienza = pp.Esperienza,
+                                    punti = pp.PuntiValidi,
+                                    posizioneClassifica = pp.PosizioneClassifica
+                                };
                     }
                     ShowResultsOnGrid(query, dataGridViewQueryPiloti);
                 }
             }
-        }
-
-        private IQueryable QueryV3(DataraceDataContext ctx)
-        {
-            return from p in ctx.Piloti
-                   join pp in ctx.PartecipazioniPilota on p.IdPilota equals pp.Pilota
-                   where p.Nome == textBoxNomeRicercaPiloti.Text && p.Cognome == textBoxCognomeRicercaPiloti.Text
-                   select new
-                   {
-                       nome = p.Nome,
-                       cognome = p.Cognome,
-                       classe = pp.Classe,
-                       anno = pp.Anno,
-                       eta = pp.Eta,
-                       esperienza = pp.Esperienza,
-                       punti = pp.PuntiValidi,
-                       posizioneClassifica = pp.PosizioneClassifica
-                   };
-        }
-
-        private IQueryable QueryV7(DataraceDataContext ctx)
-        {
-            return ctx.Piloti
-                .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text && p.Cognome == textBoxCognomeRicercaPiloti.Text)
-                .Select(p => 
-                new {
-                    nome = p.Nome,
-                    cognome = p.Cognome,
-                    gareDisputate = p.StatistichePiloti.GareDisputate,
-                    vittorie = p.StatistichePiloti.Vittorie,
-                    polePositions = p.StatistichePiloti.PolePositions,
-                    podi = p.StatistichePiloti.Podi,
-                    giriVeloci = p.StatistichePiloti.GiriVeloci,
-                    mondialiVinti = p.StatistichePiloti.MondialiVinti
-                });
-        }
-
-        private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
-        {
-            dataGrid.DataSource = queryResult;
-        }
-
-        private bool CheckDataValidity<T>(List<T> items)
-        {
-            return !items.Where(i => i == null).Any();
-        }
-
-        private string AutoIncrement(string currentValue, int size)
-        {
-            int autoincrement = int.Parse(currentValue) + 1;
-            string autoincrementString = autoincrement.ToString();
-            if (autoincrementString.Length > size)
-            {
-                return "";
-            }
-            while (autoincrementString.Length != size)
-            {
-                autoincrementString = "0" + autoincrementString;
-            }
-            return autoincrementString;
-        }
-
-        private List<string> GetCountryList()
-        {
-            List<string> cultureList = new List<string>();
-            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-            foreach (CultureInfo culture in cultures)
-            {
-                RegionInfo region = new RegionInfo(culture.LCID);
-                if (!(cultureList.Contains(region.DisplayName)))
-                {
-                    cultureList.Add(region.DisplayName);
-                }
-            }
-            cultureList.Sort();
-            return cultureList;
         }
 
         private void ButtonAggiungiTeam_Click(object sender, EventArgs e)
@@ -201,10 +193,16 @@ namespace datarace
                 };
                 if (CheckDataValidity(new List<string> { team.IdTeam, team.Nome, team.Paese, team.Tipo }))
                 {
-                    dataGridViewPiloti.DataSource = null;
+                    dataGridViewTeam.DataSource = null;
                     ctx.Teams.InsertOnSubmit(team);
                     ctx.SubmitChanges();
-                    dataGridViewPiloti.DataSource = pilotiBindingSource;
+                    dataGridViewTeam.DataSource = teamBindingSource;
+                    // clears data after update
+                    textBoxNomeTeam.Text = string.Empty;
+                    comboBoxPaeseTeam.Text = string.Empty;
+                    comboBoxTipoTeam.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
                 }
             }
         }
@@ -213,7 +211,7 @@ namespace datarace
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                // first it is needed to create a new instance of StagioniTeam
+                // first we need to create a new instance of StagioniTeam
                 var stagioneTeam = new StagioniTeam()
                 {
                     Anno = ctx.StagioneCorrente.Select(sc => sc.Anno).Single(),
@@ -254,6 +252,102 @@ namespace datarace
                     checkedListBoxClassiTeam.SetItemChecked(i, false);
                 }
             }
+        }
+
+        private void ButtonAggiungiCostruttore_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.Costruttori.Select(p => p.IdCostruttore).Max();
+                var costruttore = new Costruttori
+                {
+                    IdCostruttore = this.AutoIncrement(currentMaxId, 3),
+                    Nome = textBoxNomeCostruttore.Text,
+                    Paese = comboBoxPaeseCostruttore.Text,
+                    AnnoDiEsordio = int.TryParse(textBoxAnnoDiEsordioCostruttore.Text, out int annoDiEsordio) ?
+                                        annoDiEsordio : -1
+                };
+                if (CheckDataValidity(new List<string> { costruttore.Nome, costruttore.Paese }) && 
+                    costruttore.AnnoDiEsordio > 0)
+                {
+                    dataGridViewCostruttori.DataSource = null;
+                    ctx.Costruttori.InsertOnSubmit(costruttore);
+                    ctx.SubmitChanges();
+                    dataGridViewCostruttori.DataSource = costruttoriBindingSource;
+                    // clears data after update
+                    textBoxNomeCostruttore.Text = string.Empty;
+                    comboBoxPaeseCostruttore.Text = string.Empty;
+                    textBoxAnnoDiEsordioCostruttore.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ButtonRicercaModelli_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = from c in ctx.Costruttori
+                            join m in ctx.Modelli on c.IdCostruttore equals m.Costruttore
+                            where c.Nome == comboBoxNomeRicercaCostruttore.Text
+                            select new
+                            {
+                                m.NomeModello
+                            };
+                ShowResultsOnGrid(query, dataGridViewQueryCostruttori);
+            }
+        }
+
+        private void ButtonRegistraModello_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var idCostruttore = from c in ctx.Costruttori
+                                  join m in ctx.Modelli on c.IdCostruttore equals m.Costruttore
+                                  where c.Nome == comboBoxNomeInserimentoCostruttore.Text
+                                  select c.IdCostruttore;
+                var modello = new Modelli
+                {
+                    Costruttore = idCostruttore.First(),
+                    NomeModello = textBoxQueryModello.Text
+                };
+                if (CheckDataValidity(new List<string> { modello.NomeModello }))
+                {
+                    ctx.Modelli.InsertOnSubmit(modello);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    comboBoxNomeInserimentoCostruttore.Text = string.Empty;
+                    textBoxQueryModello.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
+        {
+            dataGrid.DataSource = queryResult;
+        }
+
+        private bool CheckDataValidity<T>(List<T> items)
+        {
+            return !items.Where(i => i == null).Any();
+        }
+
+        private string AutoIncrement(string currentValue, int size)
+        {
+            int autoincrement = int.Parse(currentValue) + 1;
+            string autoincrementString = autoincrement.ToString();
+            if (autoincrementString.Length > size)
+            {
+                return "";
+            }
+            while (autoincrementString.Length != size)
+            {
+                autoincrementString = "0" + autoincrementString;
+            }
+            return autoincrementString;
         }
     }
 }

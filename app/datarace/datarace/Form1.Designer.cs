@@ -91,6 +91,9 @@ namespace datarace
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonRicercaModelli = new System.Windows.Forms.Button();
+            this.buttonRegistraModello = new System.Windows.Forms.Button();
+            this.textBoxQueryModello = new System.Windows.Forms.TextBox();
             this.labelNomeModello = new System.Windows.Forms.Label();
             this.comboBoxNomeInserimentoCostruttore = new System.Windows.Forms.ComboBox();
             this.labelNomeInserimentoCostruttore = new System.Windows.Forms.Label();
@@ -101,16 +104,16 @@ namespace datarace
             this.labelQueryVisualizzazioneModelli = new System.Windows.Forms.Label();
             this.separatoreViewCostruttori = new System.Windows.Forms.Label();
             this.buttonAggiungiCostruttore = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxAnnoDiEsordioCostruttore = new System.Windows.Forms.TextBox();
             this.labelAnnoDiEsordioCostruttore = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPaeseCostruttore = new System.Windows.Forms.ComboBox();
             this.labelPaeseCostruttore = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNomeCostruttore = new System.Windows.Forms.TextBox();
             this.labelNomeCostruttore = new System.Windows.Forms.Label();
             this.dataGridViewCostruttori = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paeseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.annoDiEsordioGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costruttoriBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -120,8 +123,6 @@ namespace datarace
             this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
             this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
             this.costruttoriTableAdapter = new datarace.dataraceDataSetTableAdapters.costruttoriTableAdapter();
-            this.textBoxQueryModello = new System.Windows.Forms.TextBox();
-            this.buttonRegistraModello = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -474,7 +475,7 @@ namespace datarace
             this.buttonQueryTeam.Location = new System.Drawing.Point(261, 356);
             this.buttonQueryTeam.Name = "buttonQueryTeam";
             this.buttonQueryTeam.Size = new System.Drawing.Size(93, 32);
-            this.buttonQueryTeam.TabIndex = 28;
+            this.buttonQueryTeam.TabIndex = 29;
             this.buttonQueryTeam.Text = "Registra";
             this.buttonQueryTeam.UseVisualStyleBackColor = true;
             this.buttonQueryTeam.Click += new System.EventHandler(this.ButtonQueryTeam_Click);
@@ -494,14 +495,14 @@ namespace datarace
             this.checkedListBoxClassiTeam.Location = new System.Drawing.Point(9, 282);
             this.checkedListBoxClassiTeam.Name = "checkedListBoxClassiTeam";
             this.checkedListBoxClassiTeam.Size = new System.Drawing.Size(187, 106);
-            this.checkedListBoxClassiTeam.TabIndex = 27;
+            this.checkedListBoxClassiTeam.TabIndex = 28;
             // 
             // textBoxTeamManager
             // 
             this.textBoxTeamManager.Location = new System.Drawing.Point(9, 225);
             this.textBoxTeamManager.Name = "textBoxTeamManager";
             this.textBoxTeamManager.Size = new System.Drawing.Size(231, 22);
-            this.textBoxTeamManager.TabIndex = 26;
+            this.textBoxTeamManager.TabIndex = 27;
             // 
             // labelTeamManager
             // 
@@ -535,7 +536,7 @@ namespace datarace
             this.comboBoxNomeRicercaTeam.Location = new System.Drawing.Point(9, 108);
             this.comboBoxNomeRicercaTeam.Name = "comboBoxNomeRicercaTeam";
             this.comboBoxNomeRicercaTeam.Size = new System.Drawing.Size(345, 24);
-            this.comboBoxNomeRicercaTeam.TabIndex = 24;
+            this.comboBoxNomeRicercaTeam.TabIndex = 25;
             // 
             // buttonAggiungiTeam
             // 
@@ -619,7 +620,7 @@ namespace datarace
             this.textBoxNomeUfficialeTeam.Location = new System.Drawing.Point(9, 166);
             this.textBoxNomeUfficialeTeam.Name = "textBoxNomeUfficialeTeam";
             this.textBoxNomeUfficialeTeam.Size = new System.Drawing.Size(231, 22);
-            this.textBoxNomeUfficialeTeam.TabIndex = 25;
+            this.textBoxNomeUfficialeTeam.TabIndex = 26;
             // 
             // labelNomeRicercaTeam
             // 
@@ -656,7 +657,7 @@ namespace datarace
             this.dataGridViewTeam.RowHeadersWidth = 51;
             this.dataGridViewTeam.RowTemplate.Height = 24;
             this.dataGridViewTeam.Size = new System.Drawing.Size(756, 446);
-            this.dataGridViewTeam.TabIndex = 1;
+            this.dataGridViewTeam.TabIndex = 24;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -686,6 +687,7 @@ namespace datarace
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonRicercaModelli);
             this.tabPage3.Controls.Add(this.buttonRegistraModello);
             this.tabPage3.Controls.Add(this.textBoxQueryModello);
             this.tabPage3.Controls.Add(this.labelNomeModello);
@@ -698,11 +700,11 @@ namespace datarace
             this.tabPage3.Controls.Add(this.labelQueryVisualizzazioneModelli);
             this.tabPage3.Controls.Add(this.separatoreViewCostruttori);
             this.tabPage3.Controls.Add(this.buttonAggiungiCostruttore);
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.textBoxAnnoDiEsordioCostruttore);
             this.tabPage3.Controls.Add(this.labelAnnoDiEsordioCostruttore);
-            this.tabPage3.Controls.Add(this.comboBox1);
+            this.tabPage3.Controls.Add(this.comboBoxPaeseCostruttore);
             this.tabPage3.Controls.Add(this.labelPaeseCostruttore);
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.textBoxNomeCostruttore);
             this.tabPage3.Controls.Add(this.labelNomeCostruttore);
             this.tabPage3.Controls.Add(this.dataGridViewCostruttori);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -712,6 +714,33 @@ namespace datarace
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "costruttori";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonRicercaModelli
+            // 
+            this.buttonRicercaModelli.Location = new System.Drawing.Point(254, 100);
+            this.buttonRicercaModelli.Name = "buttonRicercaModelli";
+            this.buttonRicercaModelli.Size = new System.Drawing.Size(100, 30);
+            this.buttonRicercaModelli.TabIndex = 47;
+            this.buttonRicercaModelli.Text = "Cerca";
+            this.buttonRicercaModelli.UseVisualStyleBackColor = true;
+            this.buttonRicercaModelli.Click += new System.EventHandler(this.ButtonRicercaModelli_Click);
+            // 
+            // buttonRegistraModello
+            // 
+            this.buttonRegistraModello.Location = new System.Drawing.Point(261, 387);
+            this.buttonRegistraModello.Name = "buttonRegistraModello";
+            this.buttonRegistraModello.Size = new System.Drawing.Size(93, 32);
+            this.buttonRegistraModello.TabIndex = 46;
+            this.buttonRegistraModello.Text = "Registra";
+            this.buttonRegistraModello.UseVisualStyleBackColor = true;
+            this.buttonRegistraModello.Click += new System.EventHandler(this.ButtonRegistraModello_Click);
+            // 
+            // textBoxQueryModello
+            // 
+            this.textBoxQueryModello.Location = new System.Drawing.Point(9, 422);
+            this.textBoxQueryModello.Name = "textBoxQueryModello";
+            this.textBoxQueryModello.Size = new System.Drawing.Size(232, 22);
+            this.textBoxQueryModello.TabIndex = 45;
             // 
             // labelNomeModello
             // 
@@ -728,7 +757,7 @@ namespace datarace
             this.comboBoxNomeInserimentoCostruttore.FormattingEnabled = true;
             this.comboBoxNomeInserimentoCostruttore.Location = new System.Drawing.Point(9, 363);
             this.comboBoxNomeInserimentoCostruttore.Name = "comboBoxNomeInserimentoCostruttore";
-            this.comboBoxNomeInserimentoCostruttore.Size = new System.Drawing.Size(342, 24);
+            this.comboBoxNomeInserimentoCostruttore.Size = new System.Drawing.Size(232, 24);
             this.comboBoxNomeInserimentoCostruttore.TabIndex = 43;
             // 
             // labelNomeInserimentoCostruttore
@@ -755,11 +784,13 @@ namespace datarace
             // 
             this.dataGridViewQueryCostruttori.AllowUserToAddRows = false;
             this.dataGridViewQueryCostruttori.AllowUserToDeleteRows = false;
+            this.dataGridViewQueryCostruttori.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewQueryCostruttori.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridViewQueryCostruttori.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewQueryCostruttori.Location = new System.Drawing.Point(9, 143);
             this.dataGridViewQueryCostruttori.Name = "dataGridViewQueryCostruttori";
             this.dataGridViewQueryCostruttori.ReadOnly = true;
+            this.dataGridViewQueryCostruttori.RowHeadersVisible = false;
             this.dataGridViewQueryCostruttori.RowHeadersWidth = 51;
             this.dataGridViewQueryCostruttori.RowTemplate.Height = 24;
             this.dataGridViewQueryCostruttori.Size = new System.Drawing.Size(345, 110);
@@ -770,7 +801,7 @@ namespace datarace
             this.comboBoxNomeRicercaCostruttore.FormattingEnabled = true;
             this.comboBoxNomeRicercaCostruttore.Location = new System.Drawing.Point(9, 104);
             this.comboBoxNomeRicercaCostruttore.Name = "comboBoxNomeRicercaCostruttore";
-            this.comboBoxNomeRicercaCostruttore.Size = new System.Drawing.Size(345, 24);
+            this.comboBoxNomeRicercaCostruttore.Size = new System.Drawing.Size(232, 24);
             this.comboBoxNomeRicercaCostruttore.TabIndex = 39;
             // 
             // labelNomeRicercaCostruttore
@@ -810,13 +841,14 @@ namespace datarace
             this.buttonAggiungiCostruttore.TabIndex = 36;
             this.buttonAggiungiCostruttore.Text = "Aggiungi";
             this.buttonAggiungiCostruttore.UseVisualStyleBackColor = true;
+            this.buttonAggiungiCostruttore.Click += new System.EventHandler(this.ButtonAggiungiCostruttore_Click);
             // 
-            // textBox2
+            // textBoxAnnoDiEsordioCostruttore
             // 
-            this.textBox2.Location = new System.Drawing.Point(373, 152);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(185, 22);
-            this.textBox2.TabIndex = 35;
+            this.textBoxAnnoDiEsordioCostruttore.Location = new System.Drawing.Point(373, 152);
+            this.textBoxAnnoDiEsordioCostruttore.Name = "textBoxAnnoDiEsordioCostruttore";
+            this.textBoxAnnoDiEsordioCostruttore.Size = new System.Drawing.Size(185, 22);
+            this.textBoxAnnoDiEsordioCostruttore.TabIndex = 35;
             // 
             // labelAnnoDiEsordioCostruttore
             // 
@@ -827,13 +859,13 @@ namespace datarace
             this.labelAnnoDiEsordioCostruttore.TabIndex = 34;
             this.labelAnnoDiEsordioCostruttore.Text = "Anno di esordio";
             // 
-            // comboBox1
+            // comboBoxPaeseCostruttore
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(373, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(185, 24);
-            this.comboBox1.TabIndex = 33;
+            this.comboBoxPaeseCostruttore.FormattingEnabled = true;
+            this.comboBoxPaeseCostruttore.Location = new System.Drawing.Point(373, 93);
+            this.comboBoxPaeseCostruttore.Name = "comboBoxPaeseCostruttore";
+            this.comboBoxPaeseCostruttore.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxPaeseCostruttore.TabIndex = 33;
             // 
             // labelPaeseCostruttore
             // 
@@ -845,12 +877,12 @@ namespace datarace
             this.labelPaeseCostruttore.TabIndex = 32;
             this.labelPaeseCostruttore.Text = "Paese";
             // 
-            // textBox1
+            // textBoxNomeCostruttore
             // 
-            this.textBox1.Location = new System.Drawing.Point(373, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 22);
-            this.textBox1.TabIndex = 31;
+            this.textBoxNomeCostruttore.Location = new System.Drawing.Point(373, 35);
+            this.textBoxNomeCostruttore.Name = "textBoxNomeCostruttore";
+            this.textBoxNomeCostruttore.Size = new System.Drawing.Size(185, 22);
+            this.textBoxNomeCostruttore.TabIndex = 31;
             // 
             // labelNomeCostruttore
             // 
@@ -869,9 +901,9 @@ namespace datarace
             this.dataGridViewCostruttori.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCostruttori.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCostruttori.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.nome,
+            this.paeseDataGridViewTextBoxColumn,
+            this.annoDiEsordioGridViewTextBoxColumn});
             this.dataGridViewCostruttori.DataSource = this.costruttoriBindingSource;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
@@ -887,28 +919,28 @@ namespace datarace
             this.dataGridViewCostruttori.RowHeadersWidth = 51;
             this.dataGridViewCostruttori.RowTemplate.Height = 24;
             this.dataGridViewCostruttori.Size = new System.Drawing.Size(756, 446);
-            this.dataGridViewCostruttori.TabIndex = 2;
+            this.dataGridViewCostruttori.TabIndex = 37;
             // 
-            // dataGridViewTextBoxColumn2
+            // nome
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "nome";
-            this.dataGridViewTextBoxColumn2.HeaderText = "nome";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.nome.DataPropertyName = "nome";
+            this.nome.HeaderText = "nome";
+            this.nome.MinimumWidth = 6;
+            this.nome.Name = "nome";
             // 
-            // dataGridViewTextBoxColumn3
+            // paeseDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "paese";
-            this.dataGridViewTextBoxColumn3.HeaderText = "paese";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.paeseDataGridViewTextBoxColumn.DataPropertyName = "paese";
+            this.paeseDataGridViewTextBoxColumn.HeaderText = "paese";
+            this.paeseDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.paeseDataGridViewTextBoxColumn.Name = "paeseDataGridViewTextBoxColumn";
             // 
-            // dataGridViewTextBoxColumn4
+            // annoDiEsordioGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "tipo";
-            this.dataGridViewTextBoxColumn4.HeaderText = "tipo";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.annoDiEsordioGridViewTextBoxColumn.DataPropertyName = "annoDiEsordio";
+            this.annoDiEsordioGridViewTextBoxColumn.HeaderText = "anno di esordio";
+            this.annoDiEsordioGridViewTextBoxColumn.MinimumWidth = 6;
+            this.annoDiEsordioGridViewTextBoxColumn.Name = "annoDiEsordioGridViewTextBoxColumn";
             // 
             // costruttoriBindingSource
             // 
@@ -976,22 +1008,6 @@ namespace datarace
             // costruttoriTableAdapter
             // 
             this.costruttoriTableAdapter.ClearBeforeFill = true;
-            // 
-            // textBoxQueryModello
-            // 
-            this.textBoxQueryModello.Location = new System.Drawing.Point(9, 422);
-            this.textBoxQueryModello.Name = "textBoxQueryModello";
-            this.textBoxQueryModello.Size = new System.Drawing.Size(185, 22);
-            this.textBoxQueryModello.TabIndex = 45;
-            // 
-            // buttonRegistraModello
-            // 
-            this.buttonRegistraModello.Location = new System.Drawing.Point(258, 417);
-            this.buttonRegistraModello.Name = "buttonRegistraModello";
-            this.buttonRegistraModello.Size = new System.Drawing.Size(93, 32);
-            this.buttonRegistraModello.TabIndex = 46;
-            this.buttonRegistraModello.Text = "Registra";
-            this.buttonRegistraModello.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1086,18 +1102,18 @@ namespace datarace
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.DataGridView dataGridViewCostruttori;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paeseDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn annoDiEsordioGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource costruttoriBindingSource;
         private dataraceDataSetTableAdapters.costruttoriTableAdapter costruttoriTableAdapter;
         private System.Windows.Forms.Label separatoreViewCostruttori;
         private System.Windows.Forms.Button buttonAggiungiCostruttore;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxAnnoDiEsordioCostruttore;
         private System.Windows.Forms.Label labelAnnoDiEsordioCostruttore;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxPaeseCostruttore;
         private System.Windows.Forms.Label labelPaeseCostruttore;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNomeCostruttore;
         private System.Windows.Forms.Label labelNomeCostruttore;
         private System.Windows.Forms.Label labelNomeModello;
         private System.Windows.Forms.ComboBox comboBoxNomeInserimentoCostruttore;
@@ -1109,6 +1125,7 @@ namespace datarace
         private System.Windows.Forms.Label labelQueryVisualizzazioneModelli;
         private System.Windows.Forms.Button buttonRegistraModello;
         private System.Windows.Forms.TextBox textBoxQueryModello;
+        private System.Windows.Forms.Button buttonRicercaModelli;
     }
 }
 
