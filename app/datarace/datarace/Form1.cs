@@ -28,7 +28,7 @@ namespace datarace
                 pilota.Nome = textBox1.Text;
                 pilota.Cognome = textBox3.Text;
                 pilota.LuogoDiNascita = textBox4.Text;
-                pilota.Nazionalita = textBox5.Text;
+                pilota.Nazionalita = comboBox4.Text;
                 pilota.DataDiNascita = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
                 dataGridView1.DataSource = null;
                 ctx.Piloti.InsertOnSubmit(pilota);
