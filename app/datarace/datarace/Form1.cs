@@ -19,30 +19,6 @@ namespace datarace
             InitializeComponent();
         }
 
-        private void ButtonAggungiPilota_Click(object sender, EventArgs e)
-        {
-            using (DataraceDataContext ctx = new DataraceDataContext())
-            {
-                var currentMaxId = ctx.Piloti.Select(p => p.IdPilota).Max();
-                var pilota = new Piloti {
-                    IdPilota = this.AutoIncrement(currentMaxId, 6),
-                    Nome = textBoxNomePilota.Text,
-                    Cognome = textBoxCognomePilota.Text,
-                    LuogoDiNascita = textBoxLuogoDiNascita.Text,
-                    Nazionalita = comboBoxNazionalita.Text,
-                    DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd")
-                };
-                if (CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
-                    pilota.LuogoDiNascita, pilota.Nazionalita, pilota.DataDiNascita }))
-                {
-                    dataGridViewPiloti.DataSource = null;
-                    ctx.Piloti.InsertOnSubmit(pilota);
-                    ctx.SubmitChanges();
-                    dataGridViewPiloti.DataSource = pilotiBindingSource;
-                }
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataraceDataSet.team' table. You can move, or remove it, as needed.
@@ -56,8 +32,8 @@ namespace datarace
             // disables the "Registra" button if the current season is over
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).First();
-                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).FirstOrDefault();
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
                 if (ctx.Iscrizioni.Where(i => i.Risultato != null && i.Anno == currentYear 
                     && i.PosizioneCalendario == events).Any()) {
                     buttonQueryTeam.Enabled = false;
@@ -80,6 +56,36 @@ namespace datarace
             {
                 var query = ctx.Classi.Select(t => t.Nome);
                 return query.ToList();
+            }
+        }
+
+        private void ButtonAggungiPilota_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.Piloti.Select(p => p.IdPilota).Max();
+                var pilota = new Piloti
+                {
+                    IdPilota = this.AutoIncrement(currentMaxId, 6),
+                    Nome = textBoxNomePilota.Text,
+                    Cognome = textBoxCognomePilota.Text,
+                    LuogoDiNascita = textBoxLuogoDiNascita.Text,
+                    Nazionalita = comboBoxNazionalita.Text,
+                    DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd")
+                };
+                if (CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
+                    pilota.LuogoDiNascita, pilota.Nazionalita, pilota.DataDiNascita }))
+                {
+                    dataGridViewPiloti.DataSource = null;
+                    ctx.Piloti.InsertOnSubmit(pilota);
+                    ctx.SubmitChanges();
+                    dataGridViewPiloti.DataSource = pilotiBindingSource;
+                    // clears data after update
+                    textBoxNomePilota.Text = string.Empty;
+                    textBoxCognomePilota.Text = string.Empty;
+                    textBoxLuogoDiNascita.Text = string.Empty;
+                    comboBoxNazionalita.Text = string.Empty;
+                }
             }
         }
 
@@ -203,7 +209,49 @@ namespace datarace
 
         private void ButtonQueryTeam_Click(object sender, EventArgs e)
         {
-
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                // first it is needed to create a new instance of StagioniTeam
+                var stagioneTeam = new StagioniTeam()
+                {
+                    Anno = ctx.StagioneCorrente.Select(sc => sc.Anno).Single(),
+                    NomeUfficiale = textBoxNomeUfficialeTeam.Text,
+                    Team = ctx.Teams.Where(t => t.Nome.Equals(comboBoxNomeRicercaTeam.Text)).Select(t => t.IdTeam).Single(),
+                    TeamManager = textBoxTeamManager.Text
+                };
+                if (CheckDataValidity(new List<string>() { stagioneTeam.NomeUfficiale, stagioneTeam.TeamManager, 
+                    stagioneTeam.Team }) && CheckDataValidity(new List<int> { stagioneTeam.Anno }))
+                {
+                    // then if data is valid the team can be registered to the championships
+                    ctx.StagioniTeam.InsertOnSubmit(stagioneTeam);
+                    var partecipazioniTeam = new List<PartecipazioniTeam>();
+                    for (int i = 0; i < checkedListBoxClassiTeam.CheckedItems.Count; i++)
+                    {
+                        var pt = new PartecipazioniTeam()
+                        {
+                            Classe = checkedListBoxClassiTeam.CheckedItems[i] as string,
+                            Anno = stagioneTeam.Anno,
+                            Team = stagioneTeam.NomeUfficiale,
+                            Punti = 0,
+                            PosizioneClassifica = 0
+                        };
+                        if (CheckDataValidity(new List<string>() { pt.Classe }))
+                        {
+                            partecipazioniTeam.Add(pt);
+                        }
+                    }
+                    ctx.PartecipazioniTeam.InsertAllOnSubmit(partecipazioniTeam);
+                }
+                ctx.SubmitChanges();
+                // clears data after update
+                textBoxNomeUfficialeTeam.Text = string.Empty;
+                comboBoxNomeRicercaTeam.Text = string.Empty;
+                textBoxTeamManager.Text = string.Empty;
+                for (int i = 0; i < checkedListBoxClassiTeam.Items.Count; i++)
+                {
+                    checkedListBoxClassiTeam.SetItemChecked(i, false);
+                }
+            }
         }
     }
 }

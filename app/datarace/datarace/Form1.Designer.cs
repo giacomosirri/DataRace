@@ -34,9 +34,9 @@ namespace datarace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.separatoreViewPiloti = new System.Windows.Forms.Label();
@@ -90,14 +90,14 @@ namespace datarace
             this.paese = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
-            this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
+            this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -172,7 +172,7 @@ namespace datarace
             this.comboBoxNazionalita.Location = new System.Drawing.Point(411, 204);
             this.comboBoxNazionalita.Name = "comboBoxNazionalita";
             this.comboBoxNazionalita.Size = new System.Drawing.Size(147, 24);
-            this.comboBoxNazionalita.TabIndex = 25;
+            this.comboBoxNazionalita.TabIndex = 4;
             // 
             // dataDiNascitaPicker
             // 
@@ -181,7 +181,7 @@ namespace datarace
             this.dataDiNascitaPicker.Location = new System.Drawing.Point(411, 261);
             this.dataDiNascitaPicker.Name = "dataDiNascitaPicker";
             this.dataDiNascitaPicker.Size = new System.Drawing.Size(147, 22);
-            this.dataDiNascitaPicker.TabIndex = 24;
+            this.dataDiNascitaPicker.TabIndex = 5;
             // 
             // comboBoxSceltaQueryPiloti
             // 
@@ -195,7 +195,7 @@ namespace datarace
             this.comboBoxSceltaQueryPiloti.Location = new System.Drawing.Point(9, 6);
             this.comboBoxSceltaQueryPiloti.Name = "comboBoxSceltaQueryPiloti";
             this.comboBoxSceltaQueryPiloti.Size = new System.Drawing.Size(379, 24);
-            this.comboBoxSceltaQueryPiloti.TabIndex = 23;
+            this.comboBoxSceltaQueryPiloti.TabIndex = 7;
             this.comboBoxSceltaQueryPiloti.Text = "Scegli operazione";
             // 
             // dataGridViewQueryPiloti
@@ -215,7 +215,7 @@ namespace datarace
             this.buttonRicercaPiloti.Location = new System.Drawing.Point(288, 99);
             this.buttonRicercaPiloti.Name = "buttonRicercaPiloti";
             this.buttonRicercaPiloti.Size = new System.Drawing.Size(100, 30);
-            this.buttonRicercaPiloti.TabIndex = 21;
+            this.buttonRicercaPiloti.TabIndex = 10;
             this.buttonRicercaPiloti.Text = "Cerca";
             this.buttonRicercaPiloti.UseVisualStyleBackColor = true;
             this.buttonRicercaPiloti.Click += new System.EventHandler(this.ButtonRicercaPiloti_Click);
@@ -225,14 +225,14 @@ namespace datarace
             this.textBoxCognomeRicercaPiloti.Location = new System.Drawing.Point(153, 103);
             this.textBoxCognomeRicercaPiloti.Name = "textBoxCognomeRicercaPiloti";
             this.textBoxCognomeRicercaPiloti.Size = new System.Drawing.Size(124, 22);
-            this.textBoxCognomeRicercaPiloti.TabIndex = 20;
+            this.textBoxCognomeRicercaPiloti.TabIndex = 9;
             // 
             // textBoxNomeRicercaPiloti
             // 
             this.textBoxNomeRicercaPiloti.Location = new System.Drawing.Point(9, 103);
             this.textBoxNomeRicercaPiloti.Name = "textBoxNomeRicercaPiloti";
             this.textBoxNomeRicercaPiloti.Size = new System.Drawing.Size(124, 22);
-            this.textBoxNomeRicercaPiloti.TabIndex = 17;
+            this.textBoxNomeRicercaPiloti.TabIndex = 8;
             // 
             // labelNomeRicercaPilota
             // 
@@ -279,7 +279,7 @@ namespace datarace
             this.textBoxLuogoDiNascita.Location = new System.Drawing.Point(411, 143);
             this.textBoxLuogoDiNascita.Name = "textBoxLuogoDiNascita";
             this.textBoxLuogoDiNascita.Size = new System.Drawing.Size(147, 22);
-            this.textBoxLuogoDiNascita.TabIndex = 8;
+            this.textBoxLuogoDiNascita.TabIndex = 3;
             // 
             // labelLuogoDiNascita
             // 
@@ -296,7 +296,7 @@ namespace datarace
             this.textBoxCognomePilota.Location = new System.Drawing.Point(411, 89);
             this.textBoxCognomePilota.Name = "textBoxCognomePilota";
             this.textBoxCognomePilota.Size = new System.Drawing.Size(147, 22);
-            this.textBoxCognomePilota.TabIndex = 5;
+            this.textBoxCognomePilota.TabIndex = 2;
             // 
             // labelCognomePilota
             // 
@@ -323,7 +323,7 @@ namespace datarace
             this.buttonAggiungiPilota.Location = new System.Drawing.Point(465, 306);
             this.buttonAggiungiPilota.Name = "buttonAggiungiPilota";
             this.buttonAggiungiPilota.Size = new System.Drawing.Size(93, 32);
-            this.buttonAggiungiPilota.TabIndex = 2;
+            this.buttonAggiungiPilota.TabIndex = 6;
             this.buttonAggiungiPilota.Text = "Aggiungi";
             this.buttonAggiungiPilota.UseVisualStyleBackColor = true;
             this.buttonAggiungiPilota.Click += new System.EventHandler(this.ButtonAggungiPilota_Click);
@@ -351,14 +351,14 @@ namespace datarace
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
             this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewPiloti.Name = "dataGridViewPiloti";
             this.dataGridViewPiloti.RowHeadersVisible = false;
@@ -446,7 +446,7 @@ namespace datarace
             this.buttonQueryTeam.Location = new System.Drawing.Point(264, 356);
             this.buttonQueryTeam.Name = "buttonQueryTeam";
             this.buttonQueryTeam.Size = new System.Drawing.Size(93, 32);
-            this.buttonQueryTeam.TabIndex = 45;
+            this.buttonQueryTeam.TabIndex = 28;
             this.buttonQueryTeam.Text = "Registra";
             this.buttonQueryTeam.UseVisualStyleBackColor = true;
             this.buttonQueryTeam.Click += new System.EventHandler(this.ButtonQueryTeam_Click);
@@ -466,14 +466,14 @@ namespace datarace
             this.checkedListBoxClassiTeam.Location = new System.Drawing.Point(12, 282);
             this.checkedListBoxClassiTeam.Name = "checkedListBoxClassiTeam";
             this.checkedListBoxClassiTeam.Size = new System.Drawing.Size(187, 106);
-            this.checkedListBoxClassiTeam.TabIndex = 43;
+            this.checkedListBoxClassiTeam.TabIndex = 27;
             // 
             // textBoxTeamManager
             // 
             this.textBoxTeamManager.Location = new System.Drawing.Point(12, 225);
             this.textBoxTeamManager.Name = "textBoxTeamManager";
             this.textBoxTeamManager.Size = new System.Drawing.Size(231, 22);
-            this.textBoxTeamManager.TabIndex = 42;
+            this.textBoxTeamManager.TabIndex = 26;
             // 
             // labelTeamManager
             // 
@@ -507,14 +507,14 @@ namespace datarace
             this.comboBoxNomeRicercaTeam.Location = new System.Drawing.Point(12, 109);
             this.comboBoxNomeRicercaTeam.Name = "comboBoxNomeRicercaTeam";
             this.comboBoxNomeRicercaTeam.Size = new System.Drawing.Size(345, 24);
-            this.comboBoxNomeRicercaTeam.TabIndex = 38;
+            this.comboBoxNomeRicercaTeam.TabIndex = 24;
             // 
             // buttonAggiungiTeam
             // 
             this.buttonAggiungiTeam.Location = new System.Drawing.Point(465, 190);
             this.buttonAggiungiTeam.Name = "buttonAggiungiTeam";
             this.buttonAggiungiTeam.Size = new System.Drawing.Size(93, 32);
-            this.buttonAggiungiTeam.TabIndex = 37;
+            this.buttonAggiungiTeam.TabIndex = 23;
             this.buttonAggiungiTeam.Text = "Aggiungi";
             this.buttonAggiungiTeam.UseVisualStyleBackColor = true;
             this.buttonAggiungiTeam.Click += new System.EventHandler(this.ButtonAggiungiTeam_Click);
@@ -538,7 +538,7 @@ namespace datarace
             this.comboBoxTipoTeam.Location = new System.Drawing.Point(373, 146);
             this.comboBoxTipoTeam.Name = "comboBoxTipoTeam";
             this.comboBoxTipoTeam.Size = new System.Drawing.Size(185, 24);
-            this.comboBoxTipoTeam.TabIndex = 34;
+            this.comboBoxTipoTeam.TabIndex = 22;
             // 
             // label11
             // 
@@ -555,7 +555,7 @@ namespace datarace
             this.comboBoxPaeseTeam.Location = new System.Drawing.Point(373, 88);
             this.comboBoxPaeseTeam.Name = "comboBoxPaeseTeam";
             this.comboBoxPaeseTeam.Size = new System.Drawing.Size(185, 24);
-            this.comboBoxPaeseTeam.TabIndex = 32;
+            this.comboBoxPaeseTeam.TabIndex = 21;
             // 
             // labelPaeseTeam
             // 
@@ -572,7 +572,7 @@ namespace datarace
             this.textBoxNomeTeam.Location = new System.Drawing.Point(373, 33);
             this.textBoxNomeTeam.Name = "textBoxNomeTeam";
             this.textBoxNomeTeam.Size = new System.Drawing.Size(185, 22);
-            this.textBoxNomeTeam.TabIndex = 29;
+            this.textBoxNomeTeam.TabIndex = 20;
             // 
             // labelNomeTeam
             // 
@@ -589,7 +589,7 @@ namespace datarace
             this.textBoxNomeUfficialeTeam.Location = new System.Drawing.Point(12, 166);
             this.textBoxNomeUfficialeTeam.Name = "textBoxNomeUfficialeTeam";
             this.textBoxNomeUfficialeTeam.Size = new System.Drawing.Size(231, 22);
-            this.textBoxNomeUfficialeTeam.TabIndex = 27;
+            this.textBoxNomeUfficialeTeam.TabIndex = 25;
             // 
             // labelNomeRicercaTeam
             // 
@@ -612,14 +612,14 @@ namespace datarace
             this.paese,
             this.tipo});
             this.dataGridViewTeam.DataSource = this.teamBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewTeam.Name = "dataGridViewTeam";
             this.dataGridViewTeam.RowHeadersVisible = false;
@@ -653,14 +653,6 @@ namespace datarace
             // 
             this.teamBindingSource.DataMember = "team";
             this.teamBindingSource.DataSource = this.dataraceDataSet;
-            // 
-            // pilotiTableAdapter
-            // 
-            this.pilotiTableAdapter.ClearBeforeFill = true;
-            // 
-            // teamTableAdapter
-            // 
-            this.teamTableAdapter.ClearBeforeFill = true;
             // 
             // tabPage3
             // 
@@ -721,6 +713,14 @@ namespace datarace
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "calendario";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // pilotiTableAdapter
+            // 
+            this.pilotiTableAdapter.ClearBeforeFill = true;
+            // 
+            // teamTableAdapter
+            // 
+            this.teamTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
