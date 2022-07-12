@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace datarace
                 pilota.Cognome = textBox3.Text;
                 pilota.LuogoDiNascita = textBox4.Text;
                 pilota.Nazionalita = textBox5.Text;
-                pilota.DataDiNascita = textBox6.Text;
+                pilota.DataDiNascita = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
                 dataGridView1.DataSource = null;
                 ctx.Piloti.InsertOnSubmit(pilota);
                 ctx.SubmitChanges();
