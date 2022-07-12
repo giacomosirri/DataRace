@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -33,9 +34,9 @@ namespace datarace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.separatoreViewPiloti = new System.Windows.Forms.Label();
@@ -66,6 +67,7 @@ namespace datarace
             this.pilotiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataraceDataSet = new datarace.dataraceDataSet();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonQueryTeam = new System.Windows.Forms.Button();
             this.labelClassiTeam = new System.Windows.Forms.Label();
             this.checkedListBoxClassiTeam = new System.Windows.Forms.CheckedListBox();
             this.textBoxTeamManager = new System.Windows.Forms.TextBox();
@@ -90,7 +92,6 @@ namespace datarace
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
             this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
-            this.buttonQueryTeam = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -313,7 +314,7 @@ namespace datarace
             this.buttonAggiungiPilota.TabIndex = 2;
             this.buttonAggiungiPilota.Text = "Aggiungi";
             this.buttonAggiungiPilota.UseVisualStyleBackColor = true;
-            this.buttonAggiungiPilota.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAggiungiPilota.Click += new System.EventHandler(this.ButtonAggungiPilota_Click);
             // 
             // textBoxNomePilota
             // 
@@ -338,14 +339,14 @@ namespace datarace
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
             this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewPiloti.Name = "dataGridViewPiloti";
             this.dataGridViewPiloti.RowHeadersVisible = false;
@@ -428,6 +429,15 @@ namespace datarace
             this.tabPage2.Text = "team";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // buttonQueryTeam
+            // 
+            this.buttonQueryTeam.Location = new System.Drawing.Point(264, 407);
+            this.buttonQueryTeam.Name = "buttonQueryTeam";
+            this.buttonQueryTeam.Size = new System.Drawing.Size(93, 32);
+            this.buttonQueryTeam.TabIndex = 45;
+            this.buttonQueryTeam.Text = "Aggiungi";
+            this.buttonQueryTeam.UseVisualStyleBackColor = true;
+            // 
             // labelClassiTeam
             // 
             this.labelClassiTeam.AutoSize = true;
@@ -498,7 +508,8 @@ namespace datarace
             // labelSpiegazioneQueryTeam
             // 
             this.labelSpiegazioneQueryTeam.AutoSize = true;
-            this.labelSpiegazioneQueryTeam.Location = new System.Drawing.Point(9, 13);
+            this.labelSpiegazioneQueryTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSpiegazioneQueryTeam.Location = new System.Drawing.Point(9, 6);
             this.labelSpiegazioneQueryTeam.Name = "labelSpiegazioneQueryTeam";
             this.labelSpiegazioneQueryTeam.Size = new System.Drawing.Size(327, 68);
             this.labelSpiegazioneQueryTeam.TabIndex = 36;
@@ -587,14 +598,14 @@ namespace datarace
             this.paese,
             this.tipo});
             this.dataGridViewTeam.DataSource = this.teamBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewTeam.Name = "dataGridViewTeam";
             this.dataGridViewTeam.RowHeadersVisible = false;
@@ -637,15 +648,6 @@ namespace datarace
             // 
             this.teamTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonQueryTeam
-            // 
-            this.buttonQueryTeam.Location = new System.Drawing.Point(264, 407);
-            this.buttonQueryTeam.Name = "buttonQueryTeam";
-            this.buttonQueryTeam.Size = new System.Drawing.Size(93, 32);
-            this.buttonQueryTeam.TabIndex = 45;
-            this.buttonQueryTeam.Text = "Aggiungi";
-            this.buttonQueryTeam.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -671,22 +673,6 @@ namespace datarace
         }
 
         #endregion
-
-        private List<string> GetCountryList()
-        {
-            List<string> cultureList = new List<string>();
-            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-            foreach (CultureInfo culture in cultures)
-            {
-                RegionInfo region = new RegionInfo(culture.LCID);
-                if (!(cultureList.Contains(region.DisplayName)))
-                {
-                    cultureList.Add(region.DisplayName);
-                }
-            }
-            cultureList.Sort();
-            return cultureList;
-        }
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

@@ -19,21 +19,27 @@ namespace datarace
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonAggungiPilota_Click(object sender, EventArgs e)
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                var pilota = new Piloti();
-                pilota.IdPilota = "000153";
-                pilota.Nome = textBoxNomePilota.Text;
-                pilota.Cognome = textBoxCognomePilota.Text;
-                pilota.LuogoDiNascita = textBoxLuogoDiNascita.Text;
-                pilota.Nazionalita = comboBoxNazionalita.Text;
-                pilota.DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd");
-                dataGridViewPiloti.DataSource = null;
-                ctx.Piloti.InsertOnSubmit(pilota);
-                ctx.SubmitChanges();
-                dataGridViewPiloti.DataSource = pilotiBindingSource;
+                var currentMaxId = ctx.Piloti.Select(p => p.IdPilota).Max();
+                var pilota = new Piloti {
+                    IdPilota = this.AutoIncrement(currentMaxId, 6),
+                    Nome = textBoxNomePilota.Text,
+                    Cognome = textBoxCognomePilota.Text,
+                    LuogoDiNascita = textBoxLuogoDiNascita.Text,
+                    Nazionalita = comboBoxNazionalita.Text,
+                    DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd")
+            };
+                if (this.CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
+                    pilota.LuogoDiNascita, pilota.Nazionalita, pilota.DataDiNascita }))
+                {
+                    dataGridViewPiloti.DataSource = null;
+                    ctx.Piloti.InsertOnSubmit(pilota);
+                    ctx.SubmitChanges();
+                    dataGridViewPiloti.DataSource = pilotiBindingSource;
+                }
             }
         }
 
@@ -43,6 +49,8 @@ namespace datarace
             this.teamTableAdapter.Fill(this.dataraceDataSet.team);
             // TODO: This line of code loads data into the 'dataraceDataSet.piloti' table. You can move, or remove it, as needed.
             this.pilotiTableAdapter.Fill(this.dataraceDataSet.piloti);
+            this.comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
+            this.comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -103,6 +111,42 @@ namespace datarace
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
         {
             dataGrid.DataSource = queryResult;
+        }
+
+        private bool CheckDataValidity<T>(List<T> items)
+        {
+            return !items.Where(i => i == null).Any();
+        }
+
+        private string AutoIncrement(string currentValue, int size)
+        {
+            int autoincrement = int.Parse(currentValue) + 1;
+            string autoincrementString = autoincrement.ToString();
+            if (autoincrementString.Length > size)
+            {
+                return "";
+            }
+            while (autoincrementString.Length != size)
+            {
+                autoincrementString = "0" + autoincrementString;
+            }
+            return autoincrementString;
+        }
+
+        private List<string> GetCountryList()
+        {
+            List<string> cultureList = new List<string>();
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            foreach (CultureInfo culture in cultures)
+            {
+                RegionInfo region = new RegionInfo(culture.LCID);
+                if (!(cultureList.Contains(region.DisplayName)))
+                {
+                    cultureList.Add(region.DisplayName);
+                }
+            }
+            cultureList.Sort();
+            return cultureList;
         }
     }
 }
