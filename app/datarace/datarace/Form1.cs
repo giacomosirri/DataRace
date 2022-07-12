@@ -31,8 +31,8 @@ namespace datarace
                     LuogoDiNascita = textBoxLuogoDiNascita.Text,
                     Nazionalita = comboBoxNazionalita.Text,
                     DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd")
-            };
-                if (this.CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
+                };
+                if (CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
                     pilota.LuogoDiNascita, pilota.Nazionalita, pilota.DataDiNascita }))
                 {
                     dataGridViewPiloti.DataSource = null;
@@ -46,14 +46,44 @@ namespace datarace
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataraceDataSet.team' table. You can move, or remove it, as needed.
-            this.teamTableAdapter.Fill(this.dataraceDataSet.team);
+            teamTableAdapter.Fill(this.dataraceDataSet.team);
             // TODO: This line of code loads data into the 'dataraceDataSet.piloti' table. You can move, or remove it, as needed.
-            this.pilotiTableAdapter.Fill(this.dataraceDataSet.piloti);
-            this.comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
-            this.comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
+            pilotiTableAdapter.Fill(this.dataraceDataSet.piloti);
+            comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxNomeRicercaTeam.Items.AddRange(this.GetAllTeams().ToArray());
+            checkedListBoxClassiTeam.Items.AddRange(this.GetAllClasses().ToArray());
+            // disables the "Registra" button if the current season is over
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).First();
+                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).FirstOrDefault();
+                if (ctx.Iscrizioni.Where(i => i.Risultato != null && i.Anno == currentYear 
+                    && i.PosizioneCalendario == events).Any()) {
+                    buttonQueryTeam.Enabled = false;
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private List<string> GetAllTeams()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.Teams.Select(t => t.Nome);
+                return query.ToList();
+            }
+        }
+
+        private List<string> GetAllClasses()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.Classi.Select(t => t.Nome);
+                return query.ToList();
+            }
+        }
+
+        private void ButtonRicercaPiloti_Click(object sender, EventArgs e)
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
@@ -147,6 +177,33 @@ namespace datarace
             }
             cultureList.Sort();
             return cultureList;
+        }
+
+        private void ButtonAggiungiTeam_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.Teams.Select(p => p.IdTeam).Max();
+                var team = new Team
+                {
+                    IdTeam = this.AutoIncrement(currentMaxId, 3),
+                    Nome = textBoxNomeTeam.Text,
+                    Paese = comboBoxPaeseTeam.Text,
+                    Tipo = comboBoxTipoTeam.Text
+                };
+                if (CheckDataValidity(new List<string> { team.IdTeam, team.Nome, team.Paese, team.Tipo }))
+                {
+                    dataGridViewPiloti.DataSource = null;
+                    ctx.Teams.InsertOnSubmit(team);
+                    ctx.SubmitChanges();
+                    dataGridViewPiloti.DataSource = pilotiBindingSource;
+                }
+            }
+        }
+
+        private void ButtonQueryTeam_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
