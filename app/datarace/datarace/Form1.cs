@@ -21,6 +21,8 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataraceDataSet.costruttori' table. You can move, or remove it, as needed.
+            this.costruttoriTableAdapter.Fill(this.dataraceDataSet.costruttori);
             // TODO: This line of code loads data into the 'dataraceDataSet.team' table. You can move, or remove it, as needed.
             teamTableAdapter.Fill(this.dataraceDataSet.team);
             // TODO: This line of code loads data into the 'dataraceDataSet.piloti' table. You can move, or remove it, as needed.
