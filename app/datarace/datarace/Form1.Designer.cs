@@ -34,27 +34,30 @@ namespace datarace
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.separatoreViewPiloti = new System.Windows.Forms.Label();
+            this.comboBoxNazionalita = new System.Windows.Forms.ComboBox();
+            this.dataDiNascitaPicker = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxSceltaQueryPiloti = new System.Windows.Forms.ComboBox();
+            this.dataGridViewQueryPiloti = new System.Windows.Forms.DataGridView();
+            this.buttonRicercaPiloti = new System.Windows.Forms.Button();
+            this.textBoxCognomeRicercaPiloti = new System.Windows.Forms.TextBox();
+            this.textBoxNomeRicercaPiloti = new System.Windows.Forms.TextBox();
+            this.labelNomeRicercaPilota = new System.Windows.Forms.Label();
+            this.labelCognomeRicercaPilota = new System.Windows.Forms.Label();
+            this.labelDataDiNascita = new System.Windows.Forms.Label();
+            this.labelNazionalitaPilota = new System.Windows.Forms.Label();
+            this.textBoxLuogoDiNascita = new System.Windows.Forms.TextBox();
+            this.labelLuogoDiNascita = new System.Windows.Forms.Label();
+            this.textBoxCognomePilota = new System.Windows.Forms.TextBox();
+            this.labelCognomePilota = new System.Windows.Forms.Label();
+            this.labelNomePilota = new System.Windows.Forms.Label();
+            this.buttonAggiungiPilota = new System.Windows.Forms.Button();
+            this.textBoxNomePilota = new System.Windows.Forms.TextBox();
+            this.dataGridViewPiloti = new System.Windows.Forms.DataGridView();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cognomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.luogoDiNascitaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,31 +66,39 @@ namespace datarace
             this.pilotiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataraceDataSet = new datarace.dataraceDataSet();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.labelClassiTeam = new System.Windows.Forms.Label();
+            this.checkedListBoxClassiTeam = new System.Windows.Forms.CheckedListBox();
+            this.textBoxTeamManager = new System.Windows.Forms.TextBox();
+            this.labelTeamManager = new System.Windows.Forms.Label();
+            this.labelNomeUfficialeTeam = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBoxNomeRicercaTeam = new System.Windows.Forms.ComboBox();
+            this.buttonAggiungiTeam = new System.Windows.Forms.Button();
+            this.labelSpiegazioneQueryTeam = new System.Windows.Forms.Label();
+            this.comboBoxTipoTeam = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBoxPaeseTeam = new System.Windows.Forms.ComboBox();
+            this.labelPaeseTeam = new System.Windows.Forms.Label();
+            this.textBoxNomeTeam = new System.Windows.Forms.TextBox();
+            this.labelNomeTeam = new System.Windows.Forms.Label();
+            this.textBoxNomeUfficialeTeam = new System.Windows.Forms.TextBox();
+            this.labelNomeRicercaTeam = new System.Windows.Forms.Label();
+            this.dataGridViewTeam = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paese = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
             this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.buttonQueryTeam = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPiloti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataraceDataSet)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,210 +117,227 @@ namespace datarace
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.comboBox4);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.dataGridView3);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.textBox9);
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.separatoreViewPiloti);
+            this.tabPage1.Controls.Add(this.comboBoxNazionalita);
+            this.tabPage1.Controls.Add(this.dataDiNascitaPicker);
+            this.tabPage1.Controls.Add(this.comboBoxSceltaQueryPiloti);
+            this.tabPage1.Controls.Add(this.dataGridViewQueryPiloti);
+            this.tabPage1.Controls.Add(this.buttonRicercaPiloti);
+            this.tabPage1.Controls.Add(this.textBoxCognomeRicercaPiloti);
+            this.tabPage1.Controls.Add(this.textBoxNomeRicercaPiloti);
+            this.tabPage1.Controls.Add(this.labelNomeRicercaPilota);
+            this.tabPage1.Controls.Add(this.labelCognomeRicercaPilota);
+            this.tabPage1.Controls.Add(this.labelDataDiNascita);
+            this.tabPage1.Controls.Add(this.labelNazionalitaPilota);
+            this.tabPage1.Controls.Add(this.textBoxLuogoDiNascita);
+            this.tabPage1.Controls.Add(this.labelLuogoDiNascita);
+            this.tabPage1.Controls.Add(this.textBoxCognomePilota);
+            this.tabPage1.Controls.Add(this.labelCognomePilota);
+            this.tabPage1.Controls.Add(this.labelNomePilota);
+            this.tabPage1.Controls.Add(this.buttonAggiungiPilota);
+            this.tabPage1.Controls.Add(this.textBoxNomePilota);
+            this.tabPage1.Controls.Add(this.dataGridViewPiloti);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1326, 458);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "piloti";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // separatoreViewPiloti
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(411, 261);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(147, 22);
-            this.dateTimePicker1.TabIndex = 24;
+            this.separatoreViewPiloti.BackColor = System.Drawing.Color.Black;
+            this.separatoreViewPiloti.Location = new System.Drawing.Point(401, 6);
+            this.separatoreViewPiloti.Name = "separatoreViewPiloti";
+            this.separatoreViewPiloti.Size = new System.Drawing.Size(1, 447);
+            this.separatoreViewPiloti.TabIndex = 26;
             // 
-            // comboBox1
+            // comboBoxNazionalita
             // 
-            this.comboBox1.AllowDrop = true;
-            this.comboBox1.DropDownHeight = 100;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxNazionalita.FormattingEnabled = true;
+            this.comboBoxNazionalita.Location = new System.Drawing.Point(411, 204);
+            this.comboBoxNazionalita.Name = "comboBoxNazionalita";
+            this.comboBoxNazionalita.Size = new System.Drawing.Size(147, 24);
+            this.comboBoxNazionalita.TabIndex = 25;
+            // 
+            // dataDiNascitaPicker
+            // 
+            this.dataDiNascitaPicker.CustomFormat = "yyyy/MM/dd";
+            this.dataDiNascitaPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dataDiNascitaPicker.Location = new System.Drawing.Point(411, 261);
+            this.dataDiNascitaPicker.Name = "dataDiNascitaPicker";
+            this.dataDiNascitaPicker.Size = new System.Drawing.Size(147, 22);
+            this.dataDiNascitaPicker.TabIndex = 24;
+            // 
+            // comboBoxSceltaQueryPiloti
+            // 
+            this.comboBoxSceltaQueryPiloti.AllowDrop = true;
+            this.comboBoxSceltaQueryPiloti.DropDownHeight = 100;
+            this.comboBoxSceltaQueryPiloti.FormattingEnabled = true;
+            this.comboBoxSceltaQueryPiloti.IntegralHeight = false;
+            this.comboBoxSceltaQueryPiloti.Items.AddRange(new object[] {
             "Statistiche di carriera di un pilota",
             "Campionati disputati da un pilota nel corso della carriera"});
-            this.comboBox1.Location = new System.Drawing.Point(9, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(379, 24);
-            this.comboBox1.TabIndex = 23;
-            this.comboBox1.Text = "Scegli operazione";
+            this.comboBoxSceltaQueryPiloti.Location = new System.Drawing.Point(9, 6);
+            this.comboBoxSceltaQueryPiloti.Name = "comboBoxSceltaQueryPiloti";
+            this.comboBoxSceltaQueryPiloti.Size = new System.Drawing.Size(379, 24);
+            this.comboBoxSceltaQueryPiloti.TabIndex = 23;
+            this.comboBoxSceltaQueryPiloti.Text = "Scegli operazione";
             // 
-            // dataGridView3
+            // dataGridViewQueryPiloti
             // 
-            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(9, 143);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(379, 309);
-            this.dataGridView3.TabIndex = 22;
+            this.dataGridViewQueryPiloti.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridViewQueryPiloti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQueryPiloti.Location = new System.Drawing.Point(9, 143);
+            this.dataGridViewQueryPiloti.Name = "dataGridViewQueryPiloti";
+            this.dataGridViewQueryPiloti.RowHeadersVisible = false;
+            this.dataGridViewQueryPiloti.RowHeadersWidth = 51;
+            this.dataGridViewQueryPiloti.RowTemplate.Height = 24;
+            this.dataGridViewQueryPiloti.Size = new System.Drawing.Size(379, 309);
+            this.dataGridViewQueryPiloti.TabIndex = 22;
             // 
-            // button2
+            // buttonRicercaPiloti
             // 
-            this.button2.Location = new System.Drawing.Point(288, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Cerca";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonRicercaPiloti.Location = new System.Drawing.Point(288, 99);
+            this.buttonRicercaPiloti.Name = "buttonRicercaPiloti";
+            this.buttonRicercaPiloti.Size = new System.Drawing.Size(100, 30);
+            this.buttonRicercaPiloti.TabIndex = 21;
+            this.buttonRicercaPiloti.Text = "Cerca";
+            this.buttonRicercaPiloti.UseVisualStyleBackColor = true;
+            this.buttonRicercaPiloti.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox9
+            // textBoxCognomeRicercaPiloti
             // 
-            this.textBox9.Location = new System.Drawing.Point(153, 103);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(124, 22);
-            this.textBox9.TabIndex = 20;
+            this.textBoxCognomeRicercaPiloti.Location = new System.Drawing.Point(153, 103);
+            this.textBoxCognomeRicercaPiloti.Name = "textBoxCognomeRicercaPiloti";
+            this.textBoxCognomeRicercaPiloti.Size = new System.Drawing.Size(124, 22);
+            this.textBoxCognomeRicercaPiloti.TabIndex = 20;
             // 
-            // textBox8
+            // textBoxNomeRicercaPiloti
             // 
-            this.textBox8.Location = new System.Drawing.Point(9, 103);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(124, 22);
-            this.textBox8.TabIndex = 17;
+            this.textBoxNomeRicercaPiloti.Location = new System.Drawing.Point(9, 103);
+            this.textBoxNomeRicercaPiloti.Name = "textBoxNomeRicercaPiloti";
+            this.textBoxNomeRicercaPiloti.Size = new System.Drawing.Size(124, 22);
+            this.textBoxNomeRicercaPiloti.TabIndex = 17;
             // 
-            // label7
+            // labelNomeRicercaPilota
             // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label7.Location = new System.Drawing.Point(6, 78);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 17);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Nome";
+            this.labelNomeRicercaPilota.AutoSize = true;
+            this.labelNomeRicercaPilota.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomeRicercaPilota.Location = new System.Drawing.Point(6, 78);
+            this.labelNomeRicercaPilota.Name = "labelNomeRicercaPilota";
+            this.labelNomeRicercaPilota.Size = new System.Drawing.Size(45, 17);
+            this.labelNomeRicercaPilota.TabIndex = 16;
+            this.labelNomeRicercaPilota.Text = "Nome";
             // 
-            // label6
+            // labelCognomeRicercaPilota
             // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label6.Location = new System.Drawing.Point(150, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Cognome";
+            this.labelCognomeRicercaPilota.AutoSize = true;
+            this.labelCognomeRicercaPilota.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelCognomeRicercaPilota.Location = new System.Drawing.Point(150, 78);
+            this.labelCognomeRicercaPilota.Name = "labelCognomeRicercaPilota";
+            this.labelCognomeRicercaPilota.Size = new System.Drawing.Size(68, 17);
+            this.labelCognomeRicercaPilota.TabIndex = 15;
+            this.labelCognomeRicercaPilota.Text = "Cognome";
             // 
-            // label5
+            // labelDataDiNascita
             // 
-            this.label5.AutoSize = true;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label5.Location = new System.Drawing.Point(408, 241);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Data di nascita";
+            this.labelDataDiNascita.AutoSize = true;
+            this.labelDataDiNascita.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelDataDiNascita.Location = new System.Drawing.Point(408, 241);
+            this.labelDataDiNascita.Name = "labelDataDiNascita";
+            this.labelDataDiNascita.Size = new System.Drawing.Size(102, 17);
+            this.labelDataDiNascita.TabIndex = 11;
+            this.labelDataDiNascita.Text = "Data di nascita";
             // 
-            // label4
+            // labelNazionalitaPilota
             // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label4.Location = new System.Drawing.Point(408, 183);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Nazionalita";
+            this.labelNazionalitaPilota.AutoSize = true;
+            this.labelNazionalitaPilota.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNazionalitaPilota.Location = new System.Drawing.Point(408, 184);
+            this.labelNazionalitaPilota.Name = "labelNazionalitaPilota";
+            this.labelNazionalitaPilota.Size = new System.Drawing.Size(78, 17);
+            this.labelNazionalitaPilota.TabIndex = 9;
+            this.labelNazionalitaPilota.Text = "Nazionalita";
             // 
-            // textBox4
+            // textBoxLuogoDiNascita
             // 
-            this.textBox4.Location = new System.Drawing.Point(411, 143);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(147, 22);
-            this.textBox4.TabIndex = 8;
+            this.textBoxLuogoDiNascita.Location = new System.Drawing.Point(411, 143);
+            this.textBoxLuogoDiNascita.Name = "textBoxLuogoDiNascita";
+            this.textBoxLuogoDiNascita.Size = new System.Drawing.Size(147, 22);
+            this.textBoxLuogoDiNascita.TabIndex = 8;
             // 
-            // label3
+            // labelLuogoDiNascita
             // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label3.Location = new System.Drawing.Point(408, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Luogo di nascita";
+            this.labelLuogoDiNascita.AutoSize = true;
+            this.labelLuogoDiNascita.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelLuogoDiNascita.Location = new System.Drawing.Point(408, 123);
+            this.labelLuogoDiNascita.Name = "labelLuogoDiNascita";
+            this.labelLuogoDiNascita.Size = new System.Drawing.Size(112, 17);
+            this.labelLuogoDiNascita.TabIndex = 6;
+            this.labelLuogoDiNascita.Text = "Luogo di nascita";
             // 
-            // textBox3
+            // textBoxCognomePilota
             // 
-            this.textBox3.Location = new System.Drawing.Point(411, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 22);
-            this.textBox3.TabIndex = 5;
+            this.textBoxCognomePilota.Location = new System.Drawing.Point(411, 89);
+            this.textBoxCognomePilota.Name = "textBoxCognomePilota";
+            this.textBoxCognomePilota.Size = new System.Drawing.Size(147, 22);
+            this.textBoxCognomePilota.TabIndex = 5;
             // 
-            // label2
+            // labelCognomePilota
             // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label2.Location = new System.Drawing.Point(408, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Cognome";
+            this.labelCognomePilota.AutoSize = true;
+            this.labelCognomePilota.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelCognomePilota.Location = new System.Drawing.Point(408, 69);
+            this.labelCognomePilota.Name = "labelCognomePilota";
+            this.labelCognomePilota.Size = new System.Drawing.Size(68, 17);
+            this.labelCognomePilota.TabIndex = 4;
+            this.labelCognomePilota.Text = "Cognome";
             // 
-            // label1
+            // labelNomePilota
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label1.Location = new System.Drawing.Point(408, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Nome";
+            this.labelNomePilota.AutoSize = true;
+            this.labelNomePilota.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomePilota.Location = new System.Drawing.Point(408, 15);
+            this.labelNomePilota.Name = "labelNomePilota";
+            this.labelNomePilota.Size = new System.Drawing.Size(45, 17);
+            this.labelNomePilota.TabIndex = 3;
+            this.labelNomePilota.Text = "Nome";
             // 
-            // button1
+            // buttonAggiungiPilota
             // 
-            this.button1.Location = new System.Drawing.Point(465, 306);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Aggiungi";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAggiungiPilota.Location = new System.Drawing.Point(465, 306);
+            this.buttonAggiungiPilota.Name = "buttonAggiungiPilota";
+            this.buttonAggiungiPilota.Size = new System.Drawing.Size(93, 32);
+            this.buttonAggiungiPilota.TabIndex = 2;
+            this.buttonAggiungiPilota.Text = "Aggiungi";
+            this.buttonAggiungiPilota.UseVisualStyleBackColor = true;
+            this.buttonAggiungiPilota.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxNomePilota
             // 
-            this.textBox1.Location = new System.Drawing.Point(411, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBoxNomePilota.Location = new System.Drawing.Point(411, 35);
+            this.textBoxNomePilota.Name = "textBoxNomePilota";
+            this.textBoxNomePilota.Size = new System.Drawing.Size(147, 22);
+            this.textBoxNomePilota.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewPiloti
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewPiloti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPiloti.AutoGenerateColumns = false;
+            this.dataGridViewPiloti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPiloti.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridViewPiloti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPiloti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomeDataGridViewTextBoxColumn,
             this.cognomeDataGridViewTextBoxColumn,
             this.luogoDiNascitaDataGridViewTextBoxColumn,
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.pilotiBindingSource;
+            this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -317,14 +345,14 @@ namespace datarace
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(564, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(756, 447);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
+            this.dataGridViewPiloti.Name = "dataGridViewPiloti";
+            this.dataGridViewPiloti.RowHeadersVisible = false;
+            this.dataGridViewPiloti.RowHeadersWidth = 51;
+            this.dataGridViewPiloti.RowTemplate.Height = 24;
+            this.dataGridViewPiloti.Size = new System.Drawing.Size(756, 447);
+            this.dataGridViewPiloti.TabIndex = 0;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -373,15 +401,25 @@ namespace datarace
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.dataGridView4);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.buttonQueryTeam);
+            this.tabPage2.Controls.Add(this.labelClassiTeam);
+            this.tabPage2.Controls.Add(this.checkedListBoxClassiTeam);
+            this.tabPage2.Controls.Add(this.textBoxTeamManager);
+            this.tabPage2.Controls.Add(this.labelTeamManager);
+            this.tabPage2.Controls.Add(this.labelNomeUfficialeTeam);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.comboBoxNomeRicercaTeam);
+            this.tabPage2.Controls.Add(this.buttonAggiungiTeam);
+            this.tabPage2.Controls.Add(this.labelSpiegazioneQueryTeam);
+            this.tabPage2.Controls.Add(this.comboBoxTipoTeam);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.comboBoxPaeseTeam);
+            this.tabPage2.Controls.Add(this.labelPaeseTeam);
+            this.tabPage2.Controls.Add(this.textBoxNomeTeam);
+            this.tabPage2.Controls.Add(this.labelNomeTeam);
+            this.tabPage2.Controls.Add(this.textBoxNomeUfficialeTeam);
+            this.tabPage2.Controls.Add(this.labelNomeRicercaTeam);
+            this.tabPage2.Controls.Add(this.dataGridViewTeam);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -390,97 +428,165 @@ namespace datarace
             this.tabPage2.Text = "team";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // labelClassiTeam
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(373, 88);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(147, 24);
-            this.comboBox3.TabIndex = 32;
-            this.comboBox3.Items.AddRange(this.GetCountryList().ToArray());
+            this.labelClassiTeam.AutoSize = true;
+            this.labelClassiTeam.Location = new System.Drawing.Point(12, 259);
+            this.labelClassiTeam.Name = "labelClassiTeam";
+            this.labelClassiTeam.Size = new System.Drawing.Size(45, 17);
+            this.labelClassiTeam.TabIndex = 44;
+            this.labelClassiTeam.Text = "Classi";
             // 
-            // label10
+            // checkedListBoxClassiTeam
             // 
-            this.label10.AutoSize = true;
-            this.label10.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label10.Location = new System.Drawing.Point(370, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 17);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Paese";
+            this.checkedListBoxClassiTeam.FormattingEnabled = true;
+            this.checkedListBoxClassiTeam.Location = new System.Drawing.Point(12, 282);
+            this.checkedListBoxClassiTeam.Name = "checkedListBoxClassiTeam";
+            this.checkedListBoxClassiTeam.Size = new System.Drawing.Size(231, 157);
+            this.checkedListBoxClassiTeam.TabIndex = 43;
             // 
-            // textBox6
+            // textBoxTeamManager
             // 
-            this.textBox6.Location = new System.Drawing.Point(373, 33);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(147, 22);
-            this.textBox6.TabIndex = 29;
+            this.textBoxTeamManager.Location = new System.Drawing.Point(12, 225);
+            this.textBoxTeamManager.Name = "textBoxTeamManager";
+            this.textBoxTeamManager.Size = new System.Drawing.Size(231, 22);
+            this.textBoxTeamManager.TabIndex = 42;
             // 
-            // label9
+            // labelTeamManager
             // 
-            this.label9.AutoSize = true;
-            this.label9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label9.Location = new System.Drawing.Point(370, 13);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 17);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Nome";
+            this.labelTeamManager.AutoSize = true;
+            this.labelTeamManager.Location = new System.Drawing.Point(9, 205);
+            this.labelTeamManager.Name = "labelTeamManager";
+            this.labelTeamManager.Size = new System.Drawing.Size(104, 17);
+            this.labelTeamManager.TabIndex = 41;
+            this.labelTeamManager.Text = "Team manager";
             // 
-            // textBox2
+            // labelNomeUfficialeTeam
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 108);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(345, 22);
-            this.textBox2.TabIndex = 27;
+            this.labelNomeUfficialeTeam.AutoSize = true;
+            this.labelNomeUfficialeTeam.Location = new System.Drawing.Point(9, 146);
+            this.labelNomeUfficialeTeam.Name = "labelNomeUfficialeTeam";
+            this.labelNomeUfficialeTeam.Size = new System.Drawing.Size(97, 17);
+            this.labelNomeUfficialeTeam.TabIndex = 40;
+            this.labelNomeUfficialeTeam.Text = "Nome ufficiale";
             // 
-            // label8
+            // label14
             // 
-            this.label8.AutoSize = true;
-            this.label8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label8.Location = new System.Drawing.Point(6, 88);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 17);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Nome team";
+            this.label14.BackColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(363, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(1, 447);
+            this.label14.TabIndex = 39;
             // 
-            // dataGridView4
+            // comboBoxNomeRicercaTeam
             // 
-            this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(6, 144);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.RowHeadersWidth = 51;
-            this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(348, 309);
-            this.dataGridView4.TabIndex = 25;
+            this.comboBoxNomeRicercaTeam.FormattingEnabled = true;
+            this.comboBoxNomeRicercaTeam.Location = new System.Drawing.Point(12, 109);
+            this.comboBoxNomeRicercaTeam.Name = "comboBoxNomeRicercaTeam";
+            this.comboBoxNomeRicercaTeam.Size = new System.Drawing.Size(345, 24);
+            this.comboBoxNomeRicercaTeam.TabIndex = 38;
             // 
-            // comboBox2
+            // buttonAggiungiTeam
             // 
-            this.comboBox2.AllowDrop = true;
-            this.comboBox2.DropDownHeight = 100;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.IntegralHeight = false;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Statistiche di carriera di un pilota",
-            "Campionati disputati da un pilota nel corso della carriera"});
-            this.comboBox2.Location = new System.Drawing.Point(6, 6);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(348, 24);
-            this.comboBox2.TabIndex = 24;
-            this.comboBox2.Text = "Scegli operazione";
+            this.buttonAggiungiTeam.Location = new System.Drawing.Point(465, 197);
+            this.buttonAggiungiTeam.Name = "buttonAggiungiTeam";
+            this.buttonAggiungiTeam.Size = new System.Drawing.Size(93, 32);
+            this.buttonAggiungiTeam.TabIndex = 37;
+            this.buttonAggiungiTeam.Text = "Aggiungi";
+            this.buttonAggiungiTeam.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // labelSpiegazioneQueryTeam
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.labelSpiegazioneQueryTeam.AutoSize = true;
+            this.labelSpiegazioneQueryTeam.Location = new System.Drawing.Point(9, 13);
+            this.labelSpiegazioneQueryTeam.Name = "labelSpiegazioneQueryTeam";
+            this.labelSpiegazioneQueryTeam.Size = new System.Drawing.Size(327, 68);
+            this.labelSpiegazioneQueryTeam.TabIndex = 36;
+            this.labelSpiegazioneQueryTeam.Text = resources.GetString("labelSpiegazioneQueryTeam.Text");
+            // 
+            // comboBoxTipoTeam
+            // 
+            this.comboBoxTipoTeam.FormattingEnabled = true;
+            this.comboBoxTipoTeam.Items.AddRange(new object[] {
+            "Ufficiale",
+            "Privato"});
+            this.comboBoxTipoTeam.Location = new System.Drawing.Point(373, 146);
+            this.comboBoxTipoTeam.Name = "comboBoxTipoTeam";
+            this.comboBoxTipoTeam.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxTipoTeam.TabIndex = 34;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(370, 125);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 17);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Tipo";
+            // 
+            // comboBoxPaeseTeam
+            // 
+            this.comboBoxPaeseTeam.FormattingEnabled = true;
+            this.comboBoxPaeseTeam.Location = new System.Drawing.Point(373, 88);
+            this.comboBoxPaeseTeam.Name = "comboBoxPaeseTeam";
+            this.comboBoxPaeseTeam.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxPaeseTeam.TabIndex = 32;
+            // 
+            // labelPaeseTeam
+            // 
+            this.labelPaeseTeam.AutoSize = true;
+            this.labelPaeseTeam.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPaeseTeam.Location = new System.Drawing.Point(370, 67);
+            this.labelPaeseTeam.Name = "labelPaeseTeam";
+            this.labelPaeseTeam.Size = new System.Drawing.Size(48, 17);
+            this.labelPaeseTeam.TabIndex = 30;
+            this.labelPaeseTeam.Text = "Paese";
+            // 
+            // textBoxNomeTeam
+            // 
+            this.textBoxNomeTeam.Location = new System.Drawing.Point(373, 33);
+            this.textBoxNomeTeam.Name = "textBoxNomeTeam";
+            this.textBoxNomeTeam.Size = new System.Drawing.Size(185, 22);
+            this.textBoxNomeTeam.TabIndex = 29;
+            // 
+            // labelNomeTeam
+            // 
+            this.labelNomeTeam.AutoSize = true;
+            this.labelNomeTeam.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomeTeam.Location = new System.Drawing.Point(370, 13);
+            this.labelNomeTeam.Name = "labelNomeTeam";
+            this.labelNomeTeam.Size = new System.Drawing.Size(45, 17);
+            this.labelNomeTeam.TabIndex = 28;
+            this.labelNomeTeam.Text = "Nome";
+            // 
+            // textBoxNomeUfficialeTeam
+            // 
+            this.textBoxNomeUfficialeTeam.Location = new System.Drawing.Point(12, 166);
+            this.textBoxNomeUfficialeTeam.Name = "textBoxNomeUfficialeTeam";
+            this.textBoxNomeUfficialeTeam.Size = new System.Drawing.Size(231, 22);
+            this.textBoxNomeUfficialeTeam.TabIndex = 27;
+            // 
+            // labelNomeRicercaTeam
+            // 
+            this.labelNomeRicercaTeam.AutoSize = true;
+            this.labelNomeRicercaTeam.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomeRicercaTeam.Location = new System.Drawing.Point(9, 88);
+            this.labelNomeRicercaTeam.Name = "labelNomeRicercaTeam";
+            this.labelNomeRicercaTeam.Size = new System.Drawing.Size(44, 17);
+            this.labelNomeRicercaTeam.TabIndex = 26;
+            this.labelNomeRicercaTeam.Text = "Team";
+            // 
+            // dataGridViewTeam
+            // 
+            this.dataGridViewTeam.AutoGenerateColumns = false;
+            this.dataGridViewTeam.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridViewTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.paese,
             this.tipo});
-            this.dataGridView2.DataSource = this.teamBindingSource;
+            this.dataGridViewTeam.DataSource = this.teamBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -488,14 +594,14 @@ namespace datarace
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.Location = new System.Drawing.Point(564, 6);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(756, 446);
-            this.dataGridView2.TabIndex = 1;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
+            this.dataGridViewTeam.Name = "dataGridViewTeam";
+            this.dataGridViewTeam.RowHeadersVisible = false;
+            this.dataGridViewTeam.RowHeadersWidth = 51;
+            this.dataGridViewTeam.RowTemplate.Height = 24;
+            this.dataGridViewTeam.Size = new System.Drawing.Size(756, 446);
+            this.dataGridViewTeam.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -531,13 +637,14 @@ namespace datarace
             // 
             this.teamTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox4
+            // buttonQueryTeam
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(411, 204);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(147, 24);
-            this.comboBox4.TabIndex = 25;
+            this.buttonQueryTeam.Location = new System.Drawing.Point(264, 407);
+            this.buttonQueryTeam.Name = "buttonQueryTeam";
+            this.buttonQueryTeam.Size = new System.Drawing.Size(93, 32);
+            this.buttonQueryTeam.TabIndex = 45;
+            this.buttonQueryTeam.Text = "Aggiungi";
+            this.buttonQueryTeam.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -551,14 +658,13 @@ namespace datarace
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPiloti)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataraceDataSet)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -585,9 +691,9 @@ namespace datarace
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxNomePilota;
+        private System.Windows.Forms.DataGridView dataGridViewPiloti;
+        private System.Windows.Forms.Button buttonAggiungiPilota;
         private dataraceDataSet dataraceDataSet;
         private System.Windows.Forms.BindingSource pilotiBindingSource;
         private dataraceDataSetTableAdapters.pilotiTableAdapter pilotiTableAdapter;
@@ -596,36 +702,47 @@ namespace datarace
         private System.Windows.Forms.DataGridViewTextBoxColumn luogoDiNascitaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazionalitaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDiNascitaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewTeam;
         private System.Windows.Forms.BindingSource teamBindingSource;
         private dataraceDataSetTableAdapters.teamTableAdapter teamTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn paese;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label labelNomePilota;
+        private System.Windows.Forms.Label labelDataDiNascita;
+        private System.Windows.Forms.Label labelNazionalitaPilota;
+        private System.Windows.Forms.TextBox textBoxLuogoDiNascita;
+        private System.Windows.Forms.Label labelLuogoDiNascita;
+        private System.Windows.Forms.TextBox textBoxCognomePilota;
+        private System.Windows.Forms.Label labelCognomePilota;
+        private System.Windows.Forms.Button buttonRicercaPiloti;
+        private System.Windows.Forms.TextBox textBoxCognomeRicercaPiloti;
+        private System.Windows.Forms.TextBox textBoxNomeRicercaPiloti;
+        private System.Windows.Forms.Label labelNomeRicercaPilota;
+        private System.Windows.Forms.Label labelCognomeRicercaPilota;
+        private System.Windows.Forms.DataGridView dataGridViewQueryPiloti;
+        private System.Windows.Forms.ComboBox comboBoxSceltaQueryPiloti;
+        private System.Windows.Forms.DateTimePicker dataDiNascitaPicker;
+        private System.Windows.Forms.TextBox textBoxNomeUfficialeTeam;
+        private System.Windows.Forms.Label labelNomeRicercaTeam;
+        private System.Windows.Forms.ComboBox comboBoxPaeseTeam;
+        private System.Windows.Forms.Label labelPaeseTeam;
+        private System.Windows.Forms.TextBox textBoxNomeTeam;
+        private System.Windows.Forms.Label labelNomeTeam;
+        private System.Windows.Forms.ComboBox comboBoxNazionalita;
+        private System.Windows.Forms.ComboBox comboBoxTipoTeam;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label separatoreViewPiloti;
+        private System.Windows.Forms.Label labelClassiTeam;
+        private System.Windows.Forms.CheckedListBox checkedListBoxClassiTeam;
+        private System.Windows.Forms.TextBox textBoxTeamManager;
+        private System.Windows.Forms.Label labelTeamManager;
+        private System.Windows.Forms.Label labelNomeUfficialeTeam;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBoxNomeRicercaTeam;
+        private System.Windows.Forms.Button buttonAggiungiTeam;
+        private System.Windows.Forms.Label labelSpiegazioneQueryTeam;
+        private System.Windows.Forms.Button buttonQueryTeam;
     }
 }
 

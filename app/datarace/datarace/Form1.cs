@@ -25,15 +25,15 @@ namespace datarace
             {
                 var pilota = new Piloti();
                 pilota.IdPilota = "000153";
-                pilota.Nome = textBox1.Text;
-                pilota.Cognome = textBox3.Text;
-                pilota.LuogoDiNascita = textBox4.Text;
-                pilota.Nazionalita = comboBox4.Text;
-                pilota.DataDiNascita = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
-                dataGridView1.DataSource = null;
+                pilota.Nome = textBoxNomePilota.Text;
+                pilota.Cognome = textBoxCognomePilota.Text;
+                pilota.LuogoDiNascita = textBoxLuogoDiNascita.Text;
+                pilota.Nazionalita = comboBoxNazionalita.Text;
+                pilota.DataDiNascita = dataDiNascitaPicker.Value.Date.ToString("yyyy/MM/dd");
+                dataGridViewPiloti.DataSource = null;
                 ctx.Piloti.InsertOnSubmit(pilota);
                 ctx.SubmitChanges();
-                dataGridView1.DataSource = pilotiBindingSource;
+                dataGridViewPiloti.DataSource = pilotiBindingSource;
             }
         }
 
@@ -50,9 +50,9 @@ namespace datarace
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
                 IQueryable query;
-                if (comboBox1.SelectedItem != null)
+                if (comboBoxSceltaQueryPiloti.SelectedItem != null)
                 {
-                    if (comboBox1.SelectedItem.Equals("Statistiche di carriera di un pilota"))
+                    if (comboBoxSceltaQueryPiloti.SelectedItem.Equals("Statistiche di carriera di un pilota"))
                     {
                         query = QueryV7(ctx);
                     }
@@ -60,7 +60,7 @@ namespace datarace
                     {
                         query = QueryV3(ctx);
                     }
-                    ShowResultsOnGrid(query, dataGridView3);
+                    ShowResultsOnGrid(query, dataGridViewQueryPiloti);
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace datarace
         {
             return from p in ctx.Piloti
                    join pp in ctx.PartecipazioniPilota on p.IdPilota equals pp.Pilota
-                   where p.Nome == textBox8.Text && p.Cognome == textBox9.Text
+                   where p.Nome == textBoxNomeRicercaPiloti.Text && p.Cognome == textBoxCognomeRicercaPiloti.Text
                    select new
                    {
                        nome = p.Nome,
@@ -86,7 +86,7 @@ namespace datarace
         private IQueryable QueryV7(DataraceDataContext ctx)
         {
             return ctx.Piloti
-                .Where(p => p.Nome == textBox8.Text && p.Cognome == textBox9.Text)
+                .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text && p.Cognome == textBoxCognomeRicercaPiloti.Text)
                 .Select(p => 
                 new {
                     nome = p.Nome,
