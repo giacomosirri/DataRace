@@ -204,7 +204,7 @@ namespace datarace
                 var currentMaxId = ctx.Teams.Select(p => p.IdTeam).Max();
                 var team = new Team
                 {
-                    IdTeam = this.AutoIncrement(currentMaxId, 3),
+                    IdTeam = AutoIncrement(currentMaxId, 3),
                     Nome = textBoxNomeTeam.Text,
                     Paese = comboBoxPaeseTeam.Text,
                     Tipo = comboBoxTipoTeam.Text
@@ -279,7 +279,7 @@ namespace datarace
                 var currentMaxId = ctx.Costruttori.Select(p => p.IdCostruttore).Max();
                 var costruttore = new Costruttori
                 {
-                    IdCostruttore = this.AutoIncrement(currentMaxId, 3),
+                    IdCostruttore = AutoIncrement(currentMaxId, 3),
                     Nome = textBoxNomeCostruttore.Text,
                     Paese = comboBoxPaeseCostruttore.Text,
                     AnnoDiEsordio = int.TryParse(textBoxAnnoDiEsordioCostruttore.Text, out int annoDiEsordio) ?
@@ -361,7 +361,7 @@ namespace datarace
                 }
                 var gp = new GranPremi
                 {
-                    IdGranPremio = this.AutoIncrement(currentMaxId, 3),
+                    IdGranPremio = AutoIncrement(currentMaxId, 3),
                     Denominazione = textBoxDenominazioneGP.Text,
                     AnnoPrimaEdizione = stagioneCorrente
                 };
@@ -376,6 +376,40 @@ namespace datarace
                     // refreshes view items
                     LoadOrRefreshViewItems();
                 }
+            }
+        }
+
+        private void ButtonRicercaGP_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = from i in ctx.Iscrizioni
+                            join r in ctx.Risultati on i.Risultato equals r.IdRisultato
+                            join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
+                            join c in ctx.Costruttori on i.Costruttore equals c.IdCostruttore
+                            join p in ctx.Prove on new
+                            {
+                                i.PosizioneCalendario,
+                                i.Anno
+                            }
+                            equals new
+                            {
+                                p.PosizioneCalendario,
+                                p.Anno
+                            }
+                            join gp in ctx.GranPremi on p.GranPremio equals gp.IdGranPremio
+                            where r.PosizioneArrivo == 1 && i.Classe == comboBoxRicercaClasse.Text
+                                    && gp.Denominazione == comboBoxRicercaGP.Text
+                            select new
+                            {
+                                i.Anno,
+                                NomePilota = pil.Nome,
+                                CognomePilota = pil.Cognome,
+                                i.Team,
+                                Costruttore = c.Nome,
+                                i.Modello
+                            };
+                ShowResultsOnGrid(query, dataGridViewQueryGP);
             }
         }
 
