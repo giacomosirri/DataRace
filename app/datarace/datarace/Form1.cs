@@ -22,6 +22,8 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataraceDataSet.prove' table. You can move, or remove it, as needed.
+            this.proveTableAdapter.Fill(this.dataraceDataSet.prove);
             // TODO: This line of code loads data into the 'dataraceDataSet.gran_premi' table. You can move, or remove it, as needed.
             gran_premiTableAdapter.Fill(dataraceDataSet.gran_premi);
             // loads data into the tables
@@ -65,6 +67,28 @@ namespace datarace
             comboBoxRicercaGP.Items.AddRange(GetAllGPs().ToArray());
             comboBoxRicercaClasse.Items.Clear();
             comboBoxRicercaClasse.Items.AddRange(GetAllClasses().ToArray());
+            ShowCurrentSeasonCalendar();
+        }
+
+        private void ShowCurrentSeasonCalendar()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = from p in ctx.Prove
+                            join sc in ctx.StagioneCorrente on p.Anno equals sc.Anno
+                            join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
+                            where p.Anno == sc.Anno
+                            select new
+                            {
+                                prova = p.PosizioneCalendario,
+                                GP = p.NomeUfficiale,
+                                circuito = c.Nome,
+                                dataInizio = p.DataInizio,
+                                dataFine = p.DataFine,
+                                numeroEdizione = p.NumeroEdizione
+                            };
+                ShowResultsOnGrid(query, dataGridViewCalendario);
+            }
         }
 
         private List<string> GetAllGPs()
