@@ -34,8 +34,9 @@ namespace datarace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -116,6 +117,21 @@ namespace datarace
             this.annoDiEsordioGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costruttoriBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridViewQueryGP = new System.Windows.Forms.DataGridView();
+            this.comboBoxRicercaClasse = new System.Windows.Forms.ComboBox();
+            this.labelNomeRicercaClasse = new System.Windows.Forms.Label();
+            this.buttonRicercaGP = new System.Windows.Forms.Button();
+            this.comboBoxRicercaGP = new System.Windows.Forms.ComboBox();
+            this.labelNomeRicercaGP = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonAggiungiGP = new System.Windows.Forms.Button();
+            this.textBoxDenominazioneGP = new System.Windows.Forms.TextBox();
+            this.labelDenominazioneGP = new System.Windows.Forms.Label();
+            this.dataGridViewGranPremi = new System.Windows.Forms.DataGridView();
+            this.denominazioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.granpremiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
@@ -123,6 +139,8 @@ namespace datarace
             this.pilotiTableAdapter = new datarace.dataraceDataSetTableAdapters.pilotiTableAdapter();
             this.teamTableAdapter = new datarace.dataraceDataSetTableAdapters.teamTableAdapter();
             this.costruttoriTableAdapter = new datarace.dataraceDataSetTableAdapters.costruttoriTableAdapter();
+            this.gran_premiTableAdapter = new datarace.dataraceDataSetTableAdapters.gran_premiTableAdapter();
+            this.idGranPremioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -136,6 +154,10 @@ namespace datarace
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryCostruttori)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCostruttori)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costruttoriBindingSource)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryGP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGranPremi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.granpremiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -223,7 +245,7 @@ namespace datarace
             "Campionati disputati da un pilota nel corso della carriera"});
             this.comboBoxSceltaQueryPiloti.Location = new System.Drawing.Point(9, 6);
             this.comboBoxSceltaQueryPiloti.Name = "comboBoxSceltaQueryPiloti";
-            this.comboBoxSceltaQueryPiloti.Size = new System.Drawing.Size(379, 24);
+            this.comboBoxSceltaQueryPiloti.Size = new System.Drawing.Size(386, 24);
             this.comboBoxSceltaQueryPiloti.TabIndex = 7;
             this.comboBoxSceltaQueryPiloti.Text = "Scegli operazione";
             // 
@@ -236,14 +258,14 @@ namespace datarace
             this.dataGridViewQueryPiloti.RowHeadersVisible = false;
             this.dataGridViewQueryPiloti.RowHeadersWidth = 51;
             this.dataGridViewQueryPiloti.RowTemplate.Height = 24;
-            this.dataGridViewQueryPiloti.Size = new System.Drawing.Size(379, 309);
+            this.dataGridViewQueryPiloti.Size = new System.Drawing.Size(386, 309);
             this.dataGridViewQueryPiloti.TabIndex = 22;
             // 
             // buttonRicercaPiloti
             // 
             this.buttonRicercaPiloti.Location = new System.Drawing.Point(288, 99);
             this.buttonRicercaPiloti.Name = "buttonRicercaPiloti";
-            this.buttonRicercaPiloti.Size = new System.Drawing.Size(100, 30);
+            this.buttonRicercaPiloti.Size = new System.Drawing.Size(107, 30);
             this.buttonRicercaPiloti.TabIndex = 10;
             this.buttonRicercaPiloti.Text = "Cerca";
             this.buttonRicercaPiloti.UseVisualStyleBackColor = true;
@@ -380,14 +402,14 @@ namespace datarace
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
             this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewPiloti.Name = "dataGridViewPiloti";
             this.dataGridViewPiloti.RowHeadersVisible = false;
@@ -643,14 +665,14 @@ namespace datarace
             this.paese,
             this.tipo});
             this.dataGridViewTeam.DataSource = this.teamBindingSource;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewTeam.Name = "dataGridViewTeam";
             this.dataGridViewTeam.RowHeadersVisible = false;
@@ -905,14 +927,14 @@ namespace datarace
             this.paeseDataGridViewTextBoxColumn,
             this.annoDiEsordioGridViewTextBoxColumn});
             this.dataGridViewCostruttori.DataSource = this.costruttoriBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCostruttori.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewCostruttori.Name = "dataGridViewCostruttori";
             this.dataGridViewCostruttori.RowHeadersVisible = false;
@@ -949,6 +971,18 @@ namespace datarace
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dataGridViewQueryGP);
+            this.tabPage4.Controls.Add(this.comboBoxRicercaClasse);
+            this.tabPage4.Controls.Add(this.labelNomeRicercaClasse);
+            this.tabPage4.Controls.Add(this.buttonRicercaGP);
+            this.tabPage4.Controls.Add(this.comboBoxRicercaGP);
+            this.tabPage4.Controls.Add(this.labelNomeRicercaGP);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.buttonAggiungiGP);
+            this.tabPage4.Controls.Add(this.textBoxDenominazioneGP);
+            this.tabPage4.Controls.Add(this.labelDenominazioneGP);
+            this.tabPage4.Controls.Add(this.dataGridViewGranPremi);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -956,6 +990,157 @@ namespace datarace
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "gran premi";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewQueryGP
+            // 
+            this.dataGridViewQueryGP.AllowUserToAddRows = false;
+            this.dataGridViewQueryGP.AllowUserToDeleteRows = false;
+            this.dataGridViewQueryGP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewQueryGP.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridViewQueryGP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQueryGP.Location = new System.Drawing.Point(9, 212);
+            this.dataGridViewQueryGP.Name = "dataGridViewQueryGP";
+            this.dataGridViewQueryGP.ReadOnly = true;
+            this.dataGridViewQueryGP.RowHeadersVisible = false;
+            this.dataGridViewQueryGP.RowHeadersWidth = 51;
+            this.dataGridViewQueryGP.RowTemplate.Height = 24;
+            this.dataGridViewQueryGP.Size = new System.Drawing.Size(346, 236);
+            this.dataGridViewQueryGP.TabIndex = 51;
+            // 
+            // comboBoxRicercaClasse
+            // 
+            this.comboBoxRicercaClasse.FormattingEnabled = true;
+            this.comboBoxRicercaClasse.Location = new System.Drawing.Point(9, 169);
+            this.comboBoxRicercaClasse.Name = "comboBoxRicercaClasse";
+            this.comboBoxRicercaClasse.Size = new System.Drawing.Size(232, 24);
+            this.comboBoxRicercaClasse.TabIndex = 50;
+            // 
+            // labelNomeRicercaClasse
+            // 
+            this.labelNomeRicercaClasse.AutoSize = true;
+            this.labelNomeRicercaClasse.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomeRicercaClasse.Location = new System.Drawing.Point(6, 149);
+            this.labelNomeRicercaClasse.Name = "labelNomeRicercaClasse";
+            this.labelNomeRicercaClasse.Size = new System.Drawing.Size(50, 17);
+            this.labelNomeRicercaClasse.TabIndex = 49;
+            this.labelNomeRicercaClasse.Text = "Classe";
+            // 
+            // buttonRicercaGP
+            // 
+            this.buttonRicercaGP.Location = new System.Drawing.Point(257, 165);
+            this.buttonRicercaGP.Name = "buttonRicercaGP";
+            this.buttonRicercaGP.Size = new System.Drawing.Size(98, 30);
+            this.buttonRicercaGP.TabIndex = 48;
+            this.buttonRicercaGP.Text = "Cerca";
+            this.buttonRicercaGP.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxRicercaGP
+            // 
+            this.comboBoxRicercaGP.FormattingEnabled = true;
+            this.comboBoxRicercaGP.Location = new System.Drawing.Point(9, 101);
+            this.comboBoxRicercaGP.Name = "comboBoxRicercaGP";
+            this.comboBoxRicercaGP.Size = new System.Drawing.Size(346, 24);
+            this.comboBoxRicercaGP.TabIndex = 45;
+            // 
+            // labelNomeRicercaGP
+            // 
+            this.labelNomeRicercaGP.AutoSize = true;
+            this.labelNomeRicercaGP.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNomeRicercaGP.Location = new System.Drawing.Point(6, 81);
+            this.labelNomeRicercaGP.Name = "labelNomeRicercaGP";
+            this.labelNomeRicercaGP.Size = new System.Drawing.Size(28, 17);
+            this.labelNomeRicercaGP.TabIndex = 44;
+            this.labelNomeRicercaGP.Text = "GP";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(279, 34);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Seleziona un gran premio e una classe per\r\nvisualizzarne l\'albo d\'oro";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(363, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1, 447);
+            this.label1.TabIndex = 42;
+            // 
+            // buttonAggiungiGP
+            // 
+            this.buttonAggiungiGP.Location = new System.Drawing.Point(465, 81);
+            this.buttonAggiungiGP.Name = "buttonAggiungiGP";
+            this.buttonAggiungiGP.Size = new System.Drawing.Size(93, 32);
+            this.buttonAggiungiGP.TabIndex = 41;
+            this.buttonAggiungiGP.Text = "Aggiungi";
+            this.buttonAggiungiGP.UseVisualStyleBackColor = true;
+            this.buttonAggiungiGP.Click += new System.EventHandler(this.ButtonAggiungiGP_Click);
+            // 
+            // textBoxDenominazioneGP
+            // 
+            this.textBoxDenominazioneGP.Location = new System.Drawing.Point(373, 36);
+            this.textBoxDenominazioneGP.Name = "textBoxDenominazioneGP";
+            this.textBoxDenominazioneGP.Size = new System.Drawing.Size(185, 22);
+            this.textBoxDenominazioneGP.TabIndex = 40;
+            // 
+            // labelDenominazioneGP
+            // 
+            this.labelDenominazioneGP.AutoSize = true;
+            this.labelDenominazioneGP.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelDenominazioneGP.Location = new System.Drawing.Point(370, 16);
+            this.labelDenominazioneGP.Name = "labelDenominazioneGP";
+            this.labelDenominazioneGP.Size = new System.Drawing.Size(130, 17);
+            this.labelDenominazioneGP.TabIndex = 39;
+            this.labelDenominazioneGP.Text = "Denominazione GP";
+            // 
+            // dataGridViewGranPremi
+            // 
+            this.dataGridViewGranPremi.AutoGenerateColumns = false;
+            this.dataGridViewGranPremi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewGranPremi.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridViewGranPremi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGranPremi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.denominazioneDataGridViewTextBoxColumn,
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn});
+            this.dataGridViewGranPremi.DataSource = this.granpremiBindingSource;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewGranPremi.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewGranPremi.Location = new System.Drawing.Point(564, 7);
+            this.dataGridViewGranPremi.Name = "dataGridViewGranPremi";
+            this.dataGridViewGranPremi.RowHeadersVisible = false;
+            this.dataGridViewGranPremi.RowHeadersWidth = 51;
+            this.dataGridViewGranPremi.RowTemplate.Height = 24;
+            this.dataGridViewGranPremi.Size = new System.Drawing.Size(756, 446);
+            this.dataGridViewGranPremi.TabIndex = 38;
+            // 
+            // denominazioneDataGridViewTextBoxColumn
+            // 
+            this.denominazioneDataGridViewTextBoxColumn.DataPropertyName = "denominazione";
+            this.denominazioneDataGridViewTextBoxColumn.HeaderText = "denominazione";
+            this.denominazioneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.denominazioneDataGridViewTextBoxColumn.Name = "denominazioneDataGridViewTextBoxColumn";
+            // 
+            // annoPrimaEdizioneDataGridViewTextBoxColumn
+            // 
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn.DataPropertyName = "annoPrimaEdizione";
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn.HeaderText = "anno prima edizione";
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.annoPrimaEdizioneDataGridViewTextBoxColumn.Name = "annoPrimaEdizioneDataGridViewTextBoxColumn";
+            // 
+            // granpremiBindingSource
+            // 
+            this.granpremiBindingSource.DataMember = "gran_premi";
+            this.granpremiBindingSource.DataSource = this.dataraceDataSet;
             // 
             // tabPage5
             // 
@@ -1009,6 +1194,16 @@ namespace datarace
             // 
             this.costruttoriTableAdapter.ClearBeforeFill = true;
             // 
+            // gran_premiTableAdapter
+            // 
+            this.gran_premiTableAdapter.ClearBeforeFill = true;
+            // 
+            // idGranPremioDataGridViewTextBoxColumn
+            // 
+            this.idGranPremioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idGranPremioDataGridViewTextBoxColumn.Name = "idGranPremioDataGridViewTextBoxColumn";
+            this.idGranPremioDataGridViewTextBoxColumn.Width = 125;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1034,6 +1229,11 @@ namespace datarace
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryCostruttori)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCostruttori)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costruttoriBindingSource)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryGP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGranPremi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.granpremiBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1126,6 +1326,23 @@ namespace datarace
         private System.Windows.Forms.Button buttonRegistraModello;
         private System.Windows.Forms.TextBox textBoxQueryModello;
         private System.Windows.Forms.Button buttonRicercaModelli;
+        private System.Windows.Forms.DataGridView dataGridViewGranPremi;
+        private System.Windows.Forms.BindingSource granpremiBindingSource;
+        private dataraceDataSetTableAdapters.gran_premiTableAdapter gran_premiTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idGranPremioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn denominazioneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn annoPrimaEdizioneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonAggiungiGP;
+        private System.Windows.Forms.TextBox textBoxDenominazioneGP;
+        private System.Windows.Forms.Label labelDenominazioneGP;
+        private System.Windows.Forms.DataGridView dataGridViewQueryGP;
+        private System.Windows.Forms.ComboBox comboBoxRicercaClasse;
+        private System.Windows.Forms.Label labelNomeRicercaClasse;
+        private System.Windows.Forms.Button buttonRicercaGP;
+        private System.Windows.Forms.ComboBox comboBoxRicercaGP;
+        private System.Windows.Forms.Label labelNomeRicercaGP;
     }
 }
 

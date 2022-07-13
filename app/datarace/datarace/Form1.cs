@@ -22,18 +22,23 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataraceDataSet.gran_premi' table. You can move, or remove it, as needed.
+            gran_premiTableAdapter.Fill(dataraceDataSet.gran_premi);
             // loads data into the tables
-            costruttoriTableAdapter.Fill(this.dataraceDataSet.costruttori);
-            teamTableAdapter.Fill(this.dataraceDataSet.team);
-            pilotiTableAdapter.Fill(this.dataraceDataSet.piloti);
+            costruttoriTableAdapter.Fill(dataraceDataSet.costruttori);
+            teamTableAdapter.Fill(dataraceDataSet.team);
+            pilotiTableAdapter.Fill(dataraceDataSet.piloti);
+            // differentiate autosize mode for columns in table dataGridViewGranPremi
+            dataGridViewGranPremi.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewGranPremi.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             // sets values present in combo boxes and check lists
-            this.LoadOrRefreshViewItems();
+            LoadOrRefreshViewItems();
             // disables the "Registra" button if the current season is over
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
                 var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
                 var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
-                if (ctx.Iscrizioni.Where(i => i.Risultato != null && i.Anno == currentYear 
+                if (ctx.Iscrizioni.Where(i => i.Risultato != null && i.Anno == currentYear
                     && i.PosizioneCalendario == events).Any()) {
                     buttonQueryTeam.Enabled = false;
                 }
@@ -43,19 +48,32 @@ namespace datarace
         private void LoadOrRefreshViewItems()
         {
             comboBoxNazionalita.Items.Clear();
-            comboBoxNazionalita.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxNazionalita.Items.AddRange(GetCountryList().ToArray());
             comboBoxPaeseTeam.Items.Clear();
-            comboBoxPaeseTeam.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxPaeseTeam.Items.AddRange(GetCountryList().ToArray());
             comboBoxPaeseCostruttore.Items.Clear();
-            comboBoxPaeseCostruttore.Items.AddRange(this.GetCountryList().ToArray());
+            comboBoxPaeseCostruttore.Items.AddRange(GetCountryList().ToArray());
             comboBoxNomeRicercaTeam.Items.Clear();
-            comboBoxNomeRicercaTeam.Items.AddRange(this.GetAllTeams().ToArray());
+            comboBoxNomeRicercaTeam.Items.AddRange(GetAllTeams().ToArray());
             checkedListBoxClassiTeam.Items.Clear();
-            checkedListBoxClassiTeam.Items.AddRange(this.GetAllClasses().ToArray());
+            checkedListBoxClassiTeam.Items.AddRange(GetAllClasses().ToArray());
             comboBoxNomeRicercaCostruttore.Items.Clear();
-            comboBoxNomeRicercaCostruttore.Items.AddRange(this.GetAllConstructors().ToArray());
+            comboBoxNomeRicercaCostruttore.Items.AddRange(GetAllConstructors().ToArray());
             comboBoxNomeInserimentoCostruttore.Items.Clear();
-            comboBoxNomeInserimentoCostruttore.Items.AddRange(this.GetAllConstructors().ToArray());
+            comboBoxNomeInserimentoCostruttore.Items.AddRange(GetAllConstructors().ToArray());
+            comboBoxRicercaGP.Items.Clear();
+            comboBoxRicercaGP.Items.AddRange(GetAllGPs().ToArray());
+            comboBoxRicercaClasse.Items.Clear();
+            comboBoxRicercaClasse.Items.AddRange(GetAllClasses().ToArray());
+        }
+
+        private List<string> GetAllGPs()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.GranPremi.Select(t => t.Denominazione);
+                return query.ToList();
+            }
         }
 
         private List<string> GetAllConstructors()
@@ -143,7 +161,7 @@ namespace datarace
                     if (comboBoxSceltaQueryPiloti.SelectedItem.Equals("Statistiche di carriera di un pilota"))
                     {
                         query = ctx.Piloti
-                                    .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text && 
+                                    .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text &&
                                             p.Cognome == textBoxCognomeRicercaPiloti.Text)
                                     .Select(p => new {
                                         nome = p.Nome,
@@ -160,7 +178,7 @@ namespace datarace
                     {
                         query = from p in ctx.Piloti
                                 join pp in ctx.PartecipazioniPilota on p.IdPilota equals pp.Pilota
-                                where p.Nome == textBoxNomeRicercaPiloti.Text && 
+                                where p.Nome == textBoxNomeRicercaPiloti.Text &&
                                         p.Cognome == textBoxCognomeRicercaPiloti.Text
                                 select new
                                 {
@@ -219,7 +237,7 @@ namespace datarace
                     Team = ctx.Teams.Where(t => t.Nome.Equals(comboBoxNomeRicercaTeam.Text)).Select(t => t.IdTeam).Single(),
                     TeamManager = textBoxTeamManager.Text
                 };
-                if (CheckDataValidity(new List<string>() { stagioneTeam.NomeUfficiale, stagioneTeam.TeamManager, 
+                if (CheckDataValidity(new List<string>() { stagioneTeam.NomeUfficiale, stagioneTeam.TeamManager,
                     stagioneTeam.Team }) && CheckDataValidity(new List<int> { stagioneTeam.Anno }))
                 {
                     // then if data is valid the team can be registered to the championships
@@ -267,7 +285,7 @@ namespace datarace
                     AnnoDiEsordio = int.TryParse(textBoxAnnoDiEsordioCostruttore.Text, out int annoDiEsordio) ?
                                         annoDiEsordio : -1
                 };
-                if (CheckDataValidity(new List<string> { costruttore.Nome, costruttore.Paese }) && 
+                if (CheckDataValidity(new List<string> { costruttore.Nome, costruttore.Paese }) &&
                     costruttore.AnnoDiEsordio > 0)
                 {
                     dataGridViewCostruttori.DataSource = null;
@@ -304,9 +322,9 @@ namespace datarace
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
                 var idCostruttore = from c in ctx.Costruttori
-                                  join m in ctx.Modelli on c.IdCostruttore equals m.Costruttore
-                                  where c.Nome == comboBoxNomeInserimentoCostruttore.Text
-                                  select c.IdCostruttore;
+                                    join m in ctx.Modelli on c.IdCostruttore equals m.Costruttore
+                                    where c.Nome == comboBoxNomeInserimentoCostruttore.Text
+                                    select c.IdCostruttore;
                 var modello = new Modelli
                 {
                     Costruttore = idCostruttore.First(),
@@ -319,6 +337,42 @@ namespace datarace
                     // clears data after update
                     comboBoxNomeInserimentoCostruttore.Text = string.Empty;
                     textBoxQueryModello.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ButtonAggiungiGP_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.GranPremi.Select(p => p.IdGranPremio).Max();
+                int stagioneCorrente = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                // current season may be over (and a new one may not be up yet)
+                var query = from s in ctx.Stagioni join sc in ctx.StagioneCorrente on s.Anno equals sc.Anno
+                            join i in ctx.Iscrizioni on s.Anno equals i.Anno
+                            where i.PosizioneCalendario == s.NumeroProve
+                            select i.Pilota;
+                // if that is the case, the year of the first edition has to be the next one
+                if (query.Count() != 0)
+                {
+                    stagioneCorrente++;
+                }
+                var gp = new GranPremi
+                {
+                    IdGranPremio = this.AutoIncrement(currentMaxId, 3),
+                    Denominazione = textBoxDenominazioneGP.Text,
+                    AnnoPrimaEdizione = stagioneCorrente
+                };
+                if (CheckDataValidity(new List<string> { gp.Denominazione }))
+                {
+                    dataGridViewGranPremi.DataSource = null;
+                    ctx.GranPremi.InsertOnSubmit(gp);
+                    ctx.SubmitChanges();
+                    dataGridViewGranPremi.DataSource = granpremiBindingSource;
+                    // clears data after update
+                    textBoxDenominazioneGP.Text = string.Empty;
                     // refreshes view items
                     LoadOrRefreshViewItems();
                 }
