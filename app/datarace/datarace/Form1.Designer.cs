@@ -138,19 +138,19 @@ namespace datarace
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.buttonInserisciProva = new System.Windows.Forms.Button();
+            this.dateTimePickerDataFineGP = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataInizioGP = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxNomeCircuitoQueryStagione = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxNomeGPQueryStagione = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.separatoreCalendario = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonInserisciStagione = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNumeroProve = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSelezioneStagioneCalendario = new System.Windows.Forms.Button();
             this.comboBoxSelezioneStagione = new System.Windows.Forms.ComboBox();
@@ -1206,19 +1206,19 @@ namespace datarace
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.button3);
-            this.tabPage8.Controls.Add(this.dateTimePicker2);
-            this.tabPage8.Controls.Add(this.dateTimePicker1);
+            this.tabPage8.Controls.Add(this.buttonInserisciProva);
+            this.tabPage8.Controls.Add(this.dateTimePickerDataFineGP);
+            this.tabPage8.Controls.Add(this.dateTimePickerDataInizioGP);
             this.tabPage8.Controls.Add(this.label8);
-            this.tabPage8.Controls.Add(this.comboBox3);
+            this.tabPage8.Controls.Add(this.comboBoxNomeCircuitoQueryStagione);
             this.tabPage8.Controls.Add(this.label7);
             this.tabPage8.Controls.Add(this.label6);
-            this.tabPage8.Controls.Add(this.comboBox2);
+            this.tabPage8.Controls.Add(this.comboBoxNomeGPQueryStagione);
             this.tabPage8.Controls.Add(this.label5);
             this.tabPage8.Controls.Add(this.separatoreCalendario);
-            this.tabPage8.Controls.Add(this.button2);
+            this.tabPage8.Controls.Add(this.buttonInserisciStagione);
             this.tabPage8.Controls.Add(this.label4);
-            this.tabPage8.Controls.Add(this.textBox1);
+            this.tabPage8.Controls.Add(this.textBoxNumeroProve);
             this.tabPage8.Controls.Add(this.label3);
             this.tabPage8.Controls.Add(this.buttonSelezioneStagioneCalendario);
             this.tabPage8.Controls.Add(this.comboBoxSelezioneStagione);
@@ -1232,32 +1232,32 @@ namespace datarace
             this.tabPage8.Text = "calendario gare";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonInserisciProva
             // 
-            this.button3.Location = new System.Drawing.Point(316, 413);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(43, 32);
-            this.button3.TabIndex = 60;
-            this.button3.Text = "+";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonInserisciProva.Location = new System.Drawing.Point(316, 413);
+            this.buttonInserisciProva.Name = "buttonInserisciProva";
+            this.buttonInserisciProva.Size = new System.Drawing.Size(43, 32);
+            this.buttonInserisciProva.TabIndex = 60;
+            this.buttonInserisciProva.Text = "+";
+            this.buttonInserisciProva.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // dateTimePickerDataFineGP
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(169, 416);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(127, 22);
-            this.dateTimePicker2.TabIndex = 59;
+            this.dateTimePickerDataFineGP.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePickerDataFineGP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDataFineGP.Location = new System.Drawing.Point(169, 416);
+            this.dateTimePickerDataFineGP.Name = "dateTimePickerDataFineGP";
+            this.dateTimePickerDataFineGP.Size = new System.Drawing.Size(127, 22);
+            this.dateTimePickerDataFineGP.TabIndex = 59;
             // 
-            // dateTimePicker1
+            // dateTimePickerDataInizioGP
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 416);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(127, 22);
-            this.dateTimePicker1.TabIndex = 58;
+            this.dateTimePickerDataInizioGP.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePickerDataInizioGP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDataInizioGP.Location = new System.Drawing.Point(9, 416);
+            this.dateTimePickerDataInizioGP.Name = "dateTimePickerDataInizioGP";
+            this.dateTimePickerDataInizioGP.Size = new System.Drawing.Size(127, 22);
+            this.dateTimePickerDataInizioGP.TabIndex = 58;
             // 
             // label8
             // 
@@ -1269,13 +1269,13 @@ namespace datarace
             this.label8.TabIndex = 57;
             this.label8.Text = "Data inizio";
             // 
-            // comboBox3
+            // comboBoxNomeCircuitoQueryStagione
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(9, 358);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(350, 24);
-            this.comboBox3.TabIndex = 56;
+            this.comboBoxNomeCircuitoQueryStagione.FormattingEnabled = true;
+            this.comboBoxNomeCircuitoQueryStagione.Location = new System.Drawing.Point(9, 358);
+            this.comboBoxNomeCircuitoQueryStagione.Name = "comboBoxNomeCircuitoQueryStagione";
+            this.comboBoxNomeCircuitoQueryStagione.Size = new System.Drawing.Size(350, 24);
+            this.comboBoxNomeCircuitoQueryStagione.TabIndex = 56;
             // 
             // label7
             // 
@@ -1297,13 +1297,13 @@ namespace datarace
             this.label6.TabIndex = 54;
             this.label6.Text = "Data fine";
             // 
-            // comboBox2
+            // comboBoxNomeGPQueryStagione
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(9, 296);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(350, 24);
-            this.comboBox2.TabIndex = 53;
+            this.comboBoxNomeGPQueryStagione.FormattingEnabled = true;
+            this.comboBoxNomeGPQueryStagione.Location = new System.Drawing.Point(9, 296);
+            this.comboBoxNomeGPQueryStagione.Name = "comboBoxNomeGPQueryStagione";
+            this.comboBoxNomeGPQueryStagione.Size = new System.Drawing.Size(350, 24);
+            this.comboBoxNomeGPQueryStagione.TabIndex = 53;
             // 
             // label5
             // 
@@ -1323,14 +1323,15 @@ namespace datarace
             this.separatoreCalendario.Size = new System.Drawing.Size(358, 1);
             this.separatoreCalendario.TabIndex = 51;
             // 
-            // button2
+            // buttonInserisciStagione
             // 
-            this.button2.Location = new System.Drawing.Point(219, 233);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 32);
-            this.button2.TabIndex = 50;
-            this.button2.Text = "Inserisci stagione";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonInserisciStagione.Location = new System.Drawing.Point(219, 233);
+            this.buttonInserisciStagione.Name = "buttonInserisciStagione";
+            this.buttonInserisciStagione.Size = new System.Drawing.Size(142, 32);
+            this.buttonInserisciStagione.TabIndex = 50;
+            this.buttonInserisciStagione.Text = "Inserisci stagione";
+            this.buttonInserisciStagione.UseVisualStyleBackColor = true;
+            this.buttonInserisciStagione.Click += new System.EventHandler(this.ButtonInserisciStagione_Click);
             // 
             // label4
             // 
@@ -1342,12 +1343,12 @@ namespace datarace
             this.label4.TabIndex = 49;
             this.label4.Text = "Numero prove";
             // 
-            // textBox1
+            // textBoxNumeroProve
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 238);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(192, 22);
-            this.textBox1.TabIndex = 48;
+            this.textBoxNumeroProve.Location = new System.Drawing.Point(9, 238);
+            this.textBoxNumeroProve.Name = "textBoxNumeroProve";
+            this.textBoxNumeroProve.Size = new System.Drawing.Size(192, 22);
+            this.textBoxNumeroProve.TabIndex = 48;
             // 
             // label3
             // 
@@ -1628,20 +1629,20 @@ namespace datarace
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label separatoreCalendario;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonInserisciStagione;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNumeroProve;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonSelezioneStagioneCalendario;
         private System.Windows.Forms.ComboBox comboBoxSelezioneStagione;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button buttonInserisciProva;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataFineGP;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataInizioGP;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxNomeCircuitoQueryStagione;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxNomeGPQueryStagione;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.BindingSource proveBindingSource;
         private dataraceDataSetTableAdapters.proveTableAdapter proveTableAdapter;

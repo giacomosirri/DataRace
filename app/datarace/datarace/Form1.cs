@@ -33,22 +33,29 @@ namespace datarace
             // differentiate autosize mode for columns in table dataGridViewGranPremi
             dataGridViewGranPremi.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewGranPremi.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            // sets values present in combo boxes and check lists
+            // sets values of many view items
             LoadOrRefreshViewItems();
-            // disables the "Registra" button if the current season is over
-            using (DataraceDataContext ctx = new DataraceDataContext())
-            {
-                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
-                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
-                if (ctx.Iscrizioni.Where(i => i.Risultato != null && i.Anno == currentYear
-                    && i.PosizioneCalendario == events).Any()) {
-                    buttonQueryTeam.Enabled = false;
-                }
-            }
         }
 
         private void LoadOrRefreshViewItems()
         {
+            // manages some buttons' enabling based on the state of the current season
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
+                // if the current season is over...
+                bool isOver = ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == events &&
+                                         i.Risultato != null).Any();
+                buttonQueryTeam.Enabled = !isOver;
+                buttonInserisciStagione.Enabled = isOver;
+                textBoxNumeroProve.Enabled = isOver;
+                comboBoxNomeGPQueryStagione.Enabled = isOver;
+                comboBoxNomeCircuitoQueryStagione.Enabled = isOver;
+                dateTimePickerDataInizioGP.Enabled = isOver;
+                dateTimePickerDataFineGP.Enabled = isOver;
+                buttonInserisciProva.Enabled = isOver;
+            }
             comboBoxNazionalita.Items.Clear();
             comboBoxNazionalita.Items.AddRange(GetCountryList().ToArray());
             comboBoxPaeseTeam.Items.Clear();
@@ -456,6 +463,28 @@ namespace datarace
                                 i.Modello
                             };
                 ShowResultsOnGrid(query, dataGridViewQueryGP);
+            }
+        }
+
+        private void ButtonInserisciStagione_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                int stagioneCorrente = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var newSeason = new Stagioni
+                {
+                    Anno = ++stagioneCorrente,
+                    NumeroProve = int.TryParse(textBoxNumeroProve.Text, out int np) ? np : -1
+                };
+                if (newSeason.NumeroProve > 0)
+                {
+                    ctx.Stagioni.InsertOnSubmit(newSeason);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    textBoxNumeroProve.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
             }
         }
 
