@@ -22,6 +22,8 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataraceDataSet.circuiti' table. You can move, or remove it, as needed.
+            this.circuitiTableAdapter.Fill(this.dataraceDataSet.circuiti);
             // TODO: This line of code loads data into the 'dataraceDataSet.prove' table. You can move, or remove it, as needed.
             this.proveTableAdapter.Fill(this.dataraceDataSet.prove);
             // TODO: This line of code loads data into the 'dataraceDataSet.gran_premi' table. You can move, or remove it, as needed.
