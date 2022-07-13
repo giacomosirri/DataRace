@@ -67,6 +67,8 @@ namespace datarace
             comboBoxRicercaGP.Items.AddRange(GetAllGPs().ToArray());
             comboBoxRicercaClasse.Items.Clear();
             comboBoxRicercaClasse.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxSelezioneStagione.Items.Clear();
+            comboBoxSelezioneStagione.Items.AddRange(GetAllSeasons().ToArray());
             ShowCurrentSeasonCalendar();
         }
 
@@ -74,10 +76,19 @@ namespace datarace
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
+                var query = from sc in ctx.StagioneCorrente
+                            select sc.Anno;
+                ShowSeasonCalendar(query.Single());
+            }
+        }
+
+        private void ShowSeasonCalendar(int season)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
                 var query = from p in ctx.Prove
-                            join sc in ctx.StagioneCorrente on p.Anno equals sc.Anno
                             join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
-                            where p.Anno == sc.Anno
+                            where p.Anno == season
                             select new
                             {
                                 prova = p.PosizioneCalendario,
@@ -88,6 +99,17 @@ namespace datarace
                                 numeroEdizione = p.NumeroEdizione
                             };
                 ShowResultsOnGrid(query, dataGridViewCalendario);
+            }
+        }
+
+        private List<string> GetAllSeasons()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.Stagioni.Select(s => s.Anno.ToString());
+                var list = query.ToList();
+                list.Reverse();
+                return list;
             }
         }
 
@@ -435,6 +457,12 @@ namespace datarace
                             };
                 ShowResultsOnGrid(query, dataGridViewQueryGP);
             }
+        }
+
+        private void ButtonSelezioneStagioneCalendario_Click(object sender, EventArgs e)
+        {
+            dataGridViewCalendario.DataSource = null;
+            ShowSeasonCalendar(int.TryParse(comboBoxSelezioneStagione.Text, out int season) ? season : -1);
         }
 
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)

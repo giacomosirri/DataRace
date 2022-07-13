@@ -117,8 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Quando tutte le prove della stagione corrente
+sono state completate, si può passare alla stagione
+successiva. Specificare il numero di prove di cui sarà
+composta e aggiungere le prove in ordine di 
+calendario completando i campi sottostanti</value>
+  </data>
   <metadata name="pilotiBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>185, 17</value>
+  </metadata>
+  <metadata name="dataraceDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="dataraceDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -138,13 +148,6 @@
   <metadata name="granpremiBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 60</value>
   </metadata>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Quando tutte le prove della stagione corrente
-sono state completate, si può passare alla stagione
-successiva. Specificare il numero di prove di cui sarà
-composta e aggiungere le prove in ordine di 
-calendario completando i campi sottostanti</value>
-  </data>
   <metadata name="proveBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>468, 60</value>
   </metadata>
