@@ -46,17 +46,20 @@ namespace datarace
             {
                 var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
                 var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
-                // if the current season is over...
+                // differentiates on if the current season is over or not
                 bool isOver = ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == events &&
                                          i.Risultato != null).Any();
                 buttonQueryTeam.Enabled = !isOver;
                 buttonInserisciStagione.Enabled = isOver;
                 textBoxNumeroProve.Enabled = isOver;
-                comboBoxNomeGPQueryStagione.Enabled = isOver;
-                comboBoxNomeCircuitoQueryStagione.Enabled = isOver;
-                dateTimePickerDataInizioGP.Enabled = isOver;
-                dateTimePickerDataFineGP.Enabled = isOver;
-                buttonInserisciProva.Enabled = isOver;
+                // differentiates on if the current season has started or not
+                bool hasStarted = ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == 1).Any();
+                comboBoxNomeGPQueryStagione.Enabled = !hasStarted;
+                comboBoxNomeCircuitoQueryStagione.Enabled = !hasStarted;
+                textBoxNomeUfficialeGPQueryStagione.Enabled = !hasStarted;
+                dateTimePickerDataInizioGP.Enabled = !hasStarted;
+                dateTimePickerDataFineGP.Enabled = !hasStarted;
+                buttonInserisciProva.Enabled = !hasStarted;
             }
             comboBoxNazionalita.Items.Clear();
             comboBoxNazionalita.Items.AddRange(GetCountryList().ToArray());
@@ -641,6 +644,45 @@ namespace datarace
             textBoxNomePilotaQueryCircuito.Enabled = !isFirstSelected;
             textBoxCognomePilotaQueryCircuito.Enabled = !isFirstSelected;
             comboBoxNomeClasseQueryCircuito.Enabled = !isFirstSelected;
+        }
+
+        private void ButtonInserisciProva_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentSeason = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var mostRecentEdition = ctx.EdizionePiuRecente.Where(ed => ctx.GranPremi
+                    .Where(gp => gp.Denominazione == comboBoxNomeGPQueryStagione.Text).Select(gp => gp.IdGranPremio)
+                    .Single() == ed.GranPremio).Select(ed => ed.NumeroEdizione).Single();
+                var circuit = ctx.Circuiti.Where(c => c.Nome == comboBoxNomeCircuitoQueryStagione.Text)
+                    .Select(c => c.IdCircuito).Single();
+                var calendarPos = ctx.Prove.Where(p => p.Anno == currentSeason)
+                    .OrderByDescending(i => i.PosizioneCalendario).Take(1).Select(i => i.PosizioneCalendario).Single() + 1;
+                var grandPrix = ctx.GranPremi.Where(gp => gp.Denominazione == comboBoxNomeGPQueryStagione.Text)
+                    .Select(gp => gp.IdGranPremio).Single();
+                var prova = new Prove()
+                {
+                    Anno = currentSeason,
+                    PosizioneCalendario = calendarPos,
+                    GranPremio = grandPrix,
+                    NomeUfficiale = textBoxNomeUfficialeGPQueryStagione.Text,
+                    NumeroEdizione = ++mostRecentEdition,
+                    DataInizio = dateTimePickerDataInizioGP.Value.Date,
+                    DataFine = dateTimePickerDataFineGP.Value.Date,
+                    Circuito = circuit
+                };
+                if (CheckDataValidity(new List<string>{ prova.NomeUfficiale }))
+                {
+                    ctx.Prove.InsertOnSubmit(prova);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    textBoxNomeUfficialeGPQueryStagione.Text = string.Empty;
+                    comboBoxNomeCircuitoQueryStagione.Text = string.Empty;
+                    comboBoxNomeGPQueryStagione.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
         }
 
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)

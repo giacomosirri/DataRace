@@ -204,6 +204,8 @@ namespace datarace
             this.granPremioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroSpettatoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.circuitiTableAdapter = new datarace.dataraceDataSetTableAdapters.circuitiTableAdapter();
+            this.labelNomeUfficialeGPQueryStagione = new System.Windows.Forms.Label();
+            this.textBoxNomeUfficialeGPQueryStagione = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -360,7 +362,7 @@ namespace datarace
             // 
             this.labelNomeRicercaPilota.AutoSize = true;
             this.labelNomeRicercaPilota.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelNomeRicercaPilota.Location = new System.Drawing.Point(6, 78);
+            this.labelNomeRicercaPilota.Location = new System.Drawing.Point(6, 83);
             this.labelNomeRicercaPilota.Name = "labelNomeRicercaPilota";
             this.labelNomeRicercaPilota.Size = new System.Drawing.Size(45, 17);
             this.labelNomeRicercaPilota.TabIndex = 16;
@@ -370,7 +372,7 @@ namespace datarace
             // 
             this.labelCognomeRicercaPilota.AutoSize = true;
             this.labelCognomeRicercaPilota.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelCognomeRicercaPilota.Location = new System.Drawing.Point(150, 78);
+            this.labelCognomeRicercaPilota.Location = new System.Drawing.Point(150, 83);
             this.labelCognomeRicercaPilota.Name = "labelCognomeRicercaPilota";
             this.labelCognomeRicercaPilota.Size = new System.Drawing.Size(68, 17);
             this.labelCognomeRicercaPilota.TabIndex = 15;
@@ -1596,6 +1598,8 @@ namespace datarace
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.textBoxNomeUfficialeGPQueryStagione);
+            this.tabPage8.Controls.Add(this.labelNomeUfficialeGPQueryStagione);
             this.tabPage8.Controls.Add(this.buttonInserisciProva);
             this.tabPage8.Controls.Add(this.dateTimePickerDataFineGP);
             this.tabPage8.Controls.Add(this.dateTimePickerDataInizioGP);
@@ -1626,10 +1630,11 @@ namespace datarace
             // 
             this.buttonInserisciProva.Location = new System.Drawing.Point(316, 413);
             this.buttonInserisciProva.Name = "buttonInserisciProva";
-            this.buttonInserisciProva.Size = new System.Drawing.Size(43, 32);
+            this.buttonInserisciProva.Size = new System.Drawing.Size(45, 32);
             this.buttonInserisciProva.TabIndex = 60;
             this.buttonInserisciProva.Text = "+";
             this.buttonInserisciProva.UseVisualStyleBackColor = true;
+            this.buttonInserisciProva.Click += new System.EventHandler(this.ButtonInserisciProva_Click);
             // 
             // dateTimePickerDataFineGP
             // 
@@ -1664,7 +1669,7 @@ namespace datarace
             this.comboBoxNomeCircuitoQueryStagione.FormattingEnabled = true;
             this.comboBoxNomeCircuitoQueryStagione.Location = new System.Drawing.Point(9, 358);
             this.comboBoxNomeCircuitoQueryStagione.Name = "comboBoxNomeCircuitoQueryStagione";
-            this.comboBoxNomeCircuitoQueryStagione.Size = new System.Drawing.Size(350, 24);
+            this.comboBoxNomeCircuitoQueryStagione.Size = new System.Drawing.Size(352, 24);
             this.comboBoxNomeCircuitoQueryStagione.TabIndex = 56;
             // 
             // label7
@@ -1692,7 +1697,7 @@ namespace datarace
             this.comboBoxNomeGPQueryStagione.FormattingEnabled = true;
             this.comboBoxNomeGPQueryStagione.Location = new System.Drawing.Point(9, 296);
             this.comboBoxNomeGPQueryStagione.Name = "comboBoxNomeGPQueryStagione";
-            this.comboBoxNomeGPQueryStagione.Size = new System.Drawing.Size(350, 24);
+            this.comboBoxNomeGPQueryStagione.Size = new System.Drawing.Size(151, 24);
             this.comboBoxNomeGPQueryStagione.TabIndex = 53;
             // 
             // label5
@@ -1874,6 +1879,23 @@ namespace datarace
             // circuitiTableAdapter
             // 
             this.circuitiTableAdapter.ClearBeforeFill = true;
+            // 
+            // labelNomeUfficialeGPQueryStagione
+            // 
+            this.labelNomeUfficialeGPQueryStagione.AutoSize = true;
+            this.labelNomeUfficialeGPQueryStagione.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(179, 276);
+            this.labelNomeUfficialeGPQueryStagione.Name = "labelNomeUfficialeGPQueryStagione";
+            this.labelNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(97, 17);
+            this.labelNomeUfficialeGPQueryStagione.TabIndex = 61;
+            this.labelNomeUfficialeGPQueryStagione.Text = "Nome ufficiale";
+            // 
+            // textBoxNomeUfficialeGPQueryStagione
+            // 
+            this.textBoxNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(182, 298);
+            this.textBoxNomeUfficialeGPQueryStagione.Name = "textBoxNomeUfficialeGPQueryStagione";
+            this.textBoxNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(179, 22);
+            this.textBoxNomeUfficialeGPQueryStagione.TabIndex = 62;
             // 
             // Form1
             // 
@@ -2082,6 +2104,8 @@ namespace datarace
         private Label labelNomePilotaQueryCircuito;
         private ComboBox comboBoxNomeClasseQueryCircuito;
         private Label labelNomeClasseQueryCircuito;
+        private TextBox textBoxNomeUfficialeGPQueryStagione;
+        private Label labelNomeUfficialeGPQueryStagione;
     }
 }
 
