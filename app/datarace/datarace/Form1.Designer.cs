@@ -1623,7 +1623,7 @@ namespace datarace
             // 
             this.dataGridViewAlbodOro.AllowUserToAddRows = false;
             this.dataGridViewAlbodOro.AllowUserToDeleteRows = false;
-            this.dataGridViewAlbodOro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridViewAlbodOro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAlbodOro.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridViewAlbodOro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAlbodOro.Location = new System.Drawing.Point(9, 158);
@@ -1642,6 +1642,7 @@ namespace datarace
             this.comboBoxSceltaClasseAlbodOro.Name = "comboBoxSceltaClasseAlbodOro";
             this.comboBoxSceltaClasseAlbodOro.Size = new System.Drawing.Size(200, 24);
             this.comboBoxSceltaClasseAlbodOro.TabIndex = 54;
+            this.comboBoxSceltaClasseAlbodOro.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSceltaClasseAlbodOro_SelectedIndexChanged);
             // 
             // labelAlbodOro
             // 

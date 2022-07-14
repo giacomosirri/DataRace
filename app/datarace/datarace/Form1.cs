@@ -44,16 +44,13 @@ namespace datarace
             // manages some buttons' enabling based on the state of the current season
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
-                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
                 // differentiates on if the current season is over or not
-                bool isOver = ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == events &&
-                                         i.Risultato != null).Any();
+                var isOver = IsCurrentSeasonOver();
                 buttonQueryTeam.Enabled = !isOver;
                 buttonInserisciStagione.Enabled = isOver;
                 textBoxNumeroProve.Enabled = isOver;
                 // differentiates on if the current season has started or not
-                bool hasStarted = ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == 1).Any();
+                var hasStarted = IsCurrentSeasonStarted();
                 comboBoxNomeGPQueryStagione.Enabled = !hasStarted;
                 comboBoxNomeCircuitoQueryStagione.Enabled = !hasStarted;
                 textBoxNomeUfficialeGPQueryStagione.Enabled = !hasStarted;
@@ -92,6 +89,26 @@ namespace datarace
             ShowCurrentSeasonCalendar();
         }
 
+        private bool IsCurrentSeasonOver()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var events = ctx.Stagioni.Where(s => s.Anno == currentYear).Select(s => s.NumeroProve).Single();
+                return ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == events &&
+                                         i.Risultato != null).Any();
+            }
+        }
+
+        private bool IsCurrentSeasonStarted()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                return ctx.Iscrizioni.Where(i => i.Anno == currentYear && i.PosizioneCalendario == 1).Any();
+            }
+        }
+
         private List<string> GetAllCircuits()
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
@@ -122,7 +139,7 @@ namespace datarace
                             select new
                             {
                                 prova = p.PosizioneCalendario,
-                                GP = p.NomeUfficiale,
+                                gp = p.NomeUfficiale,
                                 circuito = c.Nome,
                                 dataInizio = p.DataInizio,
                                 dataFine = p.DataFine,
@@ -385,7 +402,7 @@ namespace datarace
                             where c.Nome == comboBoxNomeRicercaCostruttore.Text
                             select new
                             {
-                                m.NomeModello
+                                modelli = m.NomeModello
                             };
                 ShowResultsOnGrid(query, dataGridViewQueryCostruttori);
             }
@@ -476,12 +493,12 @@ namespace datarace
                                     && gp.Denominazione == comboBoxRicercaGP.Text
                             select new
                             {
-                                i.Anno,
-                                NomePilota = pil.Nome,
-                                CognomePilota = pil.Cognome,
-                                i.Team,
-                                Costruttore = c.Nome,
-                                i.Modello
+                                anno = i.Anno,
+                                prova = p.PosizioneCalendario,
+                                pilota = pil.Nome + " " + pil.Cognome,
+                                team = i.Team,
+                                costruttore = c.Nome,
+                                modello = i.Modello
                             };
                 ShowResultsOnGrid(query, dataGridViewQueryGP);
             }
@@ -557,7 +574,7 @@ namespace datarace
                 IQueryable query;
                 if (comboBoxSceltaOperazioneCircuiti.Text != null)
                 {
-                    // Cerca il pilota più vincente sul circuito selezionato
+                    // Finds the winningest rider in this circuit (all classes)
                     if (comboBoxSceltaOperazioneCircuiti.SelectedItem == comboBoxSceltaOperazioneCircuiti.Items[0])
                     {
                         List<string> winningRidersIds = (from i in ctx.Iscrizioni
@@ -583,12 +600,12 @@ namespace datarace
                                 where winningestRiders.Select(r => r.id).Contains(p.IdPilota)
                                 select new
                                 {
-                                    Pilota = p.Nome + " " + p.Cognome,
-                                    Vittorie = winningestRiders.Select(r => r.wins).First()
+                                    pilota = p.Nome + " " + p.Cognome,
+                                    vittorie = winningestRiders.Select(r => r.wins).First()
                                 };
                         dataGridViewQueryCircuito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
-                    // Tutti i risultati del pilota scelto nella data classe
+                    // All selected riders' results in the given class
                     else
                     {
                         query = from i in ctx.Iscrizioni
@@ -614,13 +631,13 @@ namespace datarace
                                       cl.Nome == comboBoxNomeClasseQueryCircuito.Text
                                 select new
                                 {
-                                    p.Anno,
-                                    GP = gp.Denominazione,
-                                    Risultato = r.PosizioneArrivo,
-                                    Partenza = r.PosizionePartenza,
-                                    i.Team,
-                                    Costruttore = cos.Nome,
-                                    i.Modello
+                                    anno = p.Anno,
+                                    gp = gp.Denominazione,
+                                    risultato = r.PosizioneArrivo,
+                                    partenza = r.PosizionePartenza,
+                                    team = i.Team,
+                                    costruttore = cos.Nome,
+                                    modello = i.Modello
                                 };
                         dataGridViewQueryCircuito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     }
@@ -693,8 +710,8 @@ namespace datarace
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                if (comboBoxSceltaCampionatoQueryCampionato.Text != null &&
-                    comboBoxSceltaClasseQueryCampionato.Text != null)
+                if (comboBoxSceltaCampionatoQueryCampionato.Text != string.Empty &&
+                    comboBoxSceltaClasseQueryCampionato.Text != string.Empty)
                 {
                     IQueryable query;
                     int stagioneCorrente = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
@@ -706,10 +723,9 @@ namespace datarace
                                 orderby pp.PuntiValidi descending
                                 select new
                                 {
-                                    pos = pp.PosizioneClassifica,
+                                    posizione = pp.PosizioneClassifica,
                                     pilota = p.Nome + " " + p.Cognome,
                                     età = pp.Eta,
-                                    esperienza = pp.Esperienza,
                                     punti = pp.PuntiValidi
                                 };
                     }
@@ -730,7 +746,7 @@ namespace datarace
                                 orderby pt.Punti descending
                                 select new
                                 {
-                                    pos = pt.PosizioneClassifica,
+                                    posizione = pt.PosizioneClassifica,
                                     team = st.NomeUfficiale,
                                     punti = pt.Punti
                                 }; ;
@@ -743,13 +759,33 @@ namespace datarace
                                 orderby pc.Punti descending
                                 select new
                                 {
-                                    pos = pc.PosizioneClassifica,
+                                    posizione = pc.PosizioneClassifica,
                                     costruttore = c.Nome,
                                     punti = pc.Punti
                                 };
                     }
                     ShowResultsOnGrid(query, dataGridViewCampionati);
                 }
+            }
+        }
+
+        private void ComboBoxSceltaClasseAlbodOro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                bool isOver = IsCurrentSeasonOver();
+                var query = ctx.PartecipazioniPilota.Where(pp => !isOver ?
+                    pp.Anno != ctx.StagioneCorrente.Select(sc => sc.Anno).Single() &&
+                    pp.Classe == comboBoxSceltaClasseAlbodOro.Text &&
+                    pp.PosizioneClassifica == 1 : pp.Classe == comboBoxSceltaClasseAlbodOro.Text &&
+                    pp.PosizioneClassifica == 1).Select(pp => new
+                    {
+                        anno = pp.Anno,
+                        pilota = pp.Piloti.Nome + " " + pp.Piloti.Cognome,
+                        età = pp.Eta,
+                        punti = pp.PuntiValidi
+                    });
+                ShowResultsOnGrid(query, dataGridViewAlbodOro);
             }
         }
 
