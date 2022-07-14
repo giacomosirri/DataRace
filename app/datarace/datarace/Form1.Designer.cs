@@ -40,8 +40,9 @@ namespace datarace
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.separatoreViewPiloti = new System.Windows.Forms.Label();
@@ -83,7 +84,7 @@ namespace datarace
             this.buttonAggiungiTeam = new System.Windows.Forms.Button();
             this.labelSpiegazioneQueryTeam = new System.Windows.Forms.Label();
             this.comboBoxTipoTeam = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelTipoTeam = new System.Windows.Forms.Label();
             this.comboBoxPaeseTeam = new System.Windows.Forms.ComboBox();
             this.labelPaeseTeam = new System.Windows.Forms.Label();
             this.textBoxNomeTeam = new System.Windows.Forms.TextBox();
@@ -128,7 +129,7 @@ namespace datarace
             this.comboBoxRicercaGP = new System.Windows.Forms.ComboBox();
             this.labelNomeRicercaGP = new System.Windows.Forms.Label();
             this.labelRicercaGP = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.separatoreViewGranPremi = new System.Windows.Forms.Label();
             this.buttonAggiungiGP = new System.Windows.Forms.Button();
             this.textBoxDenominazioneGP = new System.Windows.Forms.TextBox();
             this.labelDenominazioneGP = new System.Windows.Forms.Label();
@@ -148,7 +149,7 @@ namespace datarace
             this.comboBoxNomeCircuitoQuery = new System.Windows.Forms.ComboBox();
             this.comboBoxSceltaOperazioneCircuiti = new System.Windows.Forms.ComboBox();
             this.dataGridViewQueryCircuito = new System.Windows.Forms.DataGridView();
-            this.separatoreCircuiti = new System.Windows.Forms.Label();
+            this.separatoreViewCircuiti = new System.Windows.Forms.Label();
             this.buttonAggiungiCircuito = new System.Windows.Forms.Button();
             this.textBoxLunghezzaRettilineoCircuito = new System.Windows.Forms.TextBox();
             this.labelLunghezzaRettilineoCircuito = new System.Windows.Forms.Label();
@@ -172,21 +173,34 @@ namespace datarace
             this.circuitiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.dataGridViewAlbodOro = new System.Windows.Forms.DataGridView();
+            this.comboBoxSceltaClasseAlbodOro = new System.Windows.Forms.ComboBox();
+            this.labelAlbodOro = new System.Windows.Forms.Label();
+            this.separatoreViewCampionati = new System.Windows.Forms.Label();
+            this.comboBoxSceltaClasseQueryCampionato = new System.Windows.Forms.ComboBox();
+            this.buttonQueryCampionato = new System.Windows.Forms.Button();
+            this.comboBoxSceltaCampionatoQueryCampionato = new System.Windows.Forms.ComboBox();
+            this.labelSceltaClassificaStagioneInCorso = new System.Windows.Forms.Label();
+            this.labelClasseClassificaStagioneInCorso = new System.Windows.Forms.Label();
+            this.labelClassificaStagioneInCorso = new System.Windows.Forms.Label();
+            this.dataGridViewCampionati = new System.Windows.Forms.DataGridView();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.textBoxNomeUfficialeGPQueryStagione = new System.Windows.Forms.TextBox();
+            this.labelNomeUfficialeGPQueryStagione = new System.Windows.Forms.Label();
             this.buttonInserisciProva = new System.Windows.Forms.Button();
             this.dateTimePickerDataFineGP = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDataInizioGP = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelDataInizioGPQueryCalendario = new System.Windows.Forms.Label();
             this.comboBoxNomeCircuitoQueryStagione = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelCircuitoQueryCalendario = new System.Windows.Forms.Label();
+            this.labelDataFineGPQueryCalendario = new System.Windows.Forms.Label();
             this.comboBoxNomeGPQueryStagione = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.separatoreCalendario = new System.Windows.Forms.Label();
+            this.labelGPQueryCalendario = new System.Windows.Forms.Label();
+            this.separatoreViewCalendario = new System.Windows.Forms.Label();
             this.buttonInserisciStagione = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelNumeroProveQueryCalendario = new System.Windows.Forms.Label();
             this.textBoxNumeroProve = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelQueryCalendario = new System.Windows.Forms.Label();
             this.buttonSelezioneStagioneCalendario = new System.Windows.Forms.Button();
             this.comboBoxSelezioneStagione = new System.Windows.Forms.ComboBox();
             this.labelSelezioneStagione = new System.Windows.Forms.Label();
@@ -204,8 +218,6 @@ namespace datarace
             this.granPremioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroSpettatoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.circuitiTableAdapter = new datarace.dataraceDataSetTableAdapters.circuitiTableAdapter();
-            this.labelNomeUfficialeGPQueryStagione = new System.Windows.Forms.Label();
-            this.textBoxNomeUfficialeGPQueryStagione = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -227,6 +239,9 @@ namespace datarace
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryCircuito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCircuiti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circuitiBindingSource)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAlbodOro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCampionati)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proveBindingSource)).BeginInit();
@@ -461,9 +476,6 @@ namespace datarace
             // 
             // dataGridViewPiloti
             // 
-            this.dataGridViewPiloti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPiloti.AutoGenerateColumns = false;
             this.dataGridViewPiloti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPiloti.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
@@ -549,7 +561,7 @@ namespace datarace
             this.tabPage2.Controls.Add(this.buttonAggiungiTeam);
             this.tabPage2.Controls.Add(this.labelSpiegazioneQueryTeam);
             this.tabPage2.Controls.Add(this.comboBoxTipoTeam);
-            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.labelTipoTeam);
             this.tabPage2.Controls.Add(this.comboBoxPaeseTeam);
             this.tabPage2.Controls.Add(this.labelPaeseTeam);
             this.tabPage2.Controls.Add(this.textBoxNomeTeam);
@@ -666,14 +678,14 @@ namespace datarace
             this.comboBoxTipoTeam.Size = new System.Drawing.Size(185, 24);
             this.comboBoxTipoTeam.TabIndex = 22;
             // 
-            // label11
+            // labelTipoTeam
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(370, 125);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 17);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "Tipo";
+            this.labelTipoTeam.AutoSize = true;
+            this.labelTipoTeam.Location = new System.Drawing.Point(370, 125);
+            this.labelTipoTeam.Name = "labelTipoTeam";
+            this.labelTipoTeam.Size = new System.Drawing.Size(36, 17);
+            this.labelTipoTeam.TabIndex = 33;
+            this.labelTipoTeam.Text = "Tipo";
             // 
             // comboBoxPaeseTeam
             // 
@@ -1051,7 +1063,7 @@ namespace datarace
             this.tabPage4.Controls.Add(this.comboBoxRicercaGP);
             this.tabPage4.Controls.Add(this.labelNomeRicercaGP);
             this.tabPage4.Controls.Add(this.labelRicercaGP);
-            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.separatoreViewGranPremi);
             this.tabPage4.Controls.Add(this.buttonAggiungiGP);
             this.tabPage4.Controls.Add(this.textBoxDenominazioneGP);
             this.tabPage4.Controls.Add(this.labelDenominazioneGP);
@@ -1136,13 +1148,13 @@ namespace datarace
             this.labelRicercaGP.TabIndex = 43;
             this.labelRicercaGP.Text = "Seleziona un gran premio e una classe per visualizzarne l\'albo d\'oro:";
             // 
-            // label1
+            // separatoreViewGranPremi
             // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(597, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1, 447);
-            this.label1.TabIndex = 42;
+            this.separatoreViewGranPremi.BackColor = System.Drawing.Color.Black;
+            this.separatoreViewGranPremi.Location = new System.Drawing.Point(597, 7);
+            this.separatoreViewGranPremi.Name = "separatoreViewGranPremi";
+            this.separatoreViewGranPremi.Size = new System.Drawing.Size(1, 447);
+            this.separatoreViewGranPremi.TabIndex = 42;
             // 
             // buttonAggiungiGP
             // 
@@ -1230,7 +1242,7 @@ namespace datarace
             this.tabPage5.Controls.Add(this.comboBoxNomeCircuitoQuery);
             this.tabPage5.Controls.Add(this.comboBoxSceltaOperazioneCircuiti);
             this.tabPage5.Controls.Add(this.dataGridViewQueryCircuito);
-            this.tabPage5.Controls.Add(this.separatoreCircuiti);
+            this.tabPage5.Controls.Add(this.separatoreViewCircuiti);
             this.tabPage5.Controls.Add(this.buttonAggiungiCircuito);
             this.tabPage5.Controls.Add(this.textBoxLunghezzaRettilineoCircuito);
             this.tabPage5.Controls.Add(this.labelLunghezzaRettilineoCircuito);
@@ -1373,13 +1385,13 @@ namespace datarace
             this.dataGridViewQueryCircuito.Size = new System.Drawing.Size(345, 214);
             this.dataGridViewQueryCircuito.TabIndex = 55;
             // 
-            // separatoreCircuiti
+            // separatoreViewCircuiti
             // 
-            this.separatoreCircuiti.BackColor = System.Drawing.Color.Black;
-            this.separatoreCircuiti.Location = new System.Drawing.Point(363, 6);
-            this.separatoreCircuiti.Name = "separatoreCircuiti";
-            this.separatoreCircuiti.Size = new System.Drawing.Size(1, 447);
-            this.separatoreCircuiti.TabIndex = 54;
+            this.separatoreViewCircuiti.BackColor = System.Drawing.Color.Black;
+            this.separatoreViewCircuiti.Location = new System.Drawing.Point(363, 6);
+            this.separatoreViewCircuiti.Name = "separatoreViewCircuiti";
+            this.separatoreViewCircuiti.Size = new System.Drawing.Size(1, 447);
+            this.separatoreViewCircuiti.TabIndex = 54;
             // 
             // buttonAggiungiCircuito
             // 
@@ -1588,6 +1600,17 @@ namespace datarace
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.dataGridViewAlbodOro);
+            this.tabPage7.Controls.Add(this.comboBoxSceltaClasseAlbodOro);
+            this.tabPage7.Controls.Add(this.labelAlbodOro);
+            this.tabPage7.Controls.Add(this.separatoreViewCampionati);
+            this.tabPage7.Controls.Add(this.comboBoxSceltaClasseQueryCampionato);
+            this.tabPage7.Controls.Add(this.buttonQueryCampionato);
+            this.tabPage7.Controls.Add(this.comboBoxSceltaCampionatoQueryCampionato);
+            this.tabPage7.Controls.Add(this.labelSceltaClassificaStagioneInCorso);
+            this.tabPage7.Controls.Add(this.labelClasseClassificaStagioneInCorso);
+            this.tabPage7.Controls.Add(this.labelClassificaStagioneInCorso);
+            this.tabPage7.Controls.Add(this.dataGridViewCampionati);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
@@ -1596,6 +1619,130 @@ namespace datarace
             this.tabPage7.Text = "campionati";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewAlbodOro
+            // 
+            this.dataGridViewAlbodOro.AllowUserToAddRows = false;
+            this.dataGridViewAlbodOro.AllowUserToDeleteRows = false;
+            this.dataGridViewAlbodOro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridViewAlbodOro.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridViewAlbodOro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAlbodOro.Location = new System.Drawing.Point(9, 158);
+            this.dataGridViewAlbodOro.Name = "dataGridViewAlbodOro";
+            this.dataGridViewAlbodOro.ReadOnly = true;
+            this.dataGridViewAlbodOro.RowHeadersVisible = false;
+            this.dataGridViewAlbodOro.RowHeadersWidth = 51;
+            this.dataGridViewAlbodOro.RowTemplate.Height = 24;
+            this.dataGridViewAlbodOro.Size = new System.Drawing.Size(517, 294);
+            this.dataGridViewAlbodOro.TabIndex = 56;
+            // 
+            // comboBoxSceltaClasseAlbodOro
+            // 
+            this.comboBoxSceltaClasseAlbodOro.FormattingEnabled = true;
+            this.comboBoxSceltaClasseAlbodOro.Location = new System.Drawing.Point(326, 122);
+            this.comboBoxSceltaClasseAlbodOro.Name = "comboBoxSceltaClasseAlbodOro";
+            this.comboBoxSceltaClasseAlbodOro.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxSceltaClasseAlbodOro.TabIndex = 54;
+            // 
+            // labelAlbodOro
+            // 
+            this.labelAlbodOro.AutoSize = true;
+            this.labelAlbodOro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAlbodOro.Location = new System.Drawing.Point(6, 125);
+            this.labelAlbodOro.Name = "labelAlbodOro";
+            this.labelAlbodOro.Size = new System.Drawing.Size(300, 17);
+            this.labelAlbodOro.TabIndex = 53;
+            this.labelAlbodOro.Text = "Visualizza l\'albo d\'oro piloti della classe scelta:";
+            // 
+            // separatoreViewCampionati
+            // 
+            this.separatoreViewCampionati.BackColor = System.Drawing.Color.Black;
+            this.separatoreViewCampionati.Location = new System.Drawing.Point(9, 105);
+            this.separatoreViewCampionati.Name = "separatoreViewCampionati";
+            this.separatoreViewCampionati.Size = new System.Drawing.Size(546, 1);
+            this.separatoreViewCampionati.TabIndex = 52;
+            // 
+            // comboBoxSceltaClasseQueryCampionato
+            // 
+            this.comboBoxSceltaClasseQueryCampionato.FormattingEnabled = true;
+            this.comboBoxSceltaClasseQueryCampionato.Location = new System.Drawing.Point(9, 60);
+            this.comboBoxSceltaClasseQueryCampionato.Name = "comboBoxSceltaClasseQueryCampionato";
+            this.comboBoxSceltaClasseQueryCampionato.Size = new System.Drawing.Size(201, 24);
+            this.comboBoxSceltaClasseQueryCampionato.TabIndex = 48;
+            // 
+            // buttonQueryCampionato
+            // 
+            this.buttonQueryCampionato.Location = new System.Drawing.Point(463, 55);
+            this.buttonQueryCampionato.Name = "buttonQueryCampionato";
+            this.buttonQueryCampionato.Size = new System.Drawing.Size(93, 32);
+            this.buttonQueryCampionato.TabIndex = 47;
+            this.buttonQueryCampionato.Text = "Mostra";
+            this.buttonQueryCampionato.UseVisualStyleBackColor = true;
+            this.buttonQueryCampionato.Click += new System.EventHandler(this.ButtonQueryCampionato_Click);
+            // 
+            // comboBoxSceltaCampionatoQueryCampionato
+            // 
+            this.comboBoxSceltaCampionatoQueryCampionato.FormattingEnabled = true;
+            this.comboBoxSceltaCampionatoQueryCampionato.Items.AddRange(new object[] {
+            "Piloti",
+            "Team",
+            "Costruttori"});
+            this.comboBoxSceltaCampionatoQueryCampionato.Location = new System.Drawing.Point(240, 60);
+            this.comboBoxSceltaCampionatoQueryCampionato.Name = "comboBoxSceltaCampionatoQueryCampionato";
+            this.comboBoxSceltaCampionatoQueryCampionato.Size = new System.Drawing.Size(201, 24);
+            this.comboBoxSceltaCampionatoQueryCampionato.TabIndex = 44;
+            // 
+            // labelSceltaClassificaStagioneInCorso
+            // 
+            this.labelSceltaClassificaStagioneInCorso.AutoSize = true;
+            this.labelSceltaClassificaStagioneInCorso.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSceltaClassificaStagioneInCorso.Location = new System.Drawing.Point(237, 40);
+            this.labelSceltaClassificaStagioneInCorso.Name = "labelSceltaClassificaStagioneInCorso";
+            this.labelSceltaClassificaStagioneInCorso.Size = new System.Drawing.Size(67, 17);
+            this.labelSceltaClassificaStagioneInCorso.TabIndex = 43;
+            this.labelSceltaClassificaStagioneInCorso.Text = "Classifica";
+            // 
+            // labelClasseClassificaStagioneInCorso
+            // 
+            this.labelClasseClassificaStagioneInCorso.AutoSize = true;
+            this.labelClasseClassificaStagioneInCorso.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClasseClassificaStagioneInCorso.Location = new System.Drawing.Point(6, 40);
+            this.labelClasseClassificaStagioneInCorso.Name = "labelClasseClassificaStagioneInCorso";
+            this.labelClasseClassificaStagioneInCorso.Size = new System.Drawing.Size(50, 17);
+            this.labelClasseClassificaStagioneInCorso.TabIndex = 41;
+            this.labelClasseClassificaStagioneInCorso.Text = "Classe";
+            // 
+            // labelClassificaStagioneInCorso
+            // 
+            this.labelClassificaStagioneInCorso.AutoSize = true;
+            this.labelClassificaStagioneInCorso.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClassificaStagioneInCorso.Location = new System.Drawing.Point(6, 7);
+            this.labelClassificaStagioneInCorso.Name = "labelClassificaStagioneInCorso";
+            this.labelClassificaStagioneInCorso.Size = new System.Drawing.Size(550, 17);
+            this.labelClassificaStagioneInCorso.TabIndex = 38;
+            this.labelClassificaStagioneInCorso.Text = "Visualizza la classifica di campionato (piloti, costruttori o team) della stagion" +
+    "e in corso:";
+            // 
+            // dataGridViewCampionati
+            // 
+            this.dataGridViewCampionati.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCampionati.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridViewCampionati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCampionati.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewCampionati.Location = new System.Drawing.Point(564, 7);
+            this.dataGridViewCampionati.Name = "dataGridViewCampionati";
+            this.dataGridViewCampionati.RowHeadersVisible = false;
+            this.dataGridViewCampionati.RowHeadersWidth = 51;
+            this.dataGridViewCampionati.RowTemplate.Height = 24;
+            this.dataGridViewCampionati.Size = new System.Drawing.Size(756, 446);
+            this.dataGridViewCampionati.TabIndex = 25;
+            // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.textBoxNomeUfficialeGPQueryStagione);
@@ -1603,17 +1750,17 @@ namespace datarace
             this.tabPage8.Controls.Add(this.buttonInserisciProva);
             this.tabPage8.Controls.Add(this.dateTimePickerDataFineGP);
             this.tabPage8.Controls.Add(this.dateTimePickerDataInizioGP);
-            this.tabPage8.Controls.Add(this.label8);
+            this.tabPage8.Controls.Add(this.labelDataInizioGPQueryCalendario);
             this.tabPage8.Controls.Add(this.comboBoxNomeCircuitoQueryStagione);
-            this.tabPage8.Controls.Add(this.label7);
-            this.tabPage8.Controls.Add(this.label6);
+            this.tabPage8.Controls.Add(this.labelCircuitoQueryCalendario);
+            this.tabPage8.Controls.Add(this.labelDataFineGPQueryCalendario);
             this.tabPage8.Controls.Add(this.comboBoxNomeGPQueryStagione);
-            this.tabPage8.Controls.Add(this.label5);
-            this.tabPage8.Controls.Add(this.separatoreCalendario);
+            this.tabPage8.Controls.Add(this.labelGPQueryCalendario);
+            this.tabPage8.Controls.Add(this.separatoreViewCalendario);
             this.tabPage8.Controls.Add(this.buttonInserisciStagione);
-            this.tabPage8.Controls.Add(this.label4);
+            this.tabPage8.Controls.Add(this.labelNumeroProveQueryCalendario);
             this.tabPage8.Controls.Add(this.textBoxNumeroProve);
-            this.tabPage8.Controls.Add(this.label3);
+            this.tabPage8.Controls.Add(this.labelQueryCalendario);
             this.tabPage8.Controls.Add(this.buttonSelezioneStagioneCalendario);
             this.tabPage8.Controls.Add(this.comboBoxSelezioneStagione);
             this.tabPage8.Controls.Add(this.labelSelezioneStagione);
@@ -1625,6 +1772,23 @@ namespace datarace
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "calendario gare";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // textBoxNomeUfficialeGPQueryStagione
+            // 
+            this.textBoxNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(182, 298);
+            this.textBoxNomeUfficialeGPQueryStagione.Name = "textBoxNomeUfficialeGPQueryStagione";
+            this.textBoxNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(179, 22);
+            this.textBoxNomeUfficialeGPQueryStagione.TabIndex = 62;
+            // 
+            // labelNomeUfficialeGPQueryStagione
+            // 
+            this.labelNomeUfficialeGPQueryStagione.AutoSize = true;
+            this.labelNomeUfficialeGPQueryStagione.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(179, 276);
+            this.labelNomeUfficialeGPQueryStagione.Name = "labelNomeUfficialeGPQueryStagione";
+            this.labelNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(97, 17);
+            this.labelNomeUfficialeGPQueryStagione.TabIndex = 61;
+            this.labelNomeUfficialeGPQueryStagione.Text = "Nome ufficiale";
             // 
             // buttonInserisciProva
             // 
@@ -1654,15 +1818,15 @@ namespace datarace
             this.dateTimePickerDataInizioGP.Size = new System.Drawing.Size(127, 22);
             this.dateTimePickerDataInizioGP.TabIndex = 58;
             // 
-            // label8
+            // labelDataInizioGPQueryCalendario
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 396);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 17);
-            this.label8.TabIndex = 57;
-            this.label8.Text = "Data inizio";
+            this.labelDataInizioGPQueryCalendario.AutoSize = true;
+            this.labelDataInizioGPQueryCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataInizioGPQueryCalendario.Location = new System.Drawing.Point(6, 396);
+            this.labelDataInizioGPQueryCalendario.Name = "labelDataInizioGPQueryCalendario";
+            this.labelDataInizioGPQueryCalendario.Size = new System.Drawing.Size(74, 17);
+            this.labelDataInizioGPQueryCalendario.TabIndex = 57;
+            this.labelDataInizioGPQueryCalendario.Text = "Data inizio";
             // 
             // comboBoxNomeCircuitoQueryStagione
             // 
@@ -1672,25 +1836,25 @@ namespace datarace
             this.comboBoxNomeCircuitoQueryStagione.Size = new System.Drawing.Size(352, 24);
             this.comboBoxNomeCircuitoQueryStagione.TabIndex = 56;
             // 
-            // label7
+            // labelCircuitoQueryCalendario
             // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label7.Location = new System.Drawing.Point(6, 338);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 17);
-            this.label7.TabIndex = 55;
-            this.label7.Text = "Circuito";
+            this.labelCircuitoQueryCalendario.AutoSize = true;
+            this.labelCircuitoQueryCalendario.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelCircuitoQueryCalendario.Location = new System.Drawing.Point(6, 338);
+            this.labelCircuitoQueryCalendario.Name = "labelCircuitoQueryCalendario";
+            this.labelCircuitoQueryCalendario.Size = new System.Drawing.Size(55, 17);
+            this.labelCircuitoQueryCalendario.TabIndex = 55;
+            this.labelCircuitoQueryCalendario.Text = "Circuito";
             // 
-            // label6
+            // labelDataFineGPQueryCalendario
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(166, 396);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
-            this.label6.TabIndex = 54;
-            this.label6.Text = "Data fine";
+            this.labelDataFineGPQueryCalendario.AutoSize = true;
+            this.labelDataFineGPQueryCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataFineGPQueryCalendario.Location = new System.Drawing.Point(166, 396);
+            this.labelDataFineGPQueryCalendario.Name = "labelDataFineGPQueryCalendario";
+            this.labelDataFineGPQueryCalendario.Size = new System.Drawing.Size(65, 17);
+            this.labelDataFineGPQueryCalendario.TabIndex = 54;
+            this.labelDataFineGPQueryCalendario.Text = "Data fine";
             // 
             // comboBoxNomeGPQueryStagione
             // 
@@ -1700,23 +1864,23 @@ namespace datarace
             this.comboBoxNomeGPQueryStagione.Size = new System.Drawing.Size(151, 24);
             this.comboBoxNomeGPQueryStagione.TabIndex = 53;
             // 
-            // label5
+            // labelGPQueryCalendario
             // 
-            this.label5.AutoSize = true;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label5.Location = new System.Drawing.Point(6, 276);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 17);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Gran Premio";
+            this.labelGPQueryCalendario.AutoSize = true;
+            this.labelGPQueryCalendario.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelGPQueryCalendario.Location = new System.Drawing.Point(6, 276);
+            this.labelGPQueryCalendario.Name = "labelGPQueryCalendario";
+            this.labelGPQueryCalendario.Size = new System.Drawing.Size(88, 17);
+            this.labelGPQueryCalendario.TabIndex = 52;
+            this.labelGPQueryCalendario.Text = "Gran Premio";
             // 
-            // separatoreCalendario
+            // separatoreViewCalendario
             // 
-            this.separatoreCalendario.BackColor = System.Drawing.Color.Black;
-            this.separatoreCalendario.Location = new System.Drawing.Point(8, 103);
-            this.separatoreCalendario.Name = "separatoreCalendario";
-            this.separatoreCalendario.Size = new System.Drawing.Size(358, 1);
-            this.separatoreCalendario.TabIndex = 51;
+            this.separatoreViewCalendario.BackColor = System.Drawing.Color.Black;
+            this.separatoreViewCalendario.Location = new System.Drawing.Point(8, 103);
+            this.separatoreViewCalendario.Name = "separatoreViewCalendario";
+            this.separatoreViewCalendario.Size = new System.Drawing.Size(358, 1);
+            this.separatoreViewCalendario.TabIndex = 51;
             // 
             // buttonInserisciStagione
             // 
@@ -1728,15 +1892,15 @@ namespace datarace
             this.buttonInserisciStagione.UseVisualStyleBackColor = true;
             this.buttonInserisciStagione.Click += new System.EventHandler(this.ButtonInserisciStagione_Click);
             // 
-            // label4
+            // labelNumeroProveQueryCalendario
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 17);
-            this.label4.TabIndex = 49;
-            this.label4.Text = "Numero prove";
+            this.labelNumeroProveQueryCalendario.AutoSize = true;
+            this.labelNumeroProveQueryCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeroProveQueryCalendario.Location = new System.Drawing.Point(6, 218);
+            this.labelNumeroProveQueryCalendario.Name = "labelNumeroProveQueryCalendario";
+            this.labelNumeroProveQueryCalendario.Size = new System.Drawing.Size(98, 17);
+            this.labelNumeroProveQueryCalendario.TabIndex = 49;
+            this.labelNumeroProveQueryCalendario.Text = "Numero prove";
             // 
             // textBoxNumeroProve
             // 
@@ -1745,15 +1909,15 @@ namespace datarace
             this.textBoxNumeroProve.Size = new System.Drawing.Size(192, 22);
             this.textBoxNumeroProve.TabIndex = 48;
             // 
-            // label3
+            // labelQueryCalendario
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 85);
-            this.label3.TabIndex = 47;
-            this.label3.Text = resources.GetString("label3.Text");
+            this.labelQueryCalendario.AutoSize = true;
+            this.labelQueryCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQueryCalendario.Location = new System.Drawing.Point(6, 117);
+            this.labelQueryCalendario.Name = "labelQueryCalendario";
+            this.labelQueryCalendario.Size = new System.Drawing.Size(341, 85);
+            this.labelQueryCalendario.TabIndex = 47;
+            this.labelQueryCalendario.Text = resources.GetString("labelQueryCalendario.Text");
             // 
             // buttonSelezioneStagioneCalendario
             // 
@@ -1789,14 +1953,14 @@ namespace datarace
             this.dataGridViewCalendario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewCalendario.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCalendario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewCalendario.Location = new System.Drawing.Point(376, 6);
             this.dataGridViewCalendario.Name = "dataGridViewCalendario";
             this.dataGridViewCalendario.RowHeadersVisible = false;
@@ -1880,23 +2044,6 @@ namespace datarace
             // 
             this.circuitiTableAdapter.ClearBeforeFill = true;
             // 
-            // labelNomeUfficialeGPQueryStagione
-            // 
-            this.labelNomeUfficialeGPQueryStagione.AutoSize = true;
-            this.labelNomeUfficialeGPQueryStagione.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(179, 276);
-            this.labelNomeUfficialeGPQueryStagione.Name = "labelNomeUfficialeGPQueryStagione";
-            this.labelNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(97, 17);
-            this.labelNomeUfficialeGPQueryStagione.TabIndex = 61;
-            this.labelNomeUfficialeGPQueryStagione.Text = "Nome ufficiale";
-            // 
-            // textBoxNomeUfficialeGPQueryStagione
-            // 
-            this.textBoxNomeUfficialeGPQueryStagione.Location = new System.Drawing.Point(182, 298);
-            this.textBoxNomeUfficialeGPQueryStagione.Name = "textBoxNomeUfficialeGPQueryStagione";
-            this.textBoxNomeUfficialeGPQueryStagione.Size = new System.Drawing.Size(179, 22);
-            this.textBoxNomeUfficialeGPQueryStagione.TabIndex = 62;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1932,6 +2079,10 @@ namespace datarace
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryCircuito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCircuiti)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circuitiBindingSource)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAlbodOro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCampionati)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendario)).EndInit();
@@ -1985,7 +2136,7 @@ namespace datarace
         private System.Windows.Forms.Label labelNomeTeam;
         private System.Windows.Forms.ComboBox comboBoxNazionalita;
         private System.Windows.Forms.ComboBox comboBoxTipoTeam;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelTipoTeam;
         private System.Windows.Forms.Label separatoreViewPiloti;
         private System.Windows.Forms.Label labelClassiTeam;
         private System.Windows.Forms.CheckedListBox checkedListBoxClassiTeam;
@@ -2035,7 +2186,7 @@ namespace datarace
         private System.Windows.Forms.DataGridViewTextBoxColumn denominazioneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn annoPrimaEdizioneDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label labelRicercaGP;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label separatoreViewGranPremi;
         private System.Windows.Forms.Button buttonAggiungiGP;
         private System.Windows.Forms.TextBox textBoxDenominazioneGP;
         private System.Windows.Forms.Label labelDenominazioneGP;
@@ -2049,22 +2200,22 @@ namespace datarace
         private System.Windows.Forms.DataGridView dataGridViewCalendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Label separatoreCalendario;
+        private System.Windows.Forms.Label separatoreViewCalendario;
         private System.Windows.Forms.Button buttonInserisciStagione;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelNumeroProveQueryCalendario;
         private System.Windows.Forms.TextBox textBoxNumeroProve;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelQueryCalendario;
         private System.Windows.Forms.Button buttonSelezioneStagioneCalendario;
         private System.Windows.Forms.ComboBox comboBoxSelezioneStagione;
         private System.Windows.Forms.Button buttonInserisciProva;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataFineGP;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataInizioGP;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelDataInizioGPQueryCalendario;
         private System.Windows.Forms.ComboBox comboBoxNomeCircuitoQueryStagione;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelCircuitoQueryCalendario;
+        private System.Windows.Forms.Label labelDataFineGPQueryCalendario;
         private System.Windows.Forms.ComboBox comboBoxNomeGPQueryStagione;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelGPQueryCalendario;
         private System.Windows.Forms.BindingSource proveBindingSource;
         private dataraceDataSetTableAdapters.proveTableAdapter proveTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn annoDataGridViewTextBoxColumn;
@@ -2080,7 +2231,7 @@ namespace datarace
         private DataGridViewTextBoxColumn numeroCurveDestra;
         private DataGridViewTextBoxColumn lunghezzaRettilineoInMetri;
         private DataGridView dataGridViewQueryCircuito;
-        private Label separatoreCircuiti;
+        private Label separatoreViewCircuiti;
         private Button buttonAggiungiCircuito;
         private TextBox textBoxLunghezzaRettilineoCircuito;
         private Label labelLunghezzaRettilineoCircuito;
@@ -2106,6 +2257,17 @@ namespace datarace
         private Label labelNomeClasseQueryCircuito;
         private TextBox textBoxNomeUfficialeGPQueryStagione;
         private Label labelNomeUfficialeGPQueryStagione;
+        private ComboBox comboBoxSceltaClasseQueryCampionato;
+        private Button buttonQueryCampionato;
+        private ComboBox comboBoxSceltaCampionatoQueryCampionato;
+        private Label labelSceltaClassificaStagioneInCorso;
+        private Label labelClasseClassificaStagioneInCorso;
+        private Label labelClassificaStagioneInCorso;
+        private DataGridView dataGridViewCampionati;
+        private Label separatoreViewCampionati;
+        private ComboBox comboBoxSceltaClasseAlbodOro;
+        private Label labelAlbodOro;
+        private DataGridView dataGridViewAlbodOro;
     }
 }
 

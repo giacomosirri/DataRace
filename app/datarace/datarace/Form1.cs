@@ -85,6 +85,10 @@ namespace datarace
             comboBoxNomeCircuitoQuery.Items.AddRange(GetAllCircuits().ToArray());
             comboBoxNomeClasseQueryCircuito.Items.Clear();
             comboBoxNomeClasseQueryCircuito.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxSceltaClasseQueryCampionato.Items.Clear();
+            comboBoxSceltaClasseQueryCampionato.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxSceltaClasseAlbodOro.Items.Clear();
+            comboBoxSceltaClasseAlbodOro.Items.AddRange(GetAllClasses().ToArray());
             ShowCurrentSeasonCalendar();
         }
 
@@ -681,6 +685,70 @@ namespace datarace
                     comboBoxNomeGPQueryStagione.Text = string.Empty;
                     // refreshes view items
                     LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ButtonQueryCampionato_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                if (comboBoxSceltaCampionatoQueryCampionato.Text != null &&
+                    comboBoxSceltaClasseQueryCampionato.Text != null)
+                {
+                    IQueryable query;
+                    int stagioneCorrente = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                    if (comboBoxSceltaCampionatoQueryCampionato.SelectedIndex == 0)
+                    {
+                        query = from pp in ctx.PartecipazioniPilota
+                                join p in ctx.Piloti on pp.Pilota equals p.IdPilota
+                                where pp.Classe == comboBoxSceltaClasseQueryCampionato.Text && pp.Anno == stagioneCorrente
+                                orderby pp.PuntiValidi descending
+                                select new
+                                {
+                                    pos = pp.PosizioneClassifica,
+                                    pilota = p.Nome + " " + p.Cognome,
+                                    età = pp.Eta,
+                                    esperienza = pp.Esperienza,
+                                    punti = pp.PuntiValidi
+                                };
+                    }
+                    else if (comboBoxSceltaCampionatoQueryCampionato.SelectedIndex == 1)
+                    {
+                        query = from pt in ctx.PartecipazioniTeam
+                                join st in ctx.StagioniTeam on new
+                                {
+                                    pt.Anno,
+                                    pt.Team
+                                }
+                                equals new
+                                {
+                                    st.Anno,
+                                    Team = st.NomeUfficiale
+                                }
+                                where pt.Classe == comboBoxSceltaClasseQueryCampionato.Text && pt.Anno == stagioneCorrente
+                                orderby pt.Punti descending
+                                select new
+                                {
+                                    pos = pt.PosizioneClassifica,
+                                    team = st.NomeUfficiale,
+                                    punti = pt.Punti
+                                }; ;
+                    }
+                    else
+                    {
+                        query = from pc in ctx.PartecipazioniCostruttore
+                                join c in ctx.Costruttori on pc.Costruttore equals c.IdCostruttore
+                                where pc.Classe == comboBoxSceltaClasseQueryCampionato.Text && pc.Anno == stagioneCorrente
+                                orderby pc.Punti descending
+                                select new
+                                {
+                                    pos = pc.PosizioneClassifica,
+                                    costruttore = c.Nome,
+                                    punti = pc.Punti
+                                };
+                    }
+                    ShowResultsOnGrid(query, dataGridViewCampionati);
                 }
             }
         }
