@@ -232,8 +232,8 @@ namespace datarace
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -321,6 +321,7 @@ namespace datarace
             // 
             // dataGridViewQueryPiloti
             // 
+            this.dataGridViewQueryPiloti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewQueryPiloti.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridViewQueryPiloti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewQueryPiloti.Location = new System.Drawing.Point(9, 143);
@@ -458,8 +459,8 @@ namespace datarace
             // 
             // dataGridViewPiloti
             // 
-            this.dataGridViewPiloti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridViewPiloti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPiloti.AutoGenerateColumns = false;
             this.dataGridViewPiloti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -1255,7 +1256,7 @@ namespace datarace
             this.buttonEseguiQueryCircuito.Location = new System.Drawing.Point(261, 196);
             this.buttonEseguiQueryCircuito.Name = "buttonEseguiQueryCircuito";
             this.buttonEseguiQueryCircuito.Size = new System.Drawing.Size(93, 32);
-            this.buttonEseguiQueryCircuito.TabIndex = 67;
+            this.buttonEseguiQueryCircuito.TabIndex = 54;
             this.buttonEseguiQueryCircuito.Text = "Cerca";
             this.buttonEseguiQueryCircuito.UseVisualStyleBackColor = true;
             this.buttonEseguiQueryCircuito.Click += new System.EventHandler(this.ButtonEseguiQueryCircuito_Click);
@@ -1265,7 +1266,7 @@ namespace datarace
             this.textBoxCognomePilotaQueryCircuito.Location = new System.Drawing.Point(192, 147);
             this.textBoxCognomePilotaQueryCircuito.Name = "textBoxCognomePilotaQueryCircuito";
             this.textBoxCognomePilotaQueryCircuito.Size = new System.Drawing.Size(162, 22);
-            this.textBoxCognomePilotaQueryCircuito.TabIndex = 66;
+            this.textBoxCognomePilotaQueryCircuito.TabIndex = 52;
             // 
             // labelCognomePilotaQueryCIrcuito
             // 
@@ -1282,7 +1283,7 @@ namespace datarace
             this.textBoxNomePilotaQueryCircuito.Location = new System.Drawing.Point(9, 147);
             this.textBoxNomePilotaQueryCircuito.Name = "textBoxNomePilotaQueryCircuito";
             this.textBoxNomePilotaQueryCircuito.Size = new System.Drawing.Size(161, 22);
-            this.textBoxNomePilotaQueryCircuito.TabIndex = 64;
+            this.textBoxNomePilotaQueryCircuito.TabIndex = 51;
             // 
             // labelNomePilotaQueryCircuito
             // 
@@ -1306,7 +1307,7 @@ namespace datarace
             this.comboBoxNomeClasseQueryCircuito.Location = new System.Drawing.Point(9, 201);
             this.comboBoxNomeClasseQueryCircuito.Name = "comboBoxNomeClasseQueryCircuito";
             this.comboBoxNomeClasseQueryCircuito.Size = new System.Drawing.Size(173, 24);
-            this.comboBoxNomeClasseQueryCircuito.TabIndex = 62;
+            this.comboBoxNomeClasseQueryCircuito.TabIndex = 53;
             // 
             // labelNomeClasseQueryCircuito
             // 
@@ -1337,7 +1338,7 @@ namespace datarace
             this.comboBoxNomeCircuitoQuery.Location = new System.Drawing.Point(9, 90);
             this.comboBoxNomeCircuitoQuery.Name = "comboBoxNomeCircuitoQuery";
             this.comboBoxNomeCircuitoQuery.Size = new System.Drawing.Size(345, 24);
-            this.comboBoxNomeCircuitoQuery.TabIndex = 59;
+            this.comboBoxNomeCircuitoQuery.TabIndex = 50;
             // 
             // comboBoxSceltaOperazioneCircuiti
             // 
@@ -1351,15 +1352,14 @@ namespace datarace
             this.comboBoxSceltaOperazioneCircuiti.Location = new System.Drawing.Point(9, 5);
             this.comboBoxSceltaOperazioneCircuiti.Name = "comboBoxSceltaOperazioneCircuiti";
             this.comboBoxSceltaOperazioneCircuiti.Size = new System.Drawing.Size(345, 24);
-            this.comboBoxSceltaOperazioneCircuiti.TabIndex = 58;
+            this.comboBoxSceltaOperazioneCircuiti.TabIndex = 49;
             this.comboBoxSceltaOperazioneCircuiti.Text = "Scegli operazione";
-            this.comboBoxSceltaOperazioneCircuiti.SelectedIndexChanged += new System.EventHandler(ComboBoxSceltaOpCircuiti_SelectedIndexChanged);
+            this.comboBoxSceltaOperazioneCircuiti.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSceltaOpCircuiti_SelectedIndexChanged);
             // 
             // dataGridViewQueryCircuito
             // 
             this.dataGridViewQueryCircuito.AllowUserToAddRows = false;
             this.dataGridViewQueryCircuito.AllowUserToDeleteRows = false;
-            this.dataGridViewQueryCircuito.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewQueryCircuito.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridViewQueryCircuito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewQueryCircuito.Location = new System.Drawing.Point(9, 238);
@@ -1384,7 +1384,7 @@ namespace datarace
             this.buttonAggiungiCircuito.Location = new System.Drawing.Point(465, 382);
             this.buttonAggiungiCircuito.Name = "buttonAggiungiCircuito";
             this.buttonAggiungiCircuito.Size = new System.Drawing.Size(93, 32);
-            this.buttonAggiungiCircuito.TabIndex = 53;
+            this.buttonAggiungiCircuito.TabIndex = 47;
             this.buttonAggiungiCircuito.Text = "Aggiungi";
             this.buttonAggiungiCircuito.UseVisualStyleBackColor = true;
             this.buttonAggiungiCircuito.Click += new System.EventHandler(this.ButtonAggiungiCircuito_Click);
@@ -1394,7 +1394,7 @@ namespace datarace
             this.textBoxLunghezzaRettilineoCircuito.Location = new System.Drawing.Point(373, 328);
             this.textBoxLunghezzaRettilineoCircuito.Name = "textBoxLunghezzaRettilineoCircuito";
             this.textBoxLunghezzaRettilineoCircuito.Size = new System.Drawing.Size(185, 22);
-            this.textBoxLunghezzaRettilineoCircuito.TabIndex = 52;
+            this.textBoxLunghezzaRettilineoCircuito.TabIndex = 46;
             // 
             // labelLunghezzaRettilineoCircuito
             // 
@@ -1421,14 +1421,14 @@ namespace datarace
             this.textBoxCurveADestraCircuito.Location = new System.Drawing.Point(373, 267);
             this.textBoxCurveADestraCircuito.Name = "textBoxCurveADestraCircuito";
             this.textBoxCurveADestraCircuito.Size = new System.Drawing.Size(185, 22);
-            this.textBoxCurveADestraCircuito.TabIndex = 49;
+            this.textBoxCurveADestraCircuito.TabIndex = 45;
             // 
             // textBoxCurveASinistraCircuito
             // 
             this.textBoxCurveASinistraCircuito.Location = new System.Drawing.Point(373, 207);
             this.textBoxCurveASinistraCircuito.Name = "textBoxCurveASinistraCircuito";
             this.textBoxCurveASinistraCircuito.Size = new System.Drawing.Size(185, 22);
-            this.textBoxCurveASinistraCircuito.TabIndex = 48;
+            this.textBoxCurveASinistraCircuito.TabIndex = 44;
             // 
             // labelCurveASinistraCircuito
             // 
@@ -1445,7 +1445,7 @@ namespace datarace
             this.textBoxLunghezzaCircuito.Location = new System.Drawing.Point(373, 149);
             this.textBoxLunghezzaCircuito.Name = "textBoxLunghezzaCircuito";
             this.textBoxLunghezzaCircuito.Size = new System.Drawing.Size(185, 22);
-            this.textBoxLunghezzaCircuito.TabIndex = 44;
+            this.textBoxLunghezzaCircuito.TabIndex = 43;
             // 
             // labelLunghezzaCircuito
             // 
@@ -1519,7 +1519,7 @@ namespace datarace
             this.dataGridViewCircuiti.RowHeadersWidth = 51;
             this.dataGridViewCircuiti.RowTemplate.Height = 24;
             this.dataGridViewCircuiti.Size = new System.Drawing.Size(756, 446);
-            this.dataGridViewCircuiti.TabIndex = 38;
+            this.dataGridViewCircuiti.TabIndex = 48;
             // 
             // nomeCircuito
             // 
@@ -1915,6 +1915,7 @@ namespace datarace
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proveBindingSource)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -251,8 +251,6 @@ namespace datarace
                                         p.Cognome == textBoxCognomeRicercaPiloti.Text
                                 select new
                                 {
-                                    nome = p.Nome,
-                                    cognome = p.Cognome,
                                     classe = pp.Classe,
                                     anno = pp.Anno,
                                     eta = pp.Eta,
@@ -525,8 +523,8 @@ namespace datarace
                     NumeroCurveDestra = int.TryParse(textBoxCurveADestraCircuito.Text, out int right) ? right : -1,
                     LunghezzaRettilineoInMetri = int.TryParse(textBoxLunghezzaRettilineoCircuito.Text, out int str) ? str : -1
                 };
-                if (CheckDataValidity(new List<string> { circuito.Localita }) && new List<int> { 
-                        circuito.LunghezzaInMetri, circuito.NumeroCurveSinistra, 
+                if (CheckDataValidity(new List<string> { circuito.Localita }) && new List<int> {
+                        circuito.LunghezzaInMetri, circuito.NumeroCurveSinistra,
                         circuito.NumeroCurveDestra, circuito.LunghezzaRettilineoInMetri
                     }.Where(i => i < 0).Count() == 0)
                 {
@@ -552,26 +550,38 @@ namespace datarace
                 IQueryable query;
                 if (comboBoxSceltaOperazioneCircuiti.Text != null)
                 {
+                    // Cerca il pilota più vincente sul circuito selezionato
                     if (comboBoxSceltaOperazioneCircuiti.SelectedItem == comboBoxSceltaOperazioneCircuiti.Items[0])
                     {
-                        List<string> list = (from i in ctx.Iscrizioni
-                                join r in ctx.Risultati on i.Risultato equals r.IdRisultato
-                                join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
-                                join p in ctx.Prove on new
+                        List<string> winningRidersIds = (from i in ctx.Iscrizioni
+                                             join r in ctx.Risultati on i.Risultato equals r.IdRisultato
+                                             join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
+                                             join p in ctx.Prove on new
+                                             {
+                                                 i.PosizioneCalendario,
+                                                 i.Anno
+                                             }
+                                             equals new
+                                             {
+                                                 p.PosizioneCalendario,
+                                                 p.Anno
+                                             }
+                                             join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
+                                             where r.PosizioneArrivo == 1 && c.Nome == comboBoxNomeCircuitoQuery.Text
+                                                         select pil.IdPilota).ToList();
+                        var winningRidersIdAndWins = winningRidersIds.Select(i => (i, CountOccurences(winningRidersIds, i)));
+                        IEnumerable<(string id, int wins)> winningestRiders = winningRidersIdAndWins.Where(i => 
+                                i.Item2 == winningRidersIdAndWins.OrderByDescending(j =>j.Item2).Take(1).Single().Item2);
+                        query = from p in ctx.Piloti
+                                where winningestRiders.Select(r => r.id).Contains(p.IdPilota)
+                                select new
                                 {
-                                    i.PosizioneCalendario,
-                                    i.Anno
-                                }
-                                equals new
-                                {
-                                    p.PosizioneCalendario,
-                                    p.Anno
-                                }
-                                join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
-                                where r.PosizioneArrivo == 1 && c.Nome == comboBoxNomeCircuitoQuery.Text
-                                select pil.IdPilota).ToList();
-                        query = null;
+                                    Pilota = p.Nome + " " + p.Cognome,
+                                    Vittorie = winningestRiders.Select(r => r.wins).First()
+                                };
+                        dataGridViewQueryCircuito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
+                    // Tutti i risultati del pilota scelto nella data classe
                     else
                     {
                         query = from i in ctx.Iscrizioni
@@ -597,18 +607,32 @@ namespace datarace
                                       cl.Nome == comboBoxNomeClasseQueryCircuito.Text
                                 select new
                                 {
-                                    GP = gp.Denominazione,
                                     p.Anno,
+                                    GP = gp.Denominazione,
                                     Risultato = r.PosizioneArrivo,
                                     Partenza = r.PosizionePartenza,
                                     i.Team,
                                     Costruttore = cos.Nome,
                                     i.Modello
                                 };
+                        dataGridViewQueryCircuito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     }
                     ShowResultsOnGrid(query, dataGridViewQueryCircuito);
                 }
             }
+        }
+
+        private int CountOccurences<T>(List<T> list, T value) 
+        {
+            int count = 0;
+            foreach (var elem in list)
+            {
+                if (elem.Equals(value))
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         private void ComboBoxSceltaOpCircuiti_SelectedIndexChanged(object sender, EventArgs e)
@@ -621,7 +645,13 @@ namespace datarace
 
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
         {
-            dataGrid.DataSource = queryResult;
+            try
+            {
+                dataGrid.DataSource = queryResult;
+            }
+            catch (InvalidOperationException) 
+            {
+            }
         }
 
         private bool CheckDataValidity<T>(List<T> items)
