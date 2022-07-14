@@ -78,7 +78,21 @@ namespace datarace
             comboBoxRicercaClasse.Items.AddRange(GetAllClasses().ToArray());
             comboBoxSelezioneStagione.Items.Clear();
             comboBoxSelezioneStagione.Items.AddRange(GetAllSeasons().ToArray());
+            comboBoxNomeCircuitoQuery.Items.Clear();
+            comboBoxNomeCircuitoQuery.Items.AddRange(GetAllCircuits().ToArray());
+            comboBoxNomeClasseQueryCircuito.Items.Clear();
+            comboBoxNomeClasseQueryCircuito.Items.AddRange(GetAllClasses().ToArray());
             ShowCurrentSeasonCalendar();
+        }
+
+        private List<string> GetAllCircuits()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = from c in ctx.Circuiti
+                            select c.Nome;
+                return query.ToList();
+            }
         }
 
         private void ShowCurrentSeasonCalendar()
@@ -213,7 +227,7 @@ namespace datarace
                 IQueryable query;
                 if (comboBoxSceltaQueryPiloti.SelectedItem != null)
                 {
-                    if (comboBoxSceltaQueryPiloti.SelectedItem.Equals("Statistiche di carriera di un pilota"))
+                    if (comboBoxSceltaQueryPiloti.SelectedItem == comboBoxSceltaQueryPiloti.Items[0])
                     {
                         query = ctx.Piloti
                                     .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text &&
@@ -494,6 +508,115 @@ namespace datarace
         {
             dataGridViewCalendario.DataSource = null;
             ShowSeasonCalendar(int.TryParse(comboBoxSelezioneStagione.Text, out int season) ? season : -1);
+        }
+
+        private void ButtonAggiungiCircuito_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.Circuiti.Select(p => p.IdCircuito).Max();
+                var circuito = new Circuiti
+                {
+                    IdCircuito = AutoIncrement(currentMaxId, 3),
+                    Nome = textBoxNomeCircuito.Text,
+                    Localita = textBoxLocalitaCircuito.Text,
+                    LunghezzaInMetri = int.TryParse(textBoxLunghezzaCircuito.Text, out int len) ? len : -1,
+                    NumeroCurveSinistra = int.TryParse(textBoxCurveASinistraCircuito.Text, out int left) ? left : -1,
+                    NumeroCurveDestra = int.TryParse(textBoxCurveADestraCircuito.Text, out int right) ? right : -1,
+                    LunghezzaRettilineoInMetri = int.TryParse(textBoxLunghezzaRettilineoCircuito.Text, out int str) ? str : -1
+                };
+                if (CheckDataValidity(new List<string> { circuito.Localita }) && new List<int> { 
+                        circuito.LunghezzaInMetri, circuito.NumeroCurveSinistra, 
+                        circuito.NumeroCurveDestra, circuito.LunghezzaRettilineoInMetri
+                    }.Where(i => i < 0).Count() == 0)
+                {
+                    ctx.Circuiti.InsertOnSubmit(circuito);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    textBoxNomeCircuito.Text = string.Empty;
+                    textBoxLocalitaCircuito.Text = string.Empty;
+                    textBoxCurveASinistraCircuito.Text = string.Empty;
+                    textBoxCurveADestraCircuito.Text = string.Empty;
+                    textBoxLunghezzaCircuito.Text = string.Empty;
+                    textBoxLunghezzaRettilineoCircuito.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ButtonEseguiQueryCircuito_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                IQueryable query;
+                if (comboBoxSceltaOperazioneCircuiti.Text != null)
+                {
+                    if (comboBoxSceltaOperazioneCircuiti.SelectedItem == comboBoxSceltaOperazioneCircuiti.Items[0])
+                    {
+                        List<string> list = (from i in ctx.Iscrizioni
+                                join r in ctx.Risultati on i.Risultato equals r.IdRisultato
+                                join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
+                                join p in ctx.Prove on new
+                                {
+                                    i.PosizioneCalendario,
+                                    i.Anno
+                                }
+                                equals new
+                                {
+                                    p.PosizioneCalendario,
+                                    p.Anno
+                                }
+                                join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
+                                where r.PosizioneArrivo == 1 && c.Nome == comboBoxNomeCircuitoQuery.Text
+                                select pil.IdPilota).ToList();
+                        query = null;
+                    }
+                    else
+                    {
+                        query = from i in ctx.Iscrizioni
+                                join r in ctx.Risultati on i.Risultato equals r.IdRisultato
+                                join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
+                                join cos in ctx.Costruttori on i.Costruttore equals cos.IdCostruttore
+                                join p in ctx.Prove on new
+                                {
+                                    i.PosizioneCalendario,
+                                    i.Anno
+                                }
+                                equals new
+                                {
+                                    p.PosizioneCalendario,
+                                    p.Anno
+                                }
+                                join gp in ctx.GranPremi on p.GranPremio equals gp.IdGranPremio
+                                join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
+                                join cl in ctx.Classi on i.Classe equals cl.Nome
+                                where pil.Nome == textBoxNomePilotaQueryCircuito.Text &&
+                                      pil.Cognome == textBoxCognomePilotaQueryCircuito.Text &&
+                                      c.Nome == comboBoxNomeCircuitoQuery.Text &&
+                                      cl.Nome == comboBoxNomeClasseQueryCircuito.Text
+                                select new
+                                {
+                                    GP = gp.Denominazione,
+                                    p.Anno,
+                                    Risultato = r.PosizioneArrivo,
+                                    Partenza = r.PosizionePartenza,
+                                    i.Team,
+                                    Costruttore = cos.Nome,
+                                    i.Modello
+                                };
+                    }
+                    ShowResultsOnGrid(query, dataGridViewQueryCircuito);
+                }
+            }
+        }
+
+        private void ComboBoxSceltaOpCircuiti_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isFirstSelected = comboBoxSceltaOperazioneCircuiti.SelectedIndex == 0;
+            textBoxNomePilotaQueryCircuito.Enabled = !isFirstSelected;
+            textBoxCognomePilotaQueryCircuito.Enabled = !isFirstSelected;
+            comboBoxNomeClasseQueryCircuito.Enabled = !isFirstSelected;
         }
 
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
