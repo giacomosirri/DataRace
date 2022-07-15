@@ -42,23 +42,28 @@ namespace datarace
 
         private void LoadOrRefreshViewItems()
         {
-            // manages some buttons' enabling based on the state of the current season
-            using (DataraceDataContext ctx = new DataraceDataContext())
-            {
-                // differentiates on if the current season is over or not
-                var isOver = IsCurrentSeasonOver();
-                buttonQueryTeam.Enabled = !isOver;
-                buttonInserisciStagione.Enabled = isOver;
-                textBoxNumeroProve.Enabled = isOver;
-                // differentiates on if the current season has started or not
-                var hasStarted = IsCurrentSeasonStarted();
-                comboBoxNomeGPQueryStagione.Enabled = !hasStarted;
-                comboBoxNomeCircuitoQueryStagione.Enabled = !hasStarted;
-                textBoxNomeUfficialeGPQueryStagione.Enabled = !hasStarted;
-                dateTimePickerDataInizioGP.Enabled = !hasStarted;
-                dateTimePickerDataFineGP.Enabled = !hasStarted;
-                buttonInserisciProva.Enabled = !hasStarted;
-            }
+            // differentiates on if the current season is over or not
+            var isOver = IsCurrentSeasonOver();
+            buttonQueryTeam.Enabled = !isOver;
+            buttonInserisciStagione.Enabled = isOver;
+            textBoxNumeroProve.Enabled = isOver;
+            comboBoxPilotaQueryIscrizione.Enabled = !isOver;
+            comboBoxTeamQueryIscrizione.Enabled = !isOver;
+            comboBoxModelloQueryIscrizione.Enabled = !isOver;
+            comboBoxTipoIscrizioneQueryIscrizione.Enabled = !isOver;
+            textBoxNumeroDiGaraQueryIscrizione.Enabled = !isOver;
+            comboBoxCostruttoreQueryIscrizione.Enabled = !isOver;
+            comboBoxClasseQueryIscrizione.Enabled = !isOver;
+            buttonQueryIscrizione.Enabled = !isOver;
+            // differentiates on if the current season has started or not
+            var hasStarted = IsCurrentSeasonStarted();
+            comboBoxNomeGPQueryStagione.Enabled = !hasStarted;
+            comboBoxNomeCircuitoQueryStagione.Enabled = !hasStarted;
+            textBoxNomeUfficialeGPQueryStagione.Enabled = !hasStarted;
+            dateTimePickerDataInizioGP.Enabled = !hasStarted;
+            dateTimePickerDataFineGP.Enabled = !hasStarted;
+            buttonInserisciProva.Enabled = !hasStarted;
+            // sets up combo boxes and check boxes
             comboBoxNazionalita.Items.Clear();
             comboBoxNazionalita.Items.AddRange(GetCountryList().ToArray());
             comboBoxNomePilotaQueryPiloti.Items.Clear();
@@ -97,6 +102,14 @@ namespace datarace
             comboBoxSceltaGPQueryGare.Items.AddRange(GetAllGPs().ToArray());
             comboBoxSceltaClasseQueryGare.Items.Clear();
             comboBoxSceltaClasseQueryGare.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxPilotaQueryIscrizione.Items.Clear();
+            comboBoxPilotaQueryIscrizione.Items.AddRange(GetAllRiders().ToArray());
+            comboBoxClasseQueryIscrizione.Items.Clear();
+            comboBoxClasseQueryIscrizione.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxTeamQueryIscrizione.Items.Clear();
+            comboBoxTeamQueryIscrizione.Items.AddRange(GetCurrentSeasonTeams().ToArray());
+            comboBoxTipoIscrizioneQueryIscrizione.Items.Clear();
+            comboBoxTipoIscrizioneQueryIscrizione.Items.AddRange(new string[] { "Titolare", "Sostituto", "Wildcard" } );
             ShowCurrentSeasonCalendar();
         }
 
@@ -201,6 +214,16 @@ namespace datarace
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
                 var query = ctx.Teams.Select(t => t.Nome);
+                return query.ToList();
+            }
+        }
+
+        private List<string> GetCurrentSeasonTeams()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var query = ctx.StagioniTeam.Where(st => st.Anno == currentYear).Select(t => t.NomeUfficiale);
                 return query.ToList();
             }
         }
@@ -843,6 +866,69 @@ namespace datarace
             }
         }
 
+        private void ButtonQueryIscrizione_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                // automatize next race position in the calendar
+                int nextRace = ctx.Gare.Where(i => i.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single())
+                                          .OrderByDescending(i => i.PosizioneCalendario)
+                                          .Select(i => i.PosizioneCalendario).Take(1).Single() + 1;
+                var riderId = ctx.Piloti.Where(p => p.Nome == comboBoxPilotaQueryIscrizione.Text.Split(' ')[0] &&
+                                                p.Cognome == comboBoxPilotaQueryIscrizione.Text.Split(' ')[1])
+                                        .Select(p => p.IdPilota).Single();
+                var constructorId = ctx.Costruttori.Where(c => c.Nome == comboBoxCostruttoreQueryIscrizione.Text)
+                                        .Select(c => c.IdCostruttore).Single();
+                var iscrizione = new Iscrizioni()
+                {
+                    Pilota = riderId,
+                    NumeroDiGara = int.TryParse(textBoxNumeroDiGaraQueryIscrizione.Text, out int ndg) ? ndg : -1,
+                    Classe = comboBoxClasseQueryIscrizione.Text,
+                    Team = comboBoxTeamQueryIscrizione.Text,
+                    TipoIscrizione = comboBoxTipoIscrizioneQueryIscrizione.Text,
+                    Costruttore = constructorId,
+                    Modello = comboBoxModelloQueryIscrizione.Text,
+                    Anno = ctx.StagioneCorrente.Select(sc => sc.Anno).Single(),
+                    PosizioneCalendario = nextRace
+                };
+                if (iscrizione.NumeroDiGara > 0)
+                {
+                    ctx.Iscrizioni.InsertOnSubmit(iscrizione);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    comboBoxPilotaQueryIscrizione.Text = string.Empty;
+                    textBoxNumeroDiGaraQueryIscrizione.Text = string.Empty;
+                    comboBoxCostruttoreQueryIscrizione.Text = string.Empty;
+                    comboBoxModelloQueryIscrizione.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ComboBoxTeamQueryIscrizione_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var teams = ctx.Affiliazioni.Where(a => a.Team == comboBoxTeamQueryIscrizione.Text && a.Anno == 
+                                                ctx.StagioneCorrente.Select(sc => sc.Anno).Single())
+                                            .Select(a => a.Costruttori.Nome).ToArray();
+                comboBoxCostruttoreQueryIscrizione.Items.Clear();
+                comboBoxCostruttoreQueryIscrizione.Items.AddRange(teams);
+            }
+        }
+
+        private void ComboBoxCostruttoreQueryIscrizione_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var modelli = ctx.Costruttori.Where(c => c.Nome == comboBoxCostruttoreQueryIscrizione.Text).Single()
+                                .Modelli.Select(m => m.NomeModello).ToArray();
+                comboBoxModelloQueryIscrizione.Items.Clear();
+                comboBoxModelloQueryIscrizione.Items.AddRange(modelli);
+            }
+        }
+
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
         {
             try
@@ -873,5 +959,7 @@ namespace datarace
             }
             return autoincrementString;
         }
+
+
     }
 }
