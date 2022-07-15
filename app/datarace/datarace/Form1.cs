@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -229,15 +230,15 @@ namespace datarace
                 if (CheckDataValidity(new List<string> { pilota.IdPilota, pilota.Nome, pilota.Cognome,
                     pilota.LuogoDiNascita, pilota.Nazionalita, pilota.DataDiNascita }))
                 {
-                    dataGridViewPiloti.DataSource = null;
                     ctx.Piloti.InsertOnSubmit(pilota);
                     ctx.SubmitChanges();
-                    dataGridViewPiloti.DataSource = pilotiBindingSource;
                     // clears data after update
+                    dataGridViewPiloti.DataSource = ctx.Piloti.ToList();
                     textBoxNomePilota.Text = string.Empty;
                     textBoxCognomePilota.Text = string.Empty;
                     textBoxLuogoDiNascita.Text = string.Empty;
                     comboBoxNazionalita.Text = string.Empty;
+                    dataDiNascitaPicker.Value = DateTime.Today;
                     // refreshes view items
                     LoadOrRefreshViewItems();
                 }
@@ -302,10 +303,9 @@ namespace datarace
                 };
                 if (CheckDataValidity(new List<string> { team.IdTeam, team.Nome, team.Paese, team.Tipo }))
                 {
-                    dataGridViewTeam.DataSource = null;
                     ctx.Teams.InsertOnSubmit(team);
                     ctx.SubmitChanges();
-                    dataGridViewTeam.DataSource = teamBindingSource;
+                    dataGridViewTeam.DataSource = ctx.Teams.ToList();
                     // clears data after update
                     textBoxNomeTeam.Text = string.Empty;
                     comboBoxPaeseTeam.Text = string.Empty;
@@ -379,10 +379,9 @@ namespace datarace
                 if (CheckDataValidity(new List<string> { costruttore.Nome, costruttore.Paese }) &&
                     costruttore.AnnoDiEsordio > 0)
                 {
-                    dataGridViewCostruttori.DataSource = null;
                     ctx.Costruttori.InsertOnSubmit(costruttore);
                     ctx.SubmitChanges();
-                    dataGridViewCostruttori.DataSource = costruttoriBindingSource;
+                    dataGridViewCostruttori.DataSource = ctx.Costruttori.ToList();
                     // clears data after update
                     textBoxNomeCostruttore.Text = string.Empty;
                     comboBoxPaeseCostruttore.Text = string.Empty;
@@ -458,10 +457,9 @@ namespace datarace
                 };
                 if (CheckDataValidity(new List<string> { gp.Denominazione }))
                 {
-                    dataGridViewGranPremi.DataSource = null;
                     ctx.GranPremi.InsertOnSubmit(gp);
                     ctx.SubmitChanges();
-                    dataGridViewGranPremi.DataSource = granpremiBindingSource;
+                    dataGridViewGranPremi.DataSource = ctx.GranPremi.ToList();
                     // clears data after update
                     textBoxDenominazioneGP.Text = string.Empty;
                     // refreshes view items
@@ -554,6 +552,7 @@ namespace datarace
                 {
                     ctx.Circuiti.InsertOnSubmit(circuito);
                     ctx.SubmitChanges();
+                    dataGridViewCircuiti.DataSource = ctx.Circuiti.ToList();
                     // clears data after update
                     textBoxNomeCircuito.Text = string.Empty;
                     textBoxLocalitaCircuito.Text = string.Empty;
