@@ -749,7 +749,7 @@ namespace datarace
                                     posizione = pt.PosizioneClassifica,
                                     team = st.NomeUfficiale,
                                     punti = pt.Punti
-                                }; ;
+                                };
                     }
                     else
                     {
