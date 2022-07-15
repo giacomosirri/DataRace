@@ -35,15 +35,15 @@ namespace datarace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labelNomePiloraQueryPilota = new System.Windows.Forms.Label();
@@ -241,6 +241,18 @@ namespace datarace
             this.granPremioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroSpettatoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.circuitiTableAdapter = new datarace.dataraceDataSetTableAdapters.circuitiTableAdapter();
+            this.labelInserimentoRisultati = new System.Windows.Forms.Label();
+            this.comboBoxPilotaQueryRisultati = new System.Windows.Forms.ComboBox();
+            this.labelPilotaQueryRisultati = new System.Windows.Forms.Label();
+            this.labelClasseQueryRisultati = new System.Windows.Forms.Label();
+            this.comboBoxClasseQueryRisultati = new System.Windows.Forms.ComboBox();
+            this.labelPosizioneArrivoQueryRisultati = new System.Windows.Forms.Label();
+            this.labelPosizionePartenzaQueryRisultati = new System.Windows.Forms.Label();
+            this.textBoxPosizioneArrivoQueryRisultati = new System.Windows.Forms.TextBox();
+            this.textBoxPosizionePartenzaQueryRisultati = new System.Windows.Forms.TextBox();
+            this.checkBoxRitiroQueryRisultati = new System.Windows.Forms.CheckBox();
+            this.checkBoxSqualificaQueryRisultati = new System.Windows.Forms.CheckBox();
+            this.buttonInserisciRisultato = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -500,14 +512,14 @@ namespace datarace
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
             this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewPiloti.Name = "dataGridViewPiloti";
             this.dataGridViewPiloti.RowHeadersVisible = false;
@@ -763,14 +775,14 @@ namespace datarace
             this.paese,
             this.tipo});
             this.dataGridViewTeam.DataSource = this.teamBindingSource;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewTeam.Name = "dataGridViewTeam";
             this.dataGridViewTeam.RowHeadersVisible = false;
@@ -1025,14 +1037,14 @@ namespace datarace
             this.paeseDataGridViewTextBoxColumn,
             this.annoDiEsordioGridViewTextBoxColumn});
             this.dataGridViewCostruttori.DataSource = this.costruttoriBindingSource;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewCostruttori.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewCostruttori.Name = "dataGridViewCostruttori";
             this.dataGridViewCostruttori.RowHeadersVisible = false;
@@ -1205,14 +1217,14 @@ namespace datarace
             this.denominazioneDataGridViewTextBoxColumn,
             this.annoPrimaEdizioneDataGridViewTextBoxColumn});
             this.dataGridViewGranPremi.DataSource = this.granpremiBindingSource;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewGranPremi.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewGranPremi.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewGranPremi.Location = new System.Drawing.Point(798, 7);
             this.dataGridViewGranPremi.Name = "dataGridViewGranPremi";
             this.dataGridViewGranPremi.RowHeadersVisible = false;
@@ -1517,14 +1529,14 @@ namespace datarace
             this.numeroCurveDestra,
             this.lunghezzaRettilineoInMetri});
             this.dataGridViewCircuiti.DataSource = this.circuitiBindingSource;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCircuiti.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCircuiti.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewCircuiti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewCircuiti.Name = "dataGridViewCircuiti";
             this.dataGridViewCircuiti.RowHeadersVisible = false;
@@ -1588,6 +1600,18 @@ namespace datarace
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.buttonInserisciRisultato);
+            this.tabPage6.Controls.Add(this.checkBoxSqualificaQueryRisultati);
+            this.tabPage6.Controls.Add(this.checkBoxRitiroQueryRisultati);
+            this.tabPage6.Controls.Add(this.textBoxPosizionePartenzaQueryRisultati);
+            this.tabPage6.Controls.Add(this.textBoxPosizioneArrivoQueryRisultati);
+            this.tabPage6.Controls.Add(this.labelPosizionePartenzaQueryRisultati);
+            this.tabPage6.Controls.Add(this.labelPosizioneArrivoQueryRisultati);
+            this.tabPage6.Controls.Add(this.comboBoxClasseQueryRisultati);
+            this.tabPage6.Controls.Add(this.labelClasseQueryRisultati);
+            this.tabPage6.Controls.Add(this.labelPilotaQueryRisultati);
+            this.tabPage6.Controls.Add(this.comboBoxPilotaQueryRisultati);
+            this.tabPage6.Controls.Add(this.labelInserimentoRisultati);
             this.tabPage6.Controls.Add(this.buttonQueryIscrizione);
             this.tabPage6.Controls.Add(this.textBoxNumeroDiGaraQueryIscrizione);
             this.tabPage6.Controls.Add(this.labelNumeroDiGaraQueryIscrizione);
@@ -1857,14 +1881,14 @@ namespace datarace
             this.dataGridViewGare.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewGare.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewGare.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewGare.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewGare.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewGare.Location = new System.Drawing.Point(675, 6);
             this.dataGridViewGare.Name = "dataGridViewGare";
             this.dataGridViewGare.RowHeadersVisible = false;
@@ -2003,14 +2027,14 @@ namespace datarace
             this.dataGridViewCampionati.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCampionati.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCampionati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCampionati.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCampionati.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewCampionati.Location = new System.Drawing.Point(564, 7);
             this.dataGridViewCampionati.Name = "dataGridViewCampionati";
             this.dataGridViewCampionati.RowHeadersVisible = false;
@@ -2229,14 +2253,14 @@ namespace datarace
             this.dataGridViewCalendario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewCalendario.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCalendario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewCalendario.Location = new System.Drawing.Point(376, 6);
             this.dataGridViewCalendario.Name = "dataGridViewCalendario";
             this.dataGridViewCalendario.RowHeadersVisible = false;
@@ -2319,6 +2343,115 @@ namespace datarace
             // circuitiTableAdapter
             // 
             this.circuitiTableAdapter.ClearBeforeFill = true;
+            // 
+            // labelInserimentoRisultati
+            // 
+            this.labelInserimentoRisultati.AutoSize = true;
+            this.labelInserimentoRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelInserimentoRisultati.Location = new System.Drawing.Point(6, 247);
+            this.labelInserimentoRisultati.Name = "labelInserimentoRisultati";
+            this.labelInserimentoRisultati.Size = new System.Drawing.Size(351, 34);
+            this.labelInserimentoRisultati.TabIndex = 66;
+            this.labelInserimentoRisultati.Text = "Inserisci i risultati dei piloti partecipanti all\'ultima prova \r\ndisputata:";
+            // 
+            // comboBoxPilotaQueryRisultati
+            // 
+            this.comboBoxPilotaQueryRisultati.FormattingEnabled = true;
+            this.comboBoxPilotaQueryRisultati.Location = new System.Drawing.Point(9, 315);
+            this.comboBoxPilotaQueryRisultati.Name = "comboBoxPilotaQueryRisultati";
+            this.comboBoxPilotaQueryRisultati.Size = new System.Drawing.Size(177, 24);
+            this.comboBoxPilotaQueryRisultati.TabIndex = 67;
+            // 
+            // labelPilotaQueryRisultati
+            // 
+            this.labelPilotaQueryRisultati.AutoSize = true;
+            this.labelPilotaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPilotaQueryRisultati.Location = new System.Drawing.Point(7, 295);
+            this.labelPilotaQueryRisultati.Name = "labelPilotaQueryRisultati";
+            this.labelPilotaQueryRisultati.Size = new System.Drawing.Size(43, 17);
+            this.labelPilotaQueryRisultati.TabIndex = 68;
+            this.labelPilotaQueryRisultati.Text = "Pilota";
+            // 
+            // labelClasseQueryRisultati
+            // 
+            this.labelClasseQueryRisultati.AutoSize = true;
+            this.labelClasseQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelClasseQueryRisultati.Location = new System.Drawing.Point(211, 295);
+            this.labelClasseQueryRisultati.Name = "labelClasseQueryRisultati";
+            this.labelClasseQueryRisultati.Size = new System.Drawing.Size(50, 17);
+            this.labelClasseQueryRisultati.TabIndex = 69;
+            this.labelClasseQueryRisultati.Text = "Classe";
+            // 
+            // comboBoxClasseQueryRisultati
+            // 
+            this.comboBoxClasseQueryRisultati.FormattingEnabled = true;
+            this.comboBoxClasseQueryRisultati.Location = new System.Drawing.Point(214, 315);
+            this.comboBoxClasseQueryRisultati.Name = "comboBoxClasseQueryRisultati";
+            this.comboBoxClasseQueryRisultati.Size = new System.Drawing.Size(186, 24);
+            this.comboBoxClasseQueryRisultati.TabIndex = 70;
+            // 
+            // labelPosizioneArrivoQueryRisultati
+            // 
+            this.labelPosizioneArrivoQueryRisultati.AutoSize = true;
+            this.labelPosizioneArrivoQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(7, 351);
+            this.labelPosizioneArrivoQueryRisultati.Name = "labelPosizioneArrivoQueryRisultati";
+            this.labelPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(126, 17);
+            this.labelPosizioneArrivoQueryRisultati.TabIndex = 71;
+            this.labelPosizioneArrivoQueryRisultati.Text = "Posizione all\'arrivo";
+            // 
+            // labelPosizionePartenzaQueryRisultati
+            // 
+            this.labelPosizionePartenzaQueryRisultati.AutoSize = true;
+            this.labelPosizionePartenzaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPosizionePartenzaQueryRisultati.Location = new System.Drawing.Point(7, 406);
+            this.labelPosizionePartenzaQueryRisultati.Name = "labelPosizionePartenzaQueryRisultati";
+            this.labelPosizionePartenzaQueryRisultati.Size = new System.Drawing.Size(144, 17);
+            this.labelPosizionePartenzaQueryRisultati.TabIndex = 72;
+            this.labelPosizionePartenzaQueryRisultati.Text = "Posizione di partenza";
+            // 
+            // textBoxPosizioneArrivoQueryRisultati
+            // 
+            this.textBoxPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(9, 371);
+            this.textBoxPosizioneArrivoQueryRisultati.Name = "textBoxPosizioneArrivoQueryRisultati";
+            this.textBoxPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(142, 22);
+            this.textBoxPosizioneArrivoQueryRisultati.TabIndex = 73;
+            // 
+            // textBoxPosizionePartenzaQueryRisultati
+            // 
+            this.textBoxPosizionePartenzaQueryRisultati.Location = new System.Drawing.Point(10, 426);
+            this.textBoxPosizionePartenzaQueryRisultati.Name = "textBoxPosizionePartenzaQueryRisultati";
+            this.textBoxPosizionePartenzaQueryRisultati.Size = new System.Drawing.Size(141, 22);
+            this.textBoxPosizionePartenzaQueryRisultati.TabIndex = 74;
+            // 
+            // checkBoxRitiroQueryRisultati
+            // 
+            this.checkBoxRitiroQueryRisultati.AutoSize = true;
+            this.checkBoxRitiroQueryRisultati.Location = new System.Drawing.Point(214, 371);
+            this.checkBoxRitiroQueryRisultati.Name = "checkBoxRitiroQueryRisultati";
+            this.checkBoxRitiroQueryRisultati.Size = new System.Drawing.Size(63, 21);
+            this.checkBoxRitiroQueryRisultati.TabIndex = 76;
+            this.checkBoxRitiroQueryRisultati.Text = "Ritiro";
+            this.checkBoxRitiroQueryRisultati.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSqualificaQueryRisultati
+            // 
+            this.checkBoxSqualificaQueryRisultati.AutoSize = true;
+            this.checkBoxSqualificaQueryRisultati.Location = new System.Drawing.Point(292, 371);
+            this.checkBoxSqualificaQueryRisultati.Name = "checkBoxSqualificaQueryRisultati";
+            this.checkBoxSqualificaQueryRisultati.Size = new System.Drawing.Size(91, 21);
+            this.checkBoxSqualificaQueryRisultati.TabIndex = 77;
+            this.checkBoxSqualificaQueryRisultati.Text = "Squalifica";
+            this.checkBoxSqualificaQueryRisultati.UseVisualStyleBackColor = true;
+            // 
+            // buttonInserisciRisultato
+            // 
+            this.buttonInserisciRisultato.Location = new System.Drawing.Point(290, 416);
+            this.buttonInserisciRisultato.Name = "buttonInserisciRisultato";
+            this.buttonInserisciRisultato.Size = new System.Drawing.Size(93, 32);
+            this.buttonInserisciRisultato.TabIndex = 78;
+            this.buttonInserisciRisultato.Text = "Inserisci";
+            this.buttonInserisciRisultato.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -2569,6 +2702,18 @@ namespace datarace
         private ComboBox comboBoxClasseQueryIscrizione;
         private Label labelClasseQueryIscrizione;
         private Button buttonQueryIscrizione;
+        private Button buttonInserisciRisultato;
+        private CheckBox checkBoxSqualificaQueryRisultati;
+        private CheckBox checkBoxRitiroQueryRisultati;
+        private TextBox textBoxPosizionePartenzaQueryRisultati;
+        private TextBox textBoxPosizioneArrivoQueryRisultati;
+        private Label labelPosizionePartenzaQueryRisultati;
+        private Label labelPosizioneArrivoQueryRisultati;
+        private ComboBox comboBoxClasseQueryRisultati;
+        private Label labelClasseQueryRisultati;
+        private Label labelPilotaQueryRisultati;
+        private ComboBox comboBoxPilotaQueryRisultati;
+        private Label labelInserimentoRisultati;
     }
 }
 
