@@ -61,6 +61,8 @@ namespace datarace
             }
             comboBoxNazionalita.Items.Clear();
             comboBoxNazionalita.Items.AddRange(GetCountryList().ToArray());
+            comboBoxNomePilotaQueryPiloti.Items.Clear();
+            comboBoxNomePilotaQueryPiloti.Items.AddRange(GetAllRiders().ToArray());
             comboBoxPaeseTeam.Items.Clear();
             comboBoxPaeseTeam.Items.AddRange(GetCountryList().ToArray());
             comboBoxPaeseCostruttore.Items.Clear();
@@ -81,12 +83,20 @@ namespace datarace
             comboBoxSelezioneStagione.Items.AddRange(GetAllSeasons().ToArray());
             comboBoxNomeCircuitoQuery.Items.Clear();
             comboBoxNomeCircuitoQuery.Items.AddRange(GetAllCircuits().ToArray());
+            comboBoxNomePilotaQueryCircuito.Items.Clear();
+            comboBoxNomePilotaQueryCircuito.Items.AddRange(GetAllRiders().ToArray());
             comboBoxNomeClasseQueryCircuito.Items.Clear();
             comboBoxNomeClasseQueryCircuito.Items.AddRange(GetAllClasses().ToArray());
             comboBoxSceltaClasseQueryCampionato.Items.Clear();
             comboBoxSceltaClasseQueryCampionato.Items.AddRange(GetAllClasses().ToArray());
             comboBoxSceltaClasseAlbodOro.Items.Clear();
             comboBoxSceltaClasseAlbodOro.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxSceltaAnnoQueryGare.Items.Clear();
+            comboBoxSceltaAnnoQueryGare.Items.AddRange(GetAllSeasons().ToArray());
+            comboBoxSceltaGPQueryGare.Items.Clear();
+            comboBoxSceltaGPQueryGare.Items.AddRange(GetAllGPs().ToArray());
+            comboBoxSceltaClasseQueryGare.Items.Clear();
+            comboBoxSceltaClasseQueryGare.Items.AddRange(GetAllClasses().ToArray());
             ShowCurrentSeasonCalendar();
         }
 
@@ -110,12 +120,20 @@ namespace datarace
             }
         }
 
+        private List<string> GetAllRiders()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = ctx.Piloti.Select(p => p.Nome + " " + p.Cognome);
+                return query.ToList();
+            }
+        }
+
         private List<string> GetAllCircuits()
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                var query = from c in ctx.Circuiti
-                            select c.Nome;
+                var query = ctx.Circuiti.Select(s => s.Nome);
                 return query.ToList();
             }
         }
@@ -124,9 +142,8 @@ namespace datarace
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                var query = from sc in ctx.StagioneCorrente
-                            select sc.Anno;
-                ShowSeasonCalendar(query.Single());
+                var currentSeason = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                ShowSeasonCalendar(currentSeason);
             }
         }
 
@@ -252,11 +269,13 @@ namespace datarace
                 IQueryable query;
                 if (comboBoxSceltaQueryPiloti.SelectedItem != null)
                 {
+                    var riderNameAndSurname = comboBoxNomePilotaQueryPiloti.Text.Split(new char[] { ' ' });
+                    var riderName = riderNameAndSurname[0];
+                    var riderSurname = riderNameAndSurname[1];
                     if (comboBoxSceltaQueryPiloti.SelectedItem == comboBoxSceltaQueryPiloti.Items[0])
                     {
                         query = ctx.Piloti
-                                    .Where(p => p.Nome == textBoxNomeRicercaPiloti.Text &&
-                                            p.Cognome == textBoxCognomeRicercaPiloti.Text)
+                                    .Where(p => p.Nome == riderName && p.Cognome == riderSurname)
                                     .Select(p => new {
                                         nome = p.Nome,
                                         cognome = p.Cognome,
@@ -272,8 +291,7 @@ namespace datarace
                     {
                         query = from p in ctx.Piloti
                                 join pp in ctx.PartecipazioniPilota on p.IdPilota equals pp.Pilota
-                                where p.Nome == textBoxNomeRicercaPiloti.Text &&
-                                        p.Cognome == textBoxCognomeRicercaPiloti.Text
+                                where p.Nome == riderName && p.Cognome == riderSurname
                                 select new
                                 {
                                     classe = pp.Classe,
@@ -607,6 +625,9 @@ namespace datarace
                     // All selected riders' results in the given class
                     else
                     {
+                        var riderNameAndSurname = comboBoxNomePilotaQueryCircuito.Text.Split(new char[] { ' ' });
+                        var riderName = riderNameAndSurname[0];
+                        var riderSurname = riderNameAndSurname[1];
                         query = from i in ctx.Iscrizioni
                                 join r in ctx.Risultati on i.Risultato equals r.IdRisultato
                                 join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
@@ -624,8 +645,7 @@ namespace datarace
                                 join gp in ctx.GranPremi on p.GranPremio equals gp.IdGranPremio
                                 join c in ctx.Circuiti on p.Circuito equals c.IdCircuito
                                 join cl in ctx.Classi on i.Classe equals cl.Nome
-                                where pil.Nome == textBoxNomePilotaQueryCircuito.Text &&
-                                      pil.Cognome == textBoxCognomePilotaQueryCircuito.Text &&
+                                where pil.Nome == riderName && pil.Cognome == riderSurname &&
                                       c.Nome == comboBoxNomeCircuitoQuery.Text &&
                                       cl.Nome == comboBoxNomeClasseQueryCircuito.Text
                                 select new
@@ -661,8 +681,7 @@ namespace datarace
         private void ComboBoxSceltaOpCircuiti_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool isFirstSelected = comboBoxSceltaOperazioneCircuiti.SelectedIndex == 0;
-            textBoxNomePilotaQueryCircuito.Enabled = !isFirstSelected;
-            textBoxCognomePilotaQueryCircuito.Enabled = !isFirstSelected;
+            comboBoxNomePilotaQueryCircuito.Enabled = !isFirstSelected;
             comboBoxNomeClasseQueryCircuito.Enabled = !isFirstSelected;
         }
 
@@ -785,6 +804,42 @@ namespace datarace
                         punti = pp.PuntiValidi
                     });
                 ShowResultsOnGrid(query, dataGridViewAlbodOro);
+            }
+        }
+
+        private void ButtonMostraRisultatiGare_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var query = from r in ctx.Risultati
+                            join i in ctx.Iscrizioni on r.IdRisultato equals i.Risultato
+                            join pil in ctx.Piloti on i.Pilota equals pil.IdPilota
+                            join c in ctx.Costruttori on i.Costruttore equals c.IdCostruttore
+                            join g in ctx.Gare on r.Gara equals g.IdGara
+                            join p in ctx.Prove on new
+                            {
+                                g.Anno,
+                                g.PosizioneCalendario
+                            }
+                            equals new
+                            {
+                                p.Anno,
+                                p.PosizioneCalendario
+                            }
+                            join gp in ctx.GranPremi on p.GranPremio equals gp.IdGranPremio
+                            where g.Anno == int.Parse(comboBoxSceltaAnnoQueryGare.Text) &&
+                                  g.Classe == comboBoxSceltaClasseQueryGare.Text &&
+                                  gp.Denominazione == comboBoxSceltaGPQueryGare.Text
+                            select new
+                            {
+                                risultato = r.Ritiro ? "Retired" : (r.PosizioneArrivo == -1 ? "Disqualified" :
+                                                                    r.PosizioneArrivo.ToString()),
+                                pilota = pil.Nome + " " + pil.Cognome,
+                                team = i.Team,
+                                costruttore = c.Nome,
+                                modello = i.Modello
+                            };
+                ShowResultsOnGrid(query, dataGridViewGare);
             }
         }
 
