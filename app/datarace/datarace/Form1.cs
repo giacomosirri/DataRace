@@ -641,7 +641,7 @@ namespace datarace
                                                          select pil.IdPilota).ToList();
                         var winningRidersIdAndWins = winningRidersIds.Select(i => (i, CountOccurences(winningRidersIds, i)));
                         IEnumerable<(string id, int wins)> winningestRiders = winningRidersIdAndWins.Where(i => 
-                                i.Item2 == winningRidersIdAndWins.OrderByDescending(j =>j.Item2).Take(1).Single().Item2);
+                                i.Item2 == winningRidersIdAndWins.OrderByDescending(j => j.Item2).Take(1).Single().Item2);
                         query = from p in ctx.Piloti
                                 where winningestRiders.Select(r => r.id).Contains(p.IdPilota)
                                 select new
@@ -971,6 +971,90 @@ namespace datarace
             {
                 // finds the latest race that has been held for the selected class
                 var latestRaceNumber = LatestRaceNumber(comboBoxClasseQueryRisultati.Text);
+                var currentSeason = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                // this query must change when multiple races for class in a GP will be allowed
+                var raceId = ctx.Gare.Where(g => g.Anno == currentSeason && g.PosizioneCalendario == latestRaceNumber &&
+                                            g.Classe == comboBoxClasseQueryRisultati.Text)
+                                     .Select(g => g.IdGara).Single();
+                // these variables are needed for the following table updates
+                var riderName = comboBoxPilotaQueryRisultati.Text.Split(' ')[0];
+                var riderSurname = comboBoxPilotaQueryRisultati.Text.Split(' ')[1];
+                var riderId = ctx.Piloti.Where(p => p.Nome == riderName && p.Cognome == riderSurname).Select(p => p.IdPilota).Single();
+                var iscrizione = ctx.Iscrizioni.Where(i => i.Anno == currentSeason &&
+                            i.PosizioneCalendario == latestRaceNumber && i.Classe == comboBoxClasseQueryRisultati.Text &&
+                            i.Piloti.IdPilota == ctx.Piloti.Where(p => p.IdPilota == riderId).Select(p => p.IdPilota).Single()).Single();
+                var team = ctx.Iscrizioni.Where(i => i == iscrizione).Select(i => i.Team).Single();
+                var classe = comboBoxClasseQueryRisultati.Text;
+                var idCostruttore = ctx.Iscrizioni.Where(i => i == iscrizione).Select(i => i.Costruttore).Single();
+                var currentMaxId = ctx.Risultati.Select(g => g.IdRisultato).Max();
+                var risultato = new Risultati()
+                {
+                    IdRisultato = AutoIncrement(currentMaxId, 7),
+                    Gara = raceId,
+                    PosizioneArrivo = int.TryParse(textBoxPosizioneArrivoQueryRisultati.Text, out int pa) ? pa : -1,
+                    PosizionePartenza = textBoxPosizionePartenzaQueryRisultati.Text,
+                    Ritiro = checkBoxRitiroQueryRisultati.Checked,
+                    // empty data
+                    TempoTotale = new TimeSpan(0, 0, 0),
+                    GiroVeloce = new TimeSpan(0, 0, 0)
+                };
+                // starting position can be either a positive numerical value or the string "Pit lane"
+                if (((int.TryParse(risultato.PosizionePartenza, out int pp) && pp > 0) || 
+                    risultato.PosizionePartenza == "Pit lane") && risultato.PosizioneArrivo > 0)
+                {
+                    if (checkBoxSqualificaQueryRisultati.Checked)
+                    {
+                        var squalificati = ctx.Risultati.Where(r => r.PosizioneArrivo < 0)
+                                                        .Select(r => r.Gare)
+                                                        .Where(g => g.Anno == currentSeason &&
+                                                               g.PosizioneCalendario == latestRaceNumber &&
+                                                               g.Classe == classe)
+                                                        .Count();
+                        risultato.PosizioneArrivo = -(squalificati + 1);
+                    }
+                    ctx.Risultati.InsertOnSubmit(risultato);
+                    ctx.SubmitChanges();
+                    // update the registration that is associated with the new result
+                    iscrizione.Risultato = risultato.IdRisultato;
+                    // update the current season's points tables with the points gained by the rider
+                    var gainedPoints = ctx.Campionati.Where(c => c.Anno == currentSeason && c.Classe == classe)
+                            .Select(c => (risultato.Ritiro || checkBoxSqualificaQueryRisultati.Checked) ? 0 : 
+                                ctx.Punteggi.Where(p => p.IdPunteggio == c.Punteggio && p.Risultato == risultato.PosizioneArrivo).Select(p => p.PuntiAssegnati).Single())
+                            .Single();
+                    var partecipazionePilota = ctx.PartecipazioniPilota.Where(p => p.Anno == currentSeason &&
+                            p.Classe == classe && p.Pilota == riderId).Single();
+                    partecipazionePilota.PuntiTotali += gainedPoints;
+                    partecipazionePilota.PuntiValidi += gainedPoints;
+                    var partecipazioneTeam = ctx.PartecipazioniTeam.Where(t => t.Anno == currentSeason && t.Classe == classe && t.Team == team).Single();
+                    partecipazioneTeam.Punti += gainedPoints;
+                    ctx.SubmitChanges();
+                    // update rankings after point updates
+                    foreach (var elem in ctx.PartecipazioniPilota)
+                    {
+                        elem.PosizioneClassifica = ctx.PartecipazioniPilota.Where(p => p.Anno == currentSeason && p.Classe == classe && p.PuntiValidi > elem.PuntiValidi).Count() + 1;
+                    }
+                    foreach (var elem in ctx.PartecipazioniTeam)
+                    {
+                        elem.PosizioneClassifica = ctx.PartecipazioniTeam.Where(p => p.Anno == currentSeason && p.Classe == classe && p.Punti > elem.Punti).Count() + 1;
+                    }
+                    ctx.SubmitChanges();
+                    /* FEATURE NOT CURRENTLY IMPLEMENTED
+                    // update rider's statistics -- pole positions cannot be automatically updated due to possible penalties
+                    var statistichePilota = ctx.StatistichePiloti.Where(p => p.Pilota == riderId).Single();
+                    statistichePilota.GareDisputate++;
+                    statistichePilota.Vittorie += (risultato.PosizioneArrivo == 1) ? 1 : 0;
+                    statistichePilota.Podi += (risultato.PosizioneArrivo == 1 || risultato.PosizioneArrivo == 2 || risultato.PosizioneArrivo == 3) ? 1 : 0;
+                    */
+                    // clears data after update
+                    comboBoxClasseQueryRisultati.Text = string.Empty;
+                    comboBoxPilotaQueryRisultati.Text = string.Empty;
+                    textBoxPosizionePartenzaQueryRisultati.Text = string.Empty;
+                    textBoxPosizioneArrivoQueryRisultati.Text = string.Empty;
+                    checkBoxRitiroQueryRisultati.Checked = false;
+                    checkBoxSqualificaQueryRisultati.Checked = false;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
             }
         }
 
