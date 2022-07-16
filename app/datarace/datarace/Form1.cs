@@ -17,16 +17,13 @@ namespace datarace
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataraceDataSet.circuiti' table. You can move, or remove it, as needed.
-            this.circuitiTableAdapter.Fill(this.dataraceDataSet.circuiti);
-            // TODO: This line of code loads data into the 'dataraceDataSet.prove' table. You can move, or remove it, as needed.
-            this.proveTableAdapter.Fill(this.dataraceDataSet.prove);
-            // TODO: This line of code loads data into the 'dataraceDataSet.gran_premi' table. You can move, or remove it, as needed.
-            gran_premiTableAdapter.Fill(dataraceDataSet.gran_premi);
             // loads data into the tables
             costruttoriTableAdapter.Fill(dataraceDataSet.costruttori);
             teamTableAdapter.Fill(dataraceDataSet.team);
             pilotiTableAdapter.Fill(dataraceDataSet.piloti);
+            circuitiTableAdapter.Fill(dataraceDataSet.circuiti);
+            proveTableAdapter.Fill(dataraceDataSet.prove);
+            gran_premiTableAdapter.Fill(dataraceDataSet.gran_premi);
             // differentiate autosize mode for columns in table dataGridViewGranPremi
             dataGridViewGranPremi.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewGranPremi.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -66,10 +63,10 @@ namespace datarace
             comboBoxPaeseTeam.Items.AddRange(GetCountryList().ToArray());
             comboBoxPaeseCostruttore.Items.Clear();
             comboBoxPaeseCostruttore.Items.AddRange(GetCountryList().ToArray());
-            comboBoxNomeRicercaTeam.Items.Clear();
-            comboBoxNomeRicercaTeam.Items.AddRange(GetAllTeams().ToArray());
             checkedListBoxClassiTeam.Items.Clear();
             checkedListBoxClassiTeam.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxNomeRicercaTeam.Items.Clear();
+            comboBoxNomeRicercaTeam.Items.AddRange(GetUnregisteredTeams().ToArray());
             comboBoxNomeRicercaCostruttore.Items.Clear();
             comboBoxNomeRicercaCostruttore.Items.AddRange(GetAllConstructors().ToArray());
             comboBoxNomeInserimentoCostruttore.Items.Clear();
@@ -209,15 +206,6 @@ namespace datarace
             }
         }
 
-        private List<string> GetAllTeams()
-        {
-            using (DataraceDataContext ctx = new DataraceDataContext())
-            {
-                var query = ctx.Teams.Select(t => t.Nome);
-                return query.ToList();
-            }
-        }
-
         private List<string> GetCurrentSeasonTeams()
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
@@ -225,6 +213,15 @@ namespace datarace
                 var currentYear = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
                 var query = ctx.StagioniTeam.Where(st => st.Anno == currentYear).Select(t => t.NomeUfficiale);
                 return query.ToList();
+            }
+        }
+
+        private List<string> GetUnregisteredTeams()
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                return ctx.Teams.Where(t => !t.StagioniTeam.Where(st => st.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single())
+                                .Any()).Select(t => t.Nome).ToList();
             }
         }
 
@@ -766,7 +763,7 @@ namespace datarace
                                 {
                                     posizione = pp.PosizioneClassifica,
                                     pilota = p.Nome + " " + p.Cognome,
-                                    età = pp.Eta,
+                                    nazionalità = p.Nazionalita,
                                     punti = pp.PuntiValidi
                                 };
                     }
@@ -816,14 +813,16 @@ namespace datarace
             {
                 bool isOver = IsCurrentSeasonOver();
                 var query = ctx.PartecipazioniPilota.Where(pp => !isOver ?
-                    pp.Anno != ctx.StagioneCorrente.Select(sc => sc.Anno).Single() &&
+                    (pp.Anno != ctx.StagioneCorrente.Select(sc => sc.Anno).Single() &&
                     pp.Classe == comboBoxSceltaClasseAlbodOro.Text &&
-                    pp.PosizioneClassifica == 1 : pp.Classe == comboBoxSceltaClasseAlbodOro.Text &&
-                    pp.PosizioneClassifica == 1).Select(pp => new
+                    pp.PosizioneClassifica == 1) : (pp.Classe == comboBoxSceltaClasseAlbodOro.Text &&
+                    pp.PosizioneClassifica == 1)).Select(pp => new
                     {
                         anno = pp.Anno,
                         pilota = pp.Piloti.Nome + " " + pp.Piloti.Cognome,
                         età = pp.Eta,
+                        esperienza = pp.Esperienza,
+                        nazionalità = pp.Piloti.Nazionalita,
                         punti = pp.PuntiValidi
                     });
                 ShowResultsOnGrid(query, dataGridViewAlbodOro);
@@ -894,14 +893,21 @@ namespace datarace
                 if (iscrizione.NumeroDiGara > 0)
                 {
                     ctx.Iscrizioni.InsertOnSubmit(iscrizione);
-                    ctx.SubmitChanges();
-                    // clears data after update
-                    comboBoxPilotaQueryIscrizione.Text = string.Empty;
-                    textBoxNumeroDiGaraQueryIscrizione.Text = string.Empty;
-                    comboBoxCostruttoreQueryIscrizione.Text = string.Empty;
-                    comboBoxModelloQueryIscrizione.Text = string.Empty;
-                    // refreshes view items
-                    LoadOrRefreshViewItems();
+                    // this submission may fail if the user tries to register a rider in the same class twice
+                    try
+                    {
+                        ctx.SubmitChanges();
+                        // clears data after update
+                        comboBoxPilotaQueryIscrizione.Text = string.Empty;
+                        textBoxNumeroDiGaraQueryIscrizione.Text = string.Empty;
+                        comboBoxCostruttoreQueryIscrizione.Text = string.Empty;
+                        comboBoxModelloQueryIscrizione.Text = string.Empty;
+                        // refreshes view items
+                        LoadOrRefreshViewItems();
+                    }
+                    catch (Devart.Data.Linq.LinqCommandExecutionException)
+                    { 
+                    }
                 }
             }
         }
@@ -1010,7 +1016,11 @@ namespace datarace
                     ctx.SubmitChanges();
                     // update the registration that is associated with the new result
                     iscrizione.Risultato = risultato.IdRisultato;
-                    // update the current season's points tables with the points gained by the rider
+                    // update the current season points tables with the points gained by the rider
+                    // note that the position a rider occupies in the standings cannot be updated automatically
+                    // since the logic to split ties is too hard to implement -- that operation has to be done manually
+                    // constructor points are also not added because they usually are not a straight sum but rather
+                    // a basic algorithm (that changes from series to series) determine them
                     var gainedPoints = ctx.Campionati.Where(c => c.Anno == currentSeason && c.Classe == classe)
                             .Select(c => (risultato.Ritiro || checkBoxSqualificaQueryRisultati.Checked) ? 0 : 
                                 ctx.Punteggi.Where(p => p.IdPunteggio == c.Punteggio && p.Risultato == risultato.PosizioneArrivo).Select(p => p.PuntiAssegnati).Single())
@@ -1022,18 +1032,8 @@ namespace datarace
                     var partecipazioneTeam = ctx.PartecipazioniTeam.Where(t => t.Anno == currentSeason && t.Classe == classe && t.Team == team).Single();
                     partecipazioneTeam.Punti += gainedPoints;
                     ctx.SubmitChanges();
-                    // update rankings after point updates
-                    foreach (var elem in ctx.PartecipazioniPilota)
-                    {
-                        elem.PosizioneClassifica = ctx.PartecipazioniPilota.Where(p => p.Anno == currentSeason && p.Classe == classe && p.PuntiValidi > elem.PuntiValidi).Count() + 1;
-                    }
-                    foreach (var elem in ctx.PartecipazioniTeam)
-                    {
-                        elem.PosizioneClassifica = ctx.PartecipazioniTeam.Where(p => p.Anno == currentSeason && p.Classe == classe && p.Punti > elem.Punti).Count() + 1;
-                    }
-                    ctx.SubmitChanges();
                     /* FEATURE NOT CURRENTLY IMPLEMENTED
-                    // update rider's statistics -- pole positions cannot be automatically updated due to possible penalties
+                    // update rider's statistics -- pole positions cannot be automatically updated due to possible grid penalties
                     var statistichePilota = ctx.StatistichePiloti.Where(p => p.Pilota == riderId).Single();
                     statistichePilota.GareDisputate++;
                     statistichePilota.Vittorie += (risultato.PosizioneArrivo == 1) ? 1 : 0;
