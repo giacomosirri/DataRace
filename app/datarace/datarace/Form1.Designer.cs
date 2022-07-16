@@ -35,15 +35,15 @@ namespace datarace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labelNomePiloraQueryPilota = new System.Windows.Forms.Label();
@@ -169,6 +169,28 @@ namespace datarace
             this.lunghezzaRettilineoInMetri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.circuitiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buttonAggiungiGara = new System.Windows.Forms.Button();
+            this.dateTimePickerDataQueryInserimentoGare = new System.Windows.Forms.DateTimePicker();
+            this.labelDataQueryInserimentoGare = new System.Windows.Forms.Label();
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare = new System.Windows.Forms.ComboBox();
+            this.labelCondizioniTracciatoQueryInserimentoGare = new System.Windows.Forms.Label();
+            this.labelNumeroDiGiriQueryInserimentoGare = new System.Windows.Forms.Label();
+            this.textBoxNumeroDiGiriQueryInserimentoGare = new System.Windows.Forms.TextBox();
+            this.comboBoxClasseQueryInserimentoGare = new System.Windows.Forms.ComboBox();
+            this.labelClasseQueryInserimentoGara = new System.Windows.Forms.Label();
+            this.labelInserimentoGare = new System.Windows.Forms.Label();
+            this.buttonInserisciRisultato = new System.Windows.Forms.Button();
+            this.checkBoxSqualificaQueryRisultati = new System.Windows.Forms.CheckBox();
+            this.checkBoxRitiroQueryRisultati = new System.Windows.Forms.CheckBox();
+            this.textBoxPosizioneArrivoQueryRisultati = new System.Windows.Forms.TextBox();
+            this.labelPosizionePartenzaQueryRisultati = new System.Windows.Forms.Label();
+            this.labelPosizioneArrivoQueryRisultati = new System.Windows.Forms.Label();
+            this.comboBoxPilotaQueryRisultati = new System.Windows.Forms.ComboBox();
+            this.labelClasseQueryRisultati = new System.Windows.Forms.Label();
+            this.labelPilotaQueryRisultati = new System.Windows.Forms.Label();
+            this.comboBoxClasseQueryRisultati = new System.Windows.Forms.ComboBox();
+            this.labelInserimentoRisultati = new System.Windows.Forms.Label();
             this.buttonQueryIscrizione = new System.Windows.Forms.Button();
             this.textBoxNumeroDiGaraQueryIscrizione = new System.Windows.Forms.TextBox();
             this.labelNumeroDiGaraQueryIscrizione = new System.Windows.Forms.Label();
@@ -241,18 +263,7 @@ namespace datarace
             this.granPremioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroSpettatoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.circuitiTableAdapter = new datarace.dataraceDataSetTableAdapters.circuitiTableAdapter();
-            this.labelInserimentoRisultati = new System.Windows.Forms.Label();
-            this.comboBoxPilotaQueryRisultati = new System.Windows.Forms.ComboBox();
-            this.labelPilotaQueryRisultati = new System.Windows.Forms.Label();
-            this.labelClasseQueryRisultati = new System.Windows.Forms.Label();
-            this.comboBoxClasseQueryRisultati = new System.Windows.Forms.ComboBox();
-            this.labelPosizioneArrivoQueryRisultati = new System.Windows.Forms.Label();
-            this.labelPosizionePartenzaQueryRisultati = new System.Windows.Forms.Label();
-            this.textBoxPosizioneArrivoQueryRisultati = new System.Windows.Forms.TextBox();
-            this.textBoxPosizionePartenzaQueryRisultati = new System.Windows.Forms.TextBox();
-            this.checkBoxRitiroQueryRisultati = new System.Windows.Forms.CheckBox();
-            this.checkBoxSqualificaQueryRisultati = new System.Windows.Forms.CheckBox();
-            this.buttonInserisciRisultato = new System.Windows.Forms.Button();
+            this.dateTimePickerOraInizioQueryInserimentoGare = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueryPiloti)).BeginInit();
@@ -512,14 +523,14 @@ namespace datarace
             this.nazionalitaDataGridViewTextBoxColumn,
             this.dataDiNascitaDataGridViewTextBoxColumn});
             this.dataGridViewPiloti.DataSource = this.pilotiBindingSource;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPiloti.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewPiloti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewPiloti.Name = "dataGridViewPiloti";
             this.dataGridViewPiloti.RowHeadersVisible = false;
@@ -775,14 +786,14 @@ namespace datarace
             this.paese,
             this.tipo});
             this.dataGridViewTeam.DataSource = this.teamBindingSource;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTeam.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTeam.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewTeam.Name = "dataGridViewTeam";
             this.dataGridViewTeam.RowHeadersVisible = false;
@@ -1037,14 +1048,14 @@ namespace datarace
             this.paeseDataGridViewTextBoxColumn,
             this.annoDiEsordioGridViewTextBoxColumn});
             this.dataGridViewCostruttori.DataSource = this.costruttoriBindingSource;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCostruttori.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewCostruttori.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewCostruttori.Name = "dataGridViewCostruttori";
             this.dataGridViewCostruttori.RowHeadersVisible = false;
@@ -1217,14 +1228,14 @@ namespace datarace
             this.denominazioneDataGridViewTextBoxColumn,
             this.annoPrimaEdizioneDataGridViewTextBoxColumn});
             this.dataGridViewGranPremi.DataSource = this.granpremiBindingSource;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewGranPremi.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewGranPremi.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewGranPremi.Location = new System.Drawing.Point(798, 7);
             this.dataGridViewGranPremi.Name = "dataGridViewGranPremi";
             this.dataGridViewGranPremi.RowHeadersVisible = false;
@@ -1529,14 +1540,14 @@ namespace datarace
             this.numeroCurveDestra,
             this.lunghezzaRettilineoInMetri});
             this.dataGridViewCircuiti.DataSource = this.circuitiBindingSource;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCircuiti.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCircuiti.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewCircuiti.Location = new System.Drawing.Point(564, 6);
             this.dataGridViewCircuiti.Name = "dataGridViewCircuiti";
             this.dataGridViewCircuiti.RowHeadersVisible = false;
@@ -1600,17 +1611,28 @@ namespace datarace
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.dateTimePickerOraInizioQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.textBox2);
+            this.tabPage6.Controls.Add(this.buttonAggiungiGara);
+            this.tabPage6.Controls.Add(this.dateTimePickerDataQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.labelDataQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.comboBoxCondizioniTracciatoQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.labelCondizioniTracciatoQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.labelNumeroDiGiriQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.textBoxNumeroDiGiriQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.comboBoxClasseQueryInserimentoGare);
+            this.tabPage6.Controls.Add(this.labelClasseQueryInserimentoGara);
+            this.tabPage6.Controls.Add(this.labelInserimentoGare);
             this.tabPage6.Controls.Add(this.buttonInserisciRisultato);
             this.tabPage6.Controls.Add(this.checkBoxSqualificaQueryRisultati);
             this.tabPage6.Controls.Add(this.checkBoxRitiroQueryRisultati);
-            this.tabPage6.Controls.Add(this.textBoxPosizionePartenzaQueryRisultati);
             this.tabPage6.Controls.Add(this.textBoxPosizioneArrivoQueryRisultati);
             this.tabPage6.Controls.Add(this.labelPosizionePartenzaQueryRisultati);
             this.tabPage6.Controls.Add(this.labelPosizioneArrivoQueryRisultati);
-            this.tabPage6.Controls.Add(this.comboBoxClasseQueryRisultati);
+            this.tabPage6.Controls.Add(this.comboBoxPilotaQueryRisultati);
             this.tabPage6.Controls.Add(this.labelClasseQueryRisultati);
             this.tabPage6.Controls.Add(this.labelPilotaQueryRisultati);
-            this.tabPage6.Controls.Add(this.comboBoxPilotaQueryRisultati);
+            this.tabPage6.Controls.Add(this.comboBoxClasseQueryRisultati);
             this.tabPage6.Controls.Add(this.labelInserimentoRisultati);
             this.tabPage6.Controls.Add(this.buttonQueryIscrizione);
             this.tabPage6.Controls.Add(this.textBoxNumeroDiGaraQueryIscrizione);
@@ -1645,6 +1667,209 @@ namespace datarace
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "gare";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(617, 368);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(186, 22);
+            this.textBox2.TabIndex = 90;
+            // 
+            // buttonAggiungiGara
+            // 
+            this.buttonAggiungiGara.Location = new System.Drawing.Point(307, 398);
+            this.buttonAggiungiGara.Name = "buttonAggiungiGara";
+            this.buttonAggiungiGara.Size = new System.Drawing.Size(93, 32);
+            this.buttonAggiungiGara.TabIndex = 89;
+            this.buttonAggiungiGara.Text = "Aggiungi";
+            this.buttonAggiungiGara.UseVisualStyleBackColor = true;
+            this.buttonAggiungiGara.Click += new System.EventHandler(this.ButtonAggiungiGara_Click);
+            // 
+            // dateTimePickerDataQueryInserimentoGare
+            // 
+            this.dateTimePickerDataQueryInserimentoGare.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePickerDataQueryInserimentoGare.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDataQueryInserimentoGare.Location = new System.Drawing.Point(124, 403);
+            this.dateTimePickerDataQueryInserimentoGare.Name = "dateTimePickerDataQueryInserimentoGare";
+            this.dateTimePickerDataQueryInserimentoGare.Size = new System.Drawing.Size(88, 22);
+            this.dateTimePickerDataQueryInserimentoGare.TabIndex = 88;
+            // 
+            // labelDataQueryInserimentoGare
+            // 
+            this.labelDataQueryInserimentoGare.AutoSize = true;
+            this.labelDataQueryInserimentoGare.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelDataQueryInserimentoGare.Location = new System.Drawing.Point(121, 383);
+            this.labelDataQueryInserimentoGare.Name = "labelDataQueryInserimentoGare";
+            this.labelDataQueryInserimentoGare.Size = new System.Drawing.Size(126, 17);
+            this.labelDataQueryInserimentoGare.TabIndex = 87;
+            this.labelDataQueryInserimentoGare.Text = "Data e ora di inizio";
+            // 
+            // comboBoxCondizioniTracciatoQueryInserimentoGare
+            // 
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare.FormattingEnabled = true;
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare.Location = new System.Drawing.Point(214, 341);
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare.Name = "comboBoxCondizioniTracciatoQueryInserimentoGare";
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare.Size = new System.Drawing.Size(186, 24);
+            this.comboBoxCondizioniTracciatoQueryInserimentoGare.TabIndex = 86;
+            // 
+            // labelCondizioniTracciatoQueryInserimentoGare
+            // 
+            this.labelCondizioniTracciatoQueryInserimentoGare.AutoSize = true;
+            this.labelCondizioniTracciatoQueryInserimentoGare.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelCondizioniTracciatoQueryInserimentoGare.Location = new System.Drawing.Point(211, 321);
+            this.labelCondizioniTracciatoQueryInserimentoGare.Name = "labelCondizioniTracciatoQueryInserimentoGare";
+            this.labelCondizioniTracciatoQueryInserimentoGare.Size = new System.Drawing.Size(131, 17);
+            this.labelCondizioniTracciatoQueryInserimentoGare.TabIndex = 84;
+            this.labelCondizioniTracciatoQueryInserimentoGare.Text = "Condizioni tracciato";
+            // 
+            // labelNumeroDiGiriQueryInserimentoGare
+            // 
+            this.labelNumeroDiGiriQueryInserimentoGare.AutoSize = true;
+            this.labelNumeroDiGiriQueryInserimentoGare.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelNumeroDiGiriQueryInserimentoGare.Location = new System.Drawing.Point(6, 383);
+            this.labelNumeroDiGiriQueryInserimentoGare.Name = "labelNumeroDiGiriQueryInserimentoGare";
+            this.labelNumeroDiGiriQueryInserimentoGare.Size = new System.Drawing.Size(96, 17);
+            this.labelNumeroDiGiriQueryInserimentoGare.TabIndex = 83;
+            this.labelNumeroDiGiriQueryInserimentoGare.Text = "Numero di giri";
+            // 
+            // textBoxNumeroDiGiriQueryInserimentoGare
+            // 
+            this.textBoxNumeroDiGiriQueryInserimentoGare.Location = new System.Drawing.Point(9, 403);
+            this.textBoxNumeroDiGiriQueryInserimentoGare.Name = "textBoxNumeroDiGiriQueryInserimentoGare";
+            this.textBoxNumeroDiGiriQueryInserimentoGare.Size = new System.Drawing.Size(93, 22);
+            this.textBoxNumeroDiGiriQueryInserimentoGare.TabIndex = 82;
+            // 
+            // comboBoxClasseQueryInserimentoGare
+            // 
+            this.comboBoxClasseQueryInserimentoGare.FormattingEnabled = true;
+            this.comboBoxClasseQueryInserimentoGare.Location = new System.Drawing.Point(9, 341);
+            this.comboBoxClasseQueryInserimentoGare.Name = "comboBoxClasseQueryInserimentoGare";
+            this.comboBoxClasseQueryInserimentoGare.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxClasseQueryInserimentoGare.TabIndex = 81;
+            // 
+            // labelClasseQueryInserimentoGara
+            // 
+            this.labelClasseQueryInserimentoGara.AutoSize = true;
+            this.labelClasseQueryInserimentoGara.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelClasseQueryInserimentoGara.Location = new System.Drawing.Point(6, 321);
+            this.labelClasseQueryInserimentoGara.Name = "labelClasseQueryInserimentoGara";
+            this.labelClasseQueryInserimentoGara.Size = new System.Drawing.Size(50, 17);
+            this.labelClasseQueryInserimentoGara.TabIndex = 80;
+            this.labelClasseQueryInserimentoGara.Text = "Classe";
+            // 
+            // labelInserimentoGare
+            // 
+            this.labelInserimentoGare.AutoSize = true;
+            this.labelInserimentoGare.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelInserimentoGare.Location = new System.Drawing.Point(6, 239);
+            this.labelInserimentoGare.Name = "labelInserimentoGare";
+            this.labelInserimentoGare.Size = new System.Drawing.Size(363, 68);
+            this.labelInserimentoGare.TabIndex = 79;
+            this.labelInserimentoGare.Text = resources.GetString("labelInserimentoGare.Text");
+            // 
+            // buttonInserisciRisultato
+            // 
+            this.buttonInserisciRisultato.Location = new System.Drawing.Point(710, 404);
+            this.buttonInserisciRisultato.Name = "buttonInserisciRisultato";
+            this.buttonInserisciRisultato.Size = new System.Drawing.Size(93, 32);
+            this.buttonInserisciRisultato.TabIndex = 78;
+            this.buttonInserisciRisultato.Text = "Inserisci";
+            this.buttonInserisciRisultato.UseVisualStyleBackColor = true;
+            this.buttonInserisciRisultato.Click += new System.EventHandler(this.ButtonInserisciRisultato_Click);
+            // 
+            // checkBoxSqualificaQueryRisultati
+            // 
+            this.checkBoxSqualificaQueryRisultati.AutoSize = true;
+            this.checkBoxSqualificaQueryRisultati.Location = new System.Drawing.Point(505, 411);
+            this.checkBoxSqualificaQueryRisultati.Name = "checkBoxSqualificaQueryRisultati";
+            this.checkBoxSqualificaQueryRisultati.Size = new System.Drawing.Size(91, 21);
+            this.checkBoxSqualificaQueryRisultati.TabIndex = 77;
+            this.checkBoxSqualificaQueryRisultati.Text = "Squalifica";
+            this.checkBoxSqualificaQueryRisultati.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxRitiroQueryRisultati
+            // 
+            this.checkBoxRitiroQueryRisultati.AutoSize = true;
+            this.checkBoxRitiroQueryRisultati.Location = new System.Drawing.Point(419, 411);
+            this.checkBoxRitiroQueryRisultati.Name = "checkBoxRitiroQueryRisultati";
+            this.checkBoxRitiroQueryRisultati.Size = new System.Drawing.Size(63, 21);
+            this.checkBoxRitiroQueryRisultati.TabIndex = 76;
+            this.checkBoxRitiroQueryRisultati.Text = "Ritiro";
+            this.checkBoxRitiroQueryRisultati.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPosizioneArrivoQueryRisultati
+            // 
+            this.textBoxPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(419, 368);
+            this.textBoxPosizioneArrivoQueryRisultati.Name = "textBoxPosizioneArrivoQueryRisultati";
+            this.textBoxPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(177, 22);
+            this.textBoxPosizioneArrivoQueryRisultati.TabIndex = 73;
+            // 
+            // labelPosizionePartenzaQueryRisultati
+            // 
+            this.labelPosizionePartenzaQueryRisultati.AutoSize = true;
+            this.labelPosizionePartenzaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPosizionePartenzaQueryRisultati.Location = new System.Drawing.Point(614, 348);
+            this.labelPosizionePartenzaQueryRisultati.Name = "labelPosizionePartenzaQueryRisultati";
+            this.labelPosizionePartenzaQueryRisultati.Size = new System.Drawing.Size(144, 17);
+            this.labelPosizionePartenzaQueryRisultati.TabIndex = 72;
+            this.labelPosizionePartenzaQueryRisultati.Text = "Posizione di partenza";
+            // 
+            // labelPosizioneArrivoQueryRisultati
+            // 
+            this.labelPosizioneArrivoQueryRisultati.AutoSize = true;
+            this.labelPosizioneArrivoQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(416, 348);
+            this.labelPosizioneArrivoQueryRisultati.Name = "labelPosizioneArrivoQueryRisultati";
+            this.labelPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(126, 17);
+            this.labelPosizioneArrivoQueryRisultati.TabIndex = 71;
+            this.labelPosizioneArrivoQueryRisultati.Text = "Posizione all\'arrivo";
+            // 
+            // comboBoxPilotaQueryRisultati
+            // 
+            this.comboBoxPilotaQueryRisultati.FormattingEnabled = true;
+            this.comboBoxPilotaQueryRisultati.Location = new System.Drawing.Point(617, 310);
+            this.comboBoxPilotaQueryRisultati.Name = "comboBoxPilotaQueryRisultati";
+            this.comboBoxPilotaQueryRisultati.Size = new System.Drawing.Size(186, 24);
+            this.comboBoxPilotaQueryRisultati.TabIndex = 70;
+            // 
+            // labelClasseQueryRisultati
+            // 
+            this.labelClasseQueryRisultati.AutoSize = true;
+            this.labelClasseQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelClasseQueryRisultati.Location = new System.Drawing.Point(416, 290);
+            this.labelClasseQueryRisultati.Name = "labelClasseQueryRisultati";
+            this.labelClasseQueryRisultati.Size = new System.Drawing.Size(50, 17);
+            this.labelClasseQueryRisultati.TabIndex = 69;
+            this.labelClasseQueryRisultati.Text = "Classe";
+            // 
+            // labelPilotaQueryRisultati
+            // 
+            this.labelPilotaQueryRisultati.AutoSize = true;
+            this.labelPilotaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelPilotaQueryRisultati.Location = new System.Drawing.Point(614, 290);
+            this.labelPilotaQueryRisultati.Name = "labelPilotaQueryRisultati";
+            this.labelPilotaQueryRisultati.Size = new System.Drawing.Size(43, 17);
+            this.labelPilotaQueryRisultati.TabIndex = 68;
+            this.labelPilotaQueryRisultati.Text = "Pilota";
+            // 
+            // comboBoxClasseQueryRisultati
+            // 
+            this.comboBoxClasseQueryRisultati.FormattingEnabled = true;
+            this.comboBoxClasseQueryRisultati.Location = new System.Drawing.Point(419, 310);
+            this.comboBoxClasseQueryRisultati.Name = "comboBoxClasseQueryRisultati";
+            this.comboBoxClasseQueryRisultati.Size = new System.Drawing.Size(177, 24);
+            this.comboBoxClasseQueryRisultati.TabIndex = 67;
+            this.comboBoxClasseQueryRisultati.SelectedIndexChanged += new System.EventHandler(this.ComboBoxClasseQueryRisultati_SelectedIndexChanged);
+            // 
+            // labelInserimentoRisultati
+            // 
+            this.labelInserimentoRisultati.AutoSize = true;
+            this.labelInserimentoRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelInserimentoRisultati.Location = new System.Drawing.Point(416, 239);
+            this.labelInserimentoRisultati.Name = "labelInserimentoRisultati";
+            this.labelInserimentoRisultati.Size = new System.Drawing.Size(351, 34);
+            this.labelInserimentoRisultati.TabIndex = 66;
+            this.labelInserimentoRisultati.Text = "Inserisci i risultati dei piloti partecipanti all\'ultima prova \r\ndisputata:";
             // 
             // buttonQueryIscrizione
             // 
@@ -1804,7 +2029,7 @@ namespace datarace
             // 
             // buttonMostraRisultatiGare
             // 
-            this.buttonMostraRisultatiGare.Location = new System.Drawing.Point(567, 239);
+            this.buttonMostraRisultatiGare.Location = new System.Drawing.Point(710, 126);
             this.buttonMostraRisultatiGare.Name = "buttonMostraRisultatiGare";
             this.buttonMostraRisultatiGare.Size = new System.Drawing.Size(93, 32);
             this.buttonMostraRisultatiGare.TabIndex = 48;
@@ -1815,16 +2040,16 @@ namespace datarace
             // comboBoxSceltaClasseQueryGare
             // 
             this.comboBoxSceltaClasseQueryGare.FormattingEnabled = true;
-            this.comboBoxSceltaClasseQueryGare.Location = new System.Drawing.Point(420, 189);
+            this.comboBoxSceltaClasseQueryGare.Location = new System.Drawing.Point(604, 71);
             this.comboBoxSceltaClasseQueryGare.Name = "comboBoxSceltaClasseQueryGare";
-            this.comboBoxSceltaClasseQueryGare.Size = new System.Drawing.Size(241, 24);
+            this.comboBoxSceltaClasseQueryGare.Size = new System.Drawing.Size(199, 24);
             this.comboBoxSceltaClasseQueryGare.TabIndex = 47;
             // 
             // labelClasseQueryGare
             // 
             this.labelClasseQueryGare.AutoSize = true;
             this.labelClasseQueryGare.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelClasseQueryGare.Location = new System.Drawing.Point(417, 169);
+            this.labelClasseQueryGare.Location = new System.Drawing.Point(601, 51);
             this.labelClasseQueryGare.Name = "labelClasseQueryGare";
             this.labelClasseQueryGare.Size = new System.Drawing.Size(50, 17);
             this.labelClasseQueryGare.TabIndex = 46;
@@ -1833,16 +2058,16 @@ namespace datarace
             // comboBoxSceltaGPQueryGare
             // 
             this.comboBoxSceltaGPQueryGare.FormattingEnabled = true;
-            this.comboBoxSceltaGPQueryGare.Location = new System.Drawing.Point(420, 131);
+            this.comboBoxSceltaGPQueryGare.Location = new System.Drawing.Point(419, 131);
             this.comboBoxSceltaGPQueryGare.Name = "comboBoxSceltaGPQueryGare";
-            this.comboBoxSceltaGPQueryGare.Size = new System.Drawing.Size(241, 24);
+            this.comboBoxSceltaGPQueryGare.Size = new System.Drawing.Size(257, 24);
             this.comboBoxSceltaGPQueryGare.TabIndex = 45;
             // 
             // labelGPQueryGare
             // 
             this.labelGPQueryGare.AutoSize = true;
             this.labelGPQueryGare.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelGPQueryGare.Location = new System.Drawing.Point(417, 111);
+            this.labelGPQueryGare.Location = new System.Drawing.Point(416, 111);
             this.labelGPQueryGare.Name = "labelGPQueryGare";
             this.labelGPQueryGare.Size = new System.Drawing.Size(88, 17);
             this.labelGPQueryGare.TabIndex = 44;
@@ -1851,16 +2076,16 @@ namespace datarace
             // comboBoxSceltaAnnoQueryGare
             // 
             this.comboBoxSceltaAnnoQueryGare.FormattingEnabled = true;
-            this.comboBoxSceltaAnnoQueryGare.Location = new System.Drawing.Point(420, 71);
+            this.comboBoxSceltaAnnoQueryGare.Location = new System.Drawing.Point(419, 71);
             this.comboBoxSceltaAnnoQueryGare.Name = "comboBoxSceltaAnnoQueryGare";
-            this.comboBoxSceltaAnnoQueryGare.Size = new System.Drawing.Size(241, 24);
+            this.comboBoxSceltaAnnoQueryGare.Size = new System.Drawing.Size(152, 24);
             this.comboBoxSceltaAnnoQueryGare.TabIndex = 43;
             // 
             // labelAnnoQueryGare
             // 
             this.labelAnnoQueryGare.AutoSize = true;
             this.labelAnnoQueryGare.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelAnnoQueryGare.Location = new System.Drawing.Point(417, 51);
+            this.labelAnnoQueryGare.Location = new System.Drawing.Point(416, 51);
             this.labelAnnoQueryGare.Name = "labelAnnoQueryGare";
             this.labelAnnoQueryGare.Size = new System.Drawing.Size(41, 17);
             this.labelAnnoQueryGare.TabIndex = 42;
@@ -1870,7 +2095,7 @@ namespace datarace
             // 
             this.labelVisualizzaRisultatiGara.AutoSize = true;
             this.labelVisualizzaRisultatiGara.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelVisualizzaRisultatiGara.Location = new System.Drawing.Point(417, 15);
+            this.labelVisualizzaRisultatiGara.Location = new System.Drawing.Point(416, 23);
             this.labelVisualizzaRisultatiGara.Name = "labelVisualizzaRisultatiGara";
             this.labelVisualizzaRisultatiGara.Size = new System.Drawing.Size(207, 17);
             this.labelVisualizzaRisultatiGara.TabIndex = 40;
@@ -1881,20 +2106,20 @@ namespace datarace
             this.dataGridViewGare.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewGare.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewGare.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewGare.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewGare.Location = new System.Drawing.Point(675, 6);
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewGare.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewGare.Location = new System.Drawing.Point(810, 6);
             this.dataGridViewGare.Name = "dataGridViewGare";
             this.dataGridViewGare.RowHeadersVisible = false;
             this.dataGridViewGare.RowHeadersWidth = 51;
             this.dataGridViewGare.RowTemplate.Height = 24;
-            this.dataGridViewGare.Size = new System.Drawing.Size(645, 446);
+            this.dataGridViewGare.Size = new System.Drawing.Size(511, 446);
             this.dataGridViewGare.TabIndex = 26;
             // 
             // tabPage7
@@ -2027,14 +2252,14 @@ namespace datarace
             this.dataGridViewCampionati.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCampionati.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCampionati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCampionati.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCampionati.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewCampionati.Location = new System.Drawing.Point(564, 7);
             this.dataGridViewCampionati.Name = "dataGridViewCampionati";
             this.dataGridViewCampionati.RowHeadersVisible = false;
@@ -2253,14 +2478,14 @@ namespace datarace
             this.dataGridViewCalendario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewCalendario.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewCalendario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCalendario.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewCalendario.Location = new System.Drawing.Point(376, 6);
             this.dataGridViewCalendario.Name = "dataGridViewCalendario";
             this.dataGridViewCalendario.RowHeadersVisible = false;
@@ -2344,114 +2569,14 @@ namespace datarace
             // 
             this.circuitiTableAdapter.ClearBeforeFill = true;
             // 
-            // labelInserimentoRisultati
+            // dateTimePickerOraInizioQueryInserimentoGare
             // 
-            this.labelInserimentoRisultati.AutoSize = true;
-            this.labelInserimentoRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelInserimentoRisultati.Location = new System.Drawing.Point(6, 247);
-            this.labelInserimentoRisultati.Name = "labelInserimentoRisultati";
-            this.labelInserimentoRisultati.Size = new System.Drawing.Size(351, 34);
-            this.labelInserimentoRisultati.TabIndex = 66;
-            this.labelInserimentoRisultati.Text = "Inserisci i risultati dei piloti partecipanti all\'ultima prova \r\ndisputata:";
-            // 
-            // comboBoxPilotaQueryRisultati
-            // 
-            this.comboBoxPilotaQueryRisultati.FormattingEnabled = true;
-            this.comboBoxPilotaQueryRisultati.Location = new System.Drawing.Point(9, 315);
-            this.comboBoxPilotaQueryRisultati.Name = "comboBoxPilotaQueryRisultati";
-            this.comboBoxPilotaQueryRisultati.Size = new System.Drawing.Size(177, 24);
-            this.comboBoxPilotaQueryRisultati.TabIndex = 67;
-            // 
-            // labelPilotaQueryRisultati
-            // 
-            this.labelPilotaQueryRisultati.AutoSize = true;
-            this.labelPilotaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelPilotaQueryRisultati.Location = new System.Drawing.Point(7, 295);
-            this.labelPilotaQueryRisultati.Name = "labelPilotaQueryRisultati";
-            this.labelPilotaQueryRisultati.Size = new System.Drawing.Size(43, 17);
-            this.labelPilotaQueryRisultati.TabIndex = 68;
-            this.labelPilotaQueryRisultati.Text = "Pilota";
-            // 
-            // labelClasseQueryRisultati
-            // 
-            this.labelClasseQueryRisultati.AutoSize = true;
-            this.labelClasseQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelClasseQueryRisultati.Location = new System.Drawing.Point(211, 295);
-            this.labelClasseQueryRisultati.Name = "labelClasseQueryRisultati";
-            this.labelClasseQueryRisultati.Size = new System.Drawing.Size(50, 17);
-            this.labelClasseQueryRisultati.TabIndex = 69;
-            this.labelClasseQueryRisultati.Text = "Classe";
-            // 
-            // comboBoxClasseQueryRisultati
-            // 
-            this.comboBoxClasseQueryRisultati.FormattingEnabled = true;
-            this.comboBoxClasseQueryRisultati.Location = new System.Drawing.Point(214, 315);
-            this.comboBoxClasseQueryRisultati.Name = "comboBoxClasseQueryRisultati";
-            this.comboBoxClasseQueryRisultati.Size = new System.Drawing.Size(186, 24);
-            this.comboBoxClasseQueryRisultati.TabIndex = 70;
-            // 
-            // labelPosizioneArrivoQueryRisultati
-            // 
-            this.labelPosizioneArrivoQueryRisultati.AutoSize = true;
-            this.labelPosizioneArrivoQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(7, 351);
-            this.labelPosizioneArrivoQueryRisultati.Name = "labelPosizioneArrivoQueryRisultati";
-            this.labelPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(126, 17);
-            this.labelPosizioneArrivoQueryRisultati.TabIndex = 71;
-            this.labelPosizioneArrivoQueryRisultati.Text = "Posizione all\'arrivo";
-            // 
-            // labelPosizionePartenzaQueryRisultati
-            // 
-            this.labelPosizionePartenzaQueryRisultati.AutoSize = true;
-            this.labelPosizionePartenzaQueryRisultati.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.labelPosizionePartenzaQueryRisultati.Location = new System.Drawing.Point(7, 406);
-            this.labelPosizionePartenzaQueryRisultati.Name = "labelPosizionePartenzaQueryRisultati";
-            this.labelPosizionePartenzaQueryRisultati.Size = new System.Drawing.Size(144, 17);
-            this.labelPosizionePartenzaQueryRisultati.TabIndex = 72;
-            this.labelPosizionePartenzaQueryRisultati.Text = "Posizione di partenza";
-            // 
-            // textBoxPosizioneArrivoQueryRisultati
-            // 
-            this.textBoxPosizioneArrivoQueryRisultati.Location = new System.Drawing.Point(9, 371);
-            this.textBoxPosizioneArrivoQueryRisultati.Name = "textBoxPosizioneArrivoQueryRisultati";
-            this.textBoxPosizioneArrivoQueryRisultati.Size = new System.Drawing.Size(142, 22);
-            this.textBoxPosizioneArrivoQueryRisultati.TabIndex = 73;
-            // 
-            // textBoxPosizionePartenzaQueryRisultati
-            // 
-            this.textBoxPosizionePartenzaQueryRisultati.Location = new System.Drawing.Point(10, 426);
-            this.textBoxPosizionePartenzaQueryRisultati.Name = "textBoxPosizionePartenzaQueryRisultati";
-            this.textBoxPosizionePartenzaQueryRisultati.Size = new System.Drawing.Size(141, 22);
-            this.textBoxPosizionePartenzaQueryRisultati.TabIndex = 74;
-            // 
-            // checkBoxRitiroQueryRisultati
-            // 
-            this.checkBoxRitiroQueryRisultati.AutoSize = true;
-            this.checkBoxRitiroQueryRisultati.Location = new System.Drawing.Point(214, 371);
-            this.checkBoxRitiroQueryRisultati.Name = "checkBoxRitiroQueryRisultati";
-            this.checkBoxRitiroQueryRisultati.Size = new System.Drawing.Size(63, 21);
-            this.checkBoxRitiroQueryRisultati.TabIndex = 76;
-            this.checkBoxRitiroQueryRisultati.Text = "Ritiro";
-            this.checkBoxRitiroQueryRisultati.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxSqualificaQueryRisultati
-            // 
-            this.checkBoxSqualificaQueryRisultati.AutoSize = true;
-            this.checkBoxSqualificaQueryRisultati.Location = new System.Drawing.Point(292, 371);
-            this.checkBoxSqualificaQueryRisultati.Name = "checkBoxSqualificaQueryRisultati";
-            this.checkBoxSqualificaQueryRisultati.Size = new System.Drawing.Size(91, 21);
-            this.checkBoxSqualificaQueryRisultati.TabIndex = 77;
-            this.checkBoxSqualificaQueryRisultati.Text = "Squalifica";
-            this.checkBoxSqualificaQueryRisultati.UseVisualStyleBackColor = true;
-            // 
-            // buttonInserisciRisultato
-            // 
-            this.buttonInserisciRisultato.Location = new System.Drawing.Point(290, 416);
-            this.buttonInserisciRisultato.Name = "buttonInserisciRisultato";
-            this.buttonInserisciRisultato.Size = new System.Drawing.Size(93, 32);
-            this.buttonInserisciRisultato.TabIndex = 78;
-            this.buttonInserisciRisultato.Text = "Inserisci";
-            this.buttonInserisciRisultato.UseVisualStyleBackColor = true;
+            this.dateTimePickerOraInizioQueryInserimentoGare.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerOraInizioQueryInserimentoGare.Location = new System.Drawing.Point(218, 403);
+            this.dateTimePickerOraInizioQueryInserimentoGare.Name = "dateTimePickerOraInizioQueryInserimentoGare";
+            this.dateTimePickerOraInizioQueryInserimentoGare.ShowUpDown = true;
+            this.dateTimePickerOraInizioQueryInserimentoGare.Size = new System.Drawing.Size(74, 22);
+            this.dateTimePickerOraInizioQueryInserimentoGare.TabIndex = 91;
             // 
             // Form1
             // 
@@ -2705,15 +2830,26 @@ namespace datarace
         private Button buttonInserisciRisultato;
         private CheckBox checkBoxSqualificaQueryRisultati;
         private CheckBox checkBoxRitiroQueryRisultati;
-        private TextBox textBoxPosizionePartenzaQueryRisultati;
         private TextBox textBoxPosizioneArrivoQueryRisultati;
         private Label labelPosizionePartenzaQueryRisultati;
         private Label labelPosizioneArrivoQueryRisultati;
-        private ComboBox comboBoxClasseQueryRisultati;
+        private ComboBox comboBoxPilotaQueryRisultati;
         private Label labelClasseQueryRisultati;
         private Label labelPilotaQueryRisultati;
-        private ComboBox comboBoxPilotaQueryRisultati;
+        private ComboBox comboBoxClasseQueryRisultati;
         private Label labelInserimentoRisultati;
+        private Button buttonAggiungiGara;
+        private DateTimePicker dateTimePickerDataQueryInserimentoGare;
+        private Label labelDataQueryInserimentoGare;
+        private ComboBox comboBoxCondizioniTracciatoQueryInserimentoGare;
+        private Label labelCondizioniTracciatoQueryInserimentoGare;
+        private Label labelNumeroDiGiriQueryInserimentoGare;
+        private TextBox textBoxNumeroDiGiriQueryInserimentoGare;
+        private ComboBox comboBoxClasseQueryInserimentoGare;
+        private Label labelClasseQueryInserimentoGara;
+        private Label labelInserimentoGare;
+        private TextBox textBox2;
+        private DateTimePicker dateTimePickerOraInizioQueryInserimentoGare;
     }
 }
 

@@ -109,7 +109,13 @@ namespace datarace
             comboBoxTeamQueryIscrizione.Items.Clear();
             comboBoxTeamQueryIscrizione.Items.AddRange(GetCurrentSeasonTeams().ToArray());
             comboBoxTipoIscrizioneQueryIscrizione.Items.Clear();
-            comboBoxTipoIscrizioneQueryIscrizione.Items.AddRange(new string[] { "Titolare", "Sostituto", "Wildcard" } );
+            comboBoxTipoIscrizioneQueryIscrizione.Items.AddRange(new string[] { "Titolare", "Sostituto", "Wildcard" });
+            comboBoxClasseQueryRisultati.Items.Clear();
+            comboBoxClasseQueryRisultati.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxClasseQueryInserimentoGare.Items.Clear();
+            comboBoxClasseQueryInserimentoGare.Items.AddRange(GetAllClasses().ToArray());
+            comboBoxCondizioniTracciatoQueryInserimentoGare.Items.Clear();
+            comboBoxCondizioniTracciatoQueryInserimentoGare.Items.AddRange(new string[] { "Dry", "Wet" });
             ShowCurrentSeasonCalendar();
         }
 
@@ -870,8 +876,8 @@ namespace datarace
         {
             using (DataraceDataContext ctx = new DataraceDataContext())
             {
-                // automatize next race position in the calendar
-                int nextRace = ctx.Gare.Where(i => i.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single())
+                // automatize next event position in the calendar
+                int nextEvent = ctx.Gare.Where(i => i.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single())
                                           .OrderByDescending(i => i.PosizioneCalendario)
                                           .Select(i => i.PosizioneCalendario).Take(1).Single() + 1;
                 var riderId = ctx.Piloti.Where(p => p.Nome == comboBoxPilotaQueryIscrizione.Text.Split(' ')[0] &&
@@ -889,7 +895,7 @@ namespace datarace
                     Costruttore = constructorId,
                     Modello = comboBoxModelloQueryIscrizione.Text,
                     Anno = ctx.StagioneCorrente.Select(sc => sc.Anno).Single(),
-                    PosizioneCalendario = nextRace
+                    PosizioneCalendario = nextEvent
                 };
                 if (iscrizione.NumeroDiGara > 0)
                 {
@@ -929,6 +935,68 @@ namespace datarace
             }
         }
 
+        private void ButtonAggiungiGara_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var currentMaxId = ctx.Gare.Select(g => g.IdGara).Max();
+                var currentSeason = ctx.StagioneCorrente.Select(sc => sc.Anno).Single();
+                var gara = new Gare()
+                {
+                    IdGara = AutoIncrement(currentMaxId, 6),
+                    Classe = comboBoxClasseQueryInserimentoGare.Text,
+                    PosizioneCalendario = LatestRaceNumber(comboBoxClasseQueryInserimentoGare.Text) + 1,
+                    Anno = currentSeason,
+                    Data = dateTimePickerDataQueryInserimentoGare.Value.Date,
+                    OraInizio = dateTimePickerOraInizioQueryInserimentoGare.Value.TimeOfDay,
+                    NumeroGiri = int.TryParse(textBoxNumeroDiGiriQueryInserimentoGare.Text, out int ng) ? ng : -1,
+                    CondizioniTracciato = comboBoxCondizioniTracciatoQueryInserimentoGare.Text
+                };
+                if (gara.NumeroGiri > 0)
+                {
+                    ctx.Gare.InsertOnSubmit(gara);
+                    ctx.SubmitChanges();
+                    // clears data after update
+                    comboBoxClasseQueryInserimentoGare.Text = string.Empty;
+                    textBoxNumeroDiGiriQueryInserimentoGare.Text = string.Empty;
+                    // refreshes view items
+                    LoadOrRefreshViewItems();
+                }
+            }
+        }
+
+        private void ButtonInserisciRisultato_Click(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                // finds the latest race that has been held for the selected class
+                var latestRaceNumber = LatestRaceNumber(comboBoxClasseQueryRisultati.Text);
+            }
+        }
+
+        private void ComboBoxClasseQueryRisultati_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                var classe = comboBoxClasseQueryRisultati.Text;
+                var riders = ctx.Iscrizioni.Where(i => i.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single() && 
+                                    i.PosizioneCalendario == LatestRaceNumber(classe) && i.Classe == classe && 
+                                    i.Risultato == null).Select(i => i.Piloti.Nome + " " + i.Piloti.Cognome).ToArray(); 
+                comboBoxPilotaQueryRisultati.Items.Clear();
+                comboBoxPilotaQueryRisultati.Items.AddRange(riders);
+            }
+        }
+
+        private int LatestRaceNumber(string className)
+        {
+            using (DataraceDataContext ctx = new DataraceDataContext())
+            {
+                return ctx.Gare.Where(i => i.Anno == ctx.StagioneCorrente.Select(sc => sc.Anno).Single() && 
+                                            i.Classe == className).OrderByDescending(i => i.PosizioneCalendario)
+                                            .Select(i => i.PosizioneCalendario).Take(1).Single();
+            }
+        }
+
         private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
         {
             try
@@ -959,7 +1027,5 @@ namespace datarace
             }
             return autoincrementString;
         }
-
-
     }
 }
