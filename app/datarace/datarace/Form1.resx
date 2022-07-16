@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelInserimentoGare.Text" xml:space="preserve">
-    <value>Inserisci i dati sulle gare relative all'ultima prova. Dopo 
-aver inserito i dati di una gara sarà possibile registrare i 
-risultati dei piloti partecipanti, ma non sarà più possibile 
-iscrivere nessun pilota alla prova:</value>
-  </data>
   <metadata name="pilotiBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>185, 17</value>
   </metadata>
@@ -165,6 +159,12 @@ iscrivere nessun pilota alla prova:</value>
   <metadata name="circuitiBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>849, 60</value>
   </metadata>
+  <data name="labelInserimentoGare.Text" xml:space="preserve">
+    <value>Inserisci i dati sulle gare relative all'ultima prova. Dopo 
+aver inserito i dati di una gara sarà possibile registrare i 
+risultati dei piloti partecipanti, ma non sarà più possibile 
+iscrivere nessun pilota alla prova:</value>
+  </data>
   <data name="labelQueryCalendario.Text" xml:space="preserve">
     <value>Quando tutte le prove della stagione corrente
 sono state completate, si può passare alla stagione
