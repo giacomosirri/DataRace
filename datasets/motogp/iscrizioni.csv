@@ -107,6 +107,7 @@ pilota,classe,team,posizioneCalendario,anno,numeroDiGara,tipoIscrizione,risultat
 000007,MotoGP,Team Suzuki Ecstar,11,2021,36,Titolare,0001703,004,GSX-RR
 000007,MotoGP,Team Suzuki Ecstar,11,2022,36,Titolare,0000250,004,GSX-RR
 000007,MotoGP,Team Suzuki Ecstar,12,2021,36,Titolare,0001784,004,GSX-RR
+000007,MotoGP,Team Suzuki Ecstar,12,2022,36,Titolare,,004,GSX-RR
 000007,MotoGP,Team Suzuki Ecstar,13,2021,36,Titolare,0001855,004,GSX-RR
 000007,MotoGP,Team Suzuki Ecstar,14,2021,36,Titolare,0001940,004,GSX-RR
 000007,MotoGP,Team Suzuki Ecstar,15,2021,36,Titolare,0002024,004,GSX-RR
@@ -135,6 +136,7 @@ pilota,classe,team,posizioneCalendario,anno,numeroDiGara,tipoIscrizione,risultat
 000008,MotoGP,Team Suzuki Ecstar,11,2021,42,Titolare,0001713,004,GSX-RR
 000008,MotoGP,Team Suzuki Ecstar,11,2022,42,Titolare,0000252,004,GSX-RR
 000008,MotoGP,Team Suzuki Ecstar,12,2021,42,Titolare,0001777,004,GSX-RR
+000008,MotoGP,Team Suzuki Ecstar,12,2022,42,Titolare,,004,GSX-RR
 000008,MotoGP,Team Suzuki Ecstar,13,2021,42,Titolare,0001864,004,GSX-RR
 000008,MotoGP,Team Suzuki Ecstar,14,2021,42,Titolare,0001956,004,GSX-RR
 000008,MotoGP,Team Suzuki Ecstar,15,2021,42,Titolare,0002020,004,GSX-RR
@@ -164,6 +166,7 @@ pilota,classe,team,posizioneCalendario,anno,numeroDiGara,tipoIscrizione,risultat
 000009,MotoGP,Red Bull KTM Factory Racing,11,2021,33,Titolare,0001700,005,RC16
 000009,MotoGP,Red Bull KTM Factory Racing,11,2022,33,Titolare,0000247,005,RC16
 000009,MotoGP,Red Bull KTM Factory Racing,12,2021,33,Titolare,0001781,005,RC16
+000009,MotoGP,Red Bull KTM Factory Racing,12,2022,33,Titolare,,005,RC16
 000009,MotoGP,Red Bull KTM Factory Racing,13,2021,33,Titolare,0001859,005,RC16
 000009,MotoGP,Red Bull KTM Factory Racing,14,2021,33,Titolare,0001943,005,RC16
 000009,MotoGP,Red Bull KTM Factory Racing,15,2021,33,Titolare,0002025,005,RC16
@@ -480,6 +483,7 @@ pilota,classe,team,posizioneCalendario,anno,numeroDiGara,tipoIscrizione,risultat
 000020,MotoGP,Ducati Lenovo Team,11,2021,63,Titolare,0001701,001,Desmosedici GP21
 000020,MotoGP,Ducati Lenovo Team,11,2022,63,Titolare,0000243,001,Desmosedici GP22
 000020,MotoGP,Ducati Lenovo Team,12,2021,63,Titolare,0001789,001,Desmosedici GP21
+000020,MotoGP,Ducati Lenovo Team,12,2022,63,Titolare,,001,Desmosedici GP22
 000020,MotoGP,Ducati Lenovo Team,13,2021,63,Titolare,0001853,001,Desmosedici GP21
 000020,MotoGP,Ducati Lenovo Team,14,2021,63,Titolare,0001935,001,Desmosedici GP21
 000020,MotoGP,Ducati Lenovo Team,15,2021,63,Titolare,0002019,001,Desmosedici GP21
